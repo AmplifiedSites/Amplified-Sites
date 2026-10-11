@@ -5989,6 +5989,63 @@ main.success-deposit > .success-hero {
 }
 
 
+/* =========================================
+   AUTOMATIC PACKAGE GRID LAYOUT
+========================================= */
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    max-width: 1300px;
+    margin: 0 auto;
+    gap: 28px;
+    align-items: stretch;
+}
+
+/* When only one package is displayed */
+.pricing-grid:has(> .pricing-card:only-child) {
+    grid-template-columns: minmax(0, 550px);
+    justify-content: center;
+}
+
+/* Improve single package appearance */
+.pricing-grid > .pricing-card:only-child {
+    width: 100%;
+    max-width: 550px;
+    padding: 45px;
+    margin: 0 auto;
+}
+
+/* Make descriptions easier to read */
+.pricing-card .card-description {
+    color: #c8d3ea;
+    line-height: 1.8;
+}
+
+/* Keep features aligned */
+.pricing-card li {
+    align-items: flex-start;
+    line-height: 1.6;
+}
+
+.pricing-card li i {
+    flex-shrink: 0;
+    margin-top: 5px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+    .pricing-grid,
+    .pricing-grid:has(> .pricing-card:only-child) {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .pricing-grid > .pricing-card:only-child {
+        padding: 30px 24px;
+    }
+}
+
+
 @media (max-width: 320px) {
     .pricing-grid {
         grid-template-columns: minmax(0, 1fr);
