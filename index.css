@@ -4144,428 +4144,6 @@ footer{
 }
 /* END OF REVIEW ORDER PAGE */
 
-/* START OF SUCCESS/SUCCESS DEPOSIT PAGE */
-.success-deposit{
-    color: #000000;
-}
-
-main.success-deposit > .success-hero {
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 50px 20px 100px;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeIn 3s ease forwards;
-}
-@keyframes fadeIn {
-    to {
-        opacity:1;
-        transform: translateY(0);  
-    }
-}
-
-.check-circle{
-    width:100px;
-    height:100px;
-    border:3px solid white;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin:0 auto 25px;
-    color: #00b13b;
-    font-size:40px;
-}
-
-.success-hero h1{
-    font-size:4rem;
-    margin-bottom:20px;
-}
-
-.success-hero p{
-    font-size:1.3rem;
-    margin-bottom:10px;
-}
-
-/* CARD */
-#orderNumber{}
-
-.order-section{
-    max-width:1100px;
-    margin:-80px auto 80px;
-    padding:0 20px;
-}
-
-.order-card{
-    background:white;
-    border-radius:20px;
-    padding:50px;
-    box-shadow:0 10px 30px rgba(241, 240, 240, 0.08);
-    border:10px solid #000000;
-
-}
-
-.order-card h2{
-    text-align:center;
-    margin-bottom:30px;
-}
-
-.order-number-box{
-    background:#eef3ff;
-    border:1px solid #dbe4ff;
-    border-radius:15px;
-    padding:30px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:50px;
-}
-
-.order-number-box span{
-    font-size:3rem;
-    font-weight:bold;
-    color:black;
-}
-
-.copy-btn{
-    background:white;
-    border:none;
-    border-radius:10px;
-    padding:15px 25px;
-    cursor:pointer;
-    font-weight:600;
-}
-
-/* INFO GRID */
-
-.info-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:40px;
-}
-
-.info-item{
-    display:flex;
-    align-items:center;
-    gap:20px;
-}
-
-.icon-circle2{
-    width:70px;
-    height:70px;
-    background:#2563EB;
-    border-radius:50%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:white;
-    font-size:25px;
-}
-
-/* EMAIL */
-
-.email-box{
-    margin-top:50px;
-    background:#eef3ff;
-    padding:30px;
-    border-radius:15px;
-    display:flex;
-    gap:20px;
-}
-
-.email-icon{
-    width:60px;
-    height:60px;
-    background:#2563EB;
-    border-radius:50%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:white;
-    font-size:22px;
-}
-
-/* TRACK */
-
-.track-section{
-    text-align:center;
-    margin-top:50px;
-}
-
-.track-btn{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    text-decoration:none;
-    background:#2563eb;
-    color:white;
-    padding:18px 45px;
-    border-radius:12px;
-    margin:20px 0;
-    font-size:1.2rem;
-    font-weight:bold;
-}
-
-.track-section small{
-    display:block;
-    color:#6b7280;
-}
-
-/* ==========================================
-   SUCCESS PAGE RESPONSIVE
-========================================== */
-
-/* Large Desktop */
-@media (max-width:1400px){
-
-    .success-hero{
-        padding-bottom:12rem;
-    }
-
-    .order-section{
-        padding:0 30px;
-    }
-
-}
-
-/* Laptop */
-@media (max-width:1200px){
-
-    .success-hero h1{
-        font-size:clamp(3rem,5vw,4rem);
-    }
-
-    .success-hero p{
-        font-size:1.2rem;
-    }
-
-    .order-card{
-        padding:40px;
-    }
-
-}
-
-/* Tablets */
-@media (max-width:992px){
-
-    .success-hero{
-        padding-bottom:10rem;
-    }
-
-    .success-hero h1{
-        font-size:3rem;
-    }
-
-    .order-section{
-        margin:-60px auto 60px;
-        padding:0 25px;
-    }
-
-    .order-number-box{
-        flex-direction:column;
-        gap:20px;
-        text-align:center;
-    }
-
-    .info-grid{
-        grid-template-columns:1fr;
-        gap:30px;
-    }
-
-    .email-box{
-        flex-direction:column;
-        align-items:center;
-        text-align:center;
-    }
-
-}
-
-/* Large Phones */
-@media (max-width:768px){
-
-    .success-hero{
-        padding-bottom:8rem;
-        padding-left:20px;
-        padding-right:20px;
-    }
-
-    .check-circle{
-        width:80px;
-        height:80px;
-        font-size:32px;
-    }
-
-    .success-hero h1{
-        font-size:2.5rem;
-        line-height:1.2;
-    }
-
-    .success-hero p{
-        font-size:1rem;
-        line-height:1.7;
-    }
-
-    .order-card{
-        padding:30px 25px;
-    }
-
-    .order-number-box{
-        padding:25px;
-    }
-
-    .order-number-box span{
-        font-size:2rem;
-        word-break:break-word;
-    }
-
-    .copy-btn{
-        width:100%;
-        padding:14px;
-    }
-
-    .info-item{
-        align-items:flex-start;
-    }
-
-    .icon-circle2{
-        width:60px;
-        height:60px;
-        font-size:22px;
-        flex-shrink:0;
-    }
-
-    .email-icon{
-        width:55px;
-        height:55px;
-        font-size:20px;
-    }
-
-    .track-btn{
-        width:100%;
-        justify-content:center;
-        padding:16px;
-        font-size:1rem;
-    }
-
-}
-
-/* Phones */
-@media (max-width:576px){
-
-    .success-hero{
-        padding-bottom:6rem;
-    }
-
-    .success-hero h1{
-        font-size:2rem;
-    }
-
-    .success-hero p{
-        font-size:.95rem;
-    }
-
-    .order-section{
-        padding:0 15px;
-    }
-
-    .order-card{
-        padding:20px;
-    }
-
-    .order-number-box{
-        padding:20px;
-    }
-
-    .order-number-box span{
-        font-size:1.6rem;
-    }
-
-    .info-item{
-        flex-direction:column;
-        text-align:center;
-        align-items:center;
-        gap:15px;
-    }
-
-    .email-box{
-        padding:20px;
-    }
-
-    .track-btn{
-        font-size:.95rem;
-    }
-
-}
-
-/* Small Phones */
-@media (max-width:400px){
-
-    .success-hero{
-        padding-bottom:5rem;
-        padding-left:10px;
-        padding-right:10px;
-    }
-
-    .check-circle{
-        width:70px;
-        height:70px;
-        font-size:28px;
-    }
-
-    .success-hero h1{
-        font-size:1.7rem;
-    }
-
-    .success-hero p{
-        font-size:.9rem;
-    }
-
-    .order-card{
-        padding:16px;
-        border-width:5px;
-    }
-
-    .order-number-box{
-        padding:15px;
-    }
-
-    .order-number-box span{
-        font-size:1.3rem;
-    }
-
-    .copy-btn{
-        font-size:.9rem;
-        padding:12px;
-    }
-
-    .icon-circle2{
-        width:50px;
-        height:50px;
-        font-size:18px;
-    }
-
-    .email-icon{
-        width:48px;
-        height:48px;
-        font-size:18px;
-    }
-
-    .track-btn{
-        padding:14px;
-        font-size:.9rem;
-    }
-
-    .track-section small{
-        font-size:.8rem;
-    }
-
-}
-/* END OF SUCCESS/SUCCESS DEPOSIT PAGE */
-
 /* START OF THANK YOU PAGE */
 .thank{
     text-align: center;
@@ -5362,6 +4940,7 @@ main.success-deposit > .success-hero {
 
 }
 /* END OF TRACK PROGRESS PAGE */
+
 
 /* START OF VIEW PACKAGE PAGE */
 .section{
@@ -7297,3 +6876,1261 @@ button:focus-visible {
 
 }
 /* END OF VIEW PORTFOLIO PAGE */
+
+
+/* START OF SUCCESS FREE PAGE*/
+.free-success-page {
+    min-height: 100vh;
+}
+
+.free-success-main {
+    padding: 65px 22px 110px;
+    display: flex;
+    justify-content: center;
+}
+
+/* =========================================
+   SUCCESS CARD
+========================================= */
+
+.free-success-card {
+    width: 100%;
+    max-width: 760px;
+    text-align: center;
+    padding: 55px 55px 45px;
+    background: rgba(8, 18, 45, 0.92);
+    border: 1px solid rgba(66, 139, 255, 0.42);
+    border-radius: 26px;
+    box-shadow: 0 0 65px rgba(37, 99, 235, 0.16);
+}
+
+/* =========================================
+   SUCCESS ICON
+========================================= */
+
+.free-success-icon {
+    width: 90px;
+    height: 90px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 25px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #2563eb, #123d9d);
+    box-shadow: 0 0 35px rgba(37, 99, 235, 0.45);
+    font-size: 40px;
+    color: #fff;
+}
+
+/* =========================================
+   SUCCESS HEADING
+========================================= */
+
+.free-success-eyebrow {
+    display: block;
+    color: #65adff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+}
+
+.free-success-card h1 {
+    font-size: clamp(1.9rem, 4vw, 2.7rem);
+    line-height: 1.25;
+    margin-bottom: 18px;
+}
+
+.free-success-intro {
+    color: #c8d3ea;
+    font-size: 15px;
+    line-height: 1.85;
+    max-width: 590px;
+    margin: 0 auto 32px;
+}
+
+/* =========================================
+   ORDER NUMBER
+========================================= */
+
+.free-success-order {
+    background: rgba(37, 99, 235, 0.10);
+    border: 1px solid rgba(78, 151, 255, 0.34);
+    border-radius: 17px;
+    padding: 25px 18px;
+    margin-bottom: 26px;
+}
+
+.free-success-order-label {
+    color: #b9c9e5;
+    font-size: 13px;
+    margin-bottom: 11px;
+}
+
+.free-success-order-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+}
+
+.free-success-order-number strong {
+    font-family: 'Orbitron', 'Montserrat', sans-serif;
+    font-size: clamp(16px, 3.3vw, 24px);
+    letter-spacing: 1px;
+    color: #fff;
+    overflow-wrap: anywhere;
+}
+
+/* COPY ORDER BUTTON */
+
+#copyFreeOrder {
+    border: 1px solid #426eac;
+    background: #132e5d;
+    color: #dceaff;
+    border-radius: 9px;
+    padding: 9px 11px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+#copyFreeOrder:hover {
+    background: #2563eb;
+}
+
+.free-success-hint {
+    color: #aabbd6;
+    font-size: 12px;
+    line-height: 1.6;
+    margin-top: 12px;
+}
+
+/* =========================================
+   ORDER SUMMARY
+========================================= */
+
+.free-success-summary {
+    text-align: left;
+    background: rgba(4, 12, 32, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 16px;
+    padding: 26px;
+    margin-bottom: 28px;
+}
+
+.free-success-summary h2,
+.free-success-next h2 {
+    font-size: 20px;
+    margin-bottom: 19px;
+}
+
+.free-success-summary-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 0;
+    font-size: 14px;
+}
+
+.free-success-summary-row span {
+    color: #b8c7df;
+}
+
+.free-success-summary-row strong {
+    color: #fff;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+/* TOTAL PRICE */
+
+.free-success-total {
+    border-top: 1px solid rgba(255, 255, 255, 0.13);
+    margin-top: 7px;
+    padding-top: 19px;
+}
+
+.free-success-total strong,
+.free-success-no-payment {
+    color: #67b0ff !important;
+}
+
+/* =========================================
+   WHAT HAPPENS NEXT
+========================================= */
+
+.free-success-next {
+    margin: 0 auto 30px;
+}
+
+.free-success-next h2 {
+    margin-bottom: 12px;
+}
+
+.free-success-next p {
+    color: #c8d3ea;
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+/* =========================================
+   ACTION BUTTONS
+========================================= */
+
+.free-success-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.free-success-actions a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-width: 190px;
+    padding: 15px 22px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    transition:
+        transform 0.25s,
+        box-shadow 0.25s,
+        background 0.25s;
+}
+
+.free-success-actions a:hover {
+    transform: translateY(-3px);
+}
+
+/* PRIMARY BUTTON */
+
+.free-success-primary {
+    background: linear-gradient(90deg, #2563eb, #1d4ed8);
+    box-shadow: 0 0 24px rgba(37, 99, 235, 0.3);
+}
+
+.free-success-primary:hover {
+    box-shadow: 0 0 35px rgba(37, 99, 235, 0.55);
+}
+
+/* SECONDARY BUTTON */
+
+.free-success-secondary {
+    border: 1px solid #4477c6;
+    background: #101f41;
+}
+
+.free-success-secondary:hover {
+    background: #1a3467;
+}
+
+/* =========================================
+   SUPPORT TEXT
+========================================= */
+
+.free-success-support {
+    color: #aabbd6;
+    font-size: 13px;
+    margin-top: 28px;
+}
+
+.free-success-support a {
+    color: #69afff;
+    text-decoration: none;
+}
+
+.free-success-support a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   PAYMENT & DEPOSIT SUCCESS PAGES
+   MATCH FREE ORDER SUCCESS DESIGN
+========================================= */
+
+/* MAIN PAGE */
+
+.success-deposit {
+    width: 100%;
+    min-height: 100vh;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 65px 22px 110px;
+    color: #fff;
+}
+
+/* =========================================
+   SUCCESS HEADER
+========================================= */
+
+.success-deposit > .success-hero {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    padding: 0 0 35px;
+    margin: 0;
+    min-height: auto;
+}
+
+.success-deposit .check-circle {
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #2563eb, #123d9d);
+    box-shadow: 0 0 35px rgba(37, 99, 235, 0.45);
+    color: white;
+    font-size: 40px;
+}
+
+.success-deposit .success-hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.9rem, 4vw, 2.7rem);
+    font-weight: 800;
+    line-height: 1.25;
+    color: #fff;
+    margin-bottom: 18px;
+    text-align: center;
+}
+
+.success-deposit .success-hero p {
+    font-size: 15px;
+    line-height: 1.85;
+    color: #c8d3ea;
+    max-width: 650px;
+    margin: 0 auto 5px;
+    text-align: center;
+}
+
+/* =========================================
+   ORDER SECTION
+========================================= */
+
+.success-deposit .order-section {
+    width: 100%;
+    padding: 0;
+    margin: 0 auto;
+}
+
+.success-deposit .order-card {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 45px 55px;
+    background: rgba(8, 18, 45, 0.92);
+    border: 1px solid rgba(66, 139, 255, 0.42);
+    border-radius: 26px;
+    box-shadow: 0 0 65px rgba(37, 99, 235, 0.16);
+    text-align: center;
+}
+
+.success-deposit .order-card > h2 {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* =========================================
+   ORDER NUMBER
+========================================= */
+
+.success-deposit .order-number-box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 25px 18px;
+    margin-bottom: 30px;
+    border-radius: 17px;
+    background: rgba(37, 99, 235, 0.10);
+    border: 1px solid rgba(78, 151, 255, 0.34);
+}
+
+.success-deposit #orderNumber {
+    font-family: 'Orbitron', 'Montserrat', sans-serif;
+    font-size: clamp(16px, 3vw, 23px);
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+    overflow-wrap: anywhere;
+}
+
+/* COPY BUTTON */
+
+.success-deposit .copy-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 10px 15px;
+    background: #132e5d;
+    border: 1px solid #426eac;
+    border-radius: 9px;
+    color: #dceaff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.success-deposit .copy-btn:hover {
+    background: #2563eb;
+    border-color: #55a2ff;
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.35);
+}
+
+.success-deposit .copy-btn:active {
+    transform: scale(0.97);
+}
+
+/* =========================================
+   ORDER INFORMATION GRID
+========================================= */
+
+.success-deposit .info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 28px;
+    text-align: left;
+}
+
+.success-deposit .info-item {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 22px 18px;
+    background: rgba(4, 12, 32, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 16px;
+    transition: 0.3s ease;
+}
+
+.success-deposit .info-item:hover {
+    border-color: rgba(85, 162, 255, 0.5);
+    box-shadow: 0 0 25px rgba(37, 99, 235, 0.12);
+}
+
+/* INFO ICON */
+
+.success-deposit .icon-circle2 {
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(37, 99, 235, 0.15);
+    border: 1px solid rgba(85, 162, 255, 0.30);
+    border-radius: 13px;
+    color: #69afff;
+    font-size: 21px;
+}
+
+/* INFO TEXT */
+
+.success-deposit .info-item h3 {
+    font-size: 12px;
+    font-weight: 600;
+    color: #b8c7df;
+    margin-bottom: 8px;
+}
+
+.success-deposit .info-item p {
+    font-size: 14px;
+    color: #fff;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.success-deposit .info-item p strong {
+    color: #fff;
+    font-weight: 700;
+}
+
+/* =========================================
+   EMAIL CONFIRMATION BOX
+========================================= */
+
+.success-deposit .email-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    text-align: left;
+    padding: 25px;
+    margin-bottom: 30px;
+    border-radius: 16px;
+    background: rgba(37, 99, 235, 0.10);
+    border: 1px solid rgba(78, 151, 255, 0.34);
+}
+
+.success-deposit .email-icon {
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(145deg, #2563eb, #123d9d);
+    border-radius: 13px;
+    color: #fff;
+    font-size: 22px;
+}
+
+.success-deposit .email-box h3 {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.success-deposit .email-box p {
+    color: #c8d3ea;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* =========================================
+   TRACK ORDER SECTION
+========================================= */
+
+.success-deposit .track-section {
+    text-align: center;
+    padding: 10px 0 0;
+}
+
+.success-deposit .track-section > p {
+    font-size: 15px;
+    color: #e5ecfa;
+    line-height: 1.8;
+    margin-bottom: 23px;
+}
+
+.success-deposit .track-section > p strong {
+    font-weight: 700;
+}
+
+/* TRACK BUTTON */
+
+.success-deposit .track-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-width: 220px;
+    padding: 16px 26px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #2563eb, #1d4ed8);
+    color: white;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    box-shadow: 0 0 24px rgba(37, 99, 235, 0.3);
+    transition: 0.3s ease;
+}
+
+.success-deposit .track-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 35px rgba(37, 99, 235, 0.55);
+    color: white;
+}
+
+.success-deposit .track-btn i {
+    font-size: 16px;
+}
+
+/* TRACKING INSTRUCTIONS */
+
+.success-deposit .track-section small {
+    display: block;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #aabbd6;
+    line-height: 1.7;
+}
+
+.success-deposit .track-section small strong {
+    font-weight: 500;
+}
+
+/* =========================================
+   TABLET RESPONSIVENESS
+========================================= */
+
+@media (max-width: 900px) {
+
+    .success-deposit {
+        padding: 55px 20px 85px;
+    }
+
+    .success-deposit .order-card {
+        padding: 40px 30px;
+    }
+
+    .success-deposit .info-grid {
+        gap: 14px;
+    }
+
+    .success-deposit .info-item {
+        padding: 18px 15px;
+    }
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+========================================= */
+
+@media (max-width: 650px) {
+
+    .success-deposit {
+        padding: 35px 15px 70px;
+    }
+
+    .success-deposit > .success-hero {
+        padding-bottom: 28px;
+    }
+
+    .success-deposit .check-circle {
+        width: 75px;
+        height: 75px;
+        font-size: 33px;
+    }
+
+    .success-deposit .success-hero h1 {
+        font-size: 1.9rem;
+    }
+
+    .success-deposit .success-hero p {
+        font-size: 13px;
+    }
+
+    .success-deposit .order-card {
+        padding: 30px 20px;
+        border-radius: 18px;
+    }
+
+    .success-deposit .order-number-box {
+        padding: 20px 12px;
+    }
+
+    .success-deposit .info-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .success-deposit .info-item {
+        padding: 17px;
+    }
+
+    .success-deposit .email-box {
+        padding: 20px 16px;
+        gap: 13px;
+    }
+
+    .success-deposit .email-icon {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+        font-size: 18px;
+    }
+
+    .success-deposit .email-box h3 {
+        font-size: 13px;
+    }
+
+    .success-deposit .email-box p {
+        font-size: 12px;
+    }
+
+    .success-deposit .track-btn {
+        width: 100%;
+    }
+}
+
+/* =========================================
+   SMALL PHONES
+========================================= */
+
+@media (max-width: 390px) {
+
+    .success-deposit .order-card {
+        padding: 25px 15px;
+    }
+
+    .success-deposit #orderNumber {
+        font-size: 14px;
+    }
+
+    .success-deposit .order-number-box {
+        gap: 10px;
+    }
+
+    .success-deposit .info-item {
+        gap: 12px;
+    }
+
+    .success-deposit .icon-circle2 {
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        font-size: 18px;
+    }
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+========================================= */
+
+@media (max-width: 650px) {
+
+    .free-success-main {
+        padding: 35px 15px 70px;
+    }
+
+    .free-success-card {
+        padding: 35px 20px;
+        border-radius: 18px;
+    }
+
+    .free-success-summary {
+        padding: 20px 16px;
+    }
+
+    .free-success-summary-row {
+        font-size: 12px;
+    }
+
+    .free-success-actions {
+        flex-direction: column;
+    }
+
+    .free-success-actions a {
+        width: 100%;
+    }
+}
+
+/* =========================================
+   SMALL PHONES
+========================================= */
+
+@media (max-width: 390px) {
+
+    .free-success-order-number {
+        gap: 7px;
+    }
+
+    .free-success-order-number strong {
+        font-size: 14px;
+    }
+}
+/* END OF SUCCESS FREE PAGE*/
+
+
+
+/* START OF SUCCESS/SUCCESS DEPOSIT PAGE */
+main.success-deposit {
+    width: 100%;
+    max-width: 760px;
+    min-height: auto;
+    margin: 65px auto 110px;
+    padding: 55px 55px 45px;
+    color: #ffffff;
+    background: rgba(8, 18, 45, 0.92);
+    border: 1px solid rgba(66, 139, 255, 0.42);
+    border-radius: 26px;
+    box-shadow: 0 0 65px rgba(37, 99, 235, 0.16);
+}
+
+/* =========================================
+   SUCCESS HEADING
+========================================= */
+
+main.success-deposit > section.success-hero {
+    width: 100%;
+    min-height: 0;
+    margin: 0 auto 35px;
+    padding: 10px 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    opacity: 1;
+    transform: none;
+    animation: none;
+}
+
+/* SUCCESS CHECKMARK */
+
+.success-deposit .check-circle {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(100, 180, 255, 0.45);
+    border-radius: 50%;
+    background: linear-gradient(145deg, #2563eb, #123d9d);
+    box-shadow: 0 0 35px rgba(37, 99, 235, 0.45);
+    color: #ffffff;
+    font-size: 40px;
+}
+
+.success-deposit .success-hero h1 {
+    margin: 0 0 18px;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(29px, 4vw, 43px);
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+.success-deposit .success-hero p {
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto 5px;
+    color: #c8d3ea;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.8;
+}
+
+/* =========================================
+   ORDER SECTION
+========================================= */
+
+.success-deposit .order-section {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0;
+    background: transparent;
+}
+
+.success-deposit .order-card {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    text-align: center;
+}
+
+/* =========================================
+   ORDER NUMBER BOX
+========================================= */
+
+.success-deposit .order-card > h2 {
+    display: none;
+}
+
+.success-deposit .order-number-box {
+    position: relative;
+    width: 100%;
+    min-height: 155px;
+    margin: 0 auto 28px;
+    padding: 55px 20px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    border: 1px solid rgba(67, 137, 255, 0.45);
+    border-radius: 18px;
+    background: rgba(12, 30, 73, 0.90);
+    box-shadow: none;
+}
+
+.success-deposit .order-number-box::before {
+    content: "Your Order Number";
+    position: absolute;
+    top: 25px;
+    left: 0;
+    width: 100%;
+    color: #b8c7df;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.success-deposit #orderNumber {
+    color: #ffffff;
+    font-family: 'Orbitron', 'Montserrat', sans-serif;
+    font-size: clamp(16px, 3vw, 24px);
+    font-weight: 700;
+    letter-spacing: 1px;
+    overflow-wrap: anywhere;
+}
+
+/* COPY BUTTON */
+
+.success-deposit .copy-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 14px;
+    color: #dceaff;
+    background: #132e5d;
+    border: 1px solid #426eac;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.success-deposit .copy-btn:hover {
+    background: #2563eb;
+    border-color: #55a2ff;
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+}
+
+.success-deposit .copy-btn:active {
+    transform: scale(0.97);
+}
+
+/* =========================================
+   ORDER SUMMARY
+========================================= */
+
+.success-deposit .info-grid {
+    width: 100%;
+    margin: 0 auto 30px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background: rgba(4, 12, 32, 0.80);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 18px;
+    text-align: left;
+}
+
+.success-deposit .success-summary-heading {
+    margin: 0 0 20px;
+    padding: 0;
+    color: #ffffff;
+    font-size: 21px;
+    font-weight: 800;
+    text-align: left;
+}
+
+/* SUMMARY ROWS */
+
+.success-deposit .info-item {
+    width: 100%;
+    min-height: 45px;
+    margin: 0;
+    padding: 12px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    transform: none;
+    text-align: left;
+}
+
+.success-deposit .info-item:hover {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    transform: none;
+}
+
+/* HIDE OLD ICONS */
+
+.success-deposit .icon-circle2 {
+    display: none;
+}
+
+/* LABEL AND VALUE */
+
+.success-deposit .info-item > div:last-child {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.success-deposit .info-item h3 {
+    flex: 1;
+    margin: 0;
+    padding: 0;
+    color: #b8c7df;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.success-deposit .info-item p {
+    flex: 1;
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.6;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+.success-deposit .info-item p strong {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+/* =========================================
+   EMAIL CONFIRMATION
+========================================= */
+
+.success-deposit .email-box {
+    width: 100%;
+    margin: 0 auto 32px;
+    padding: 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    background: rgba(12, 30, 73, 0.55);
+    border: 1px solid rgba(67, 137, 255, 0.25);
+    border-radius: 16px;
+    box-shadow: none;
+    text-align: left;
+}
+
+.success-deposit .email-icon {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    background: linear-gradient(145deg, #2563eb, #123d9d);
+    border-radius: 13px;
+    font-size: 22px;
+}
+
+.success-deposit .email-box h3 {
+    margin: 0 0 10px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.success-deposit .email-box p {
+    margin: 0;
+    color: #c8d3ea;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* =========================================
+   TRACK ORDER
+========================================= */
+
+.success-deposit .track-section {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 10px 15px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    text-align: center;
+}
+
+.success-deposit .track-section > p {
+    margin: 0 0 25px;
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.7;
+}
+
+.success-deposit .track-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-width: 220px;
+    margin: 0;
+    padding: 16px 28px;
+    color: #ffffff;
+    background: linear-gradient(90deg, #2563eb, #1d4ed8);
+    border: none;
+    border-radius: 12px;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    box-shadow: 0 0 24px rgba(37, 99, 235, 0.30);
+    transition: 0.3s ease;
+}
+
+.success-deposit .track-btn:hover {
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 0 35px rgba(37, 99, 235, 0.55);
+}
+
+.success-deposit .track-section small {
+    display: block;
+    margin-top: 20px;
+    color: #aabbd6;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    main.success-deposit {
+        padding: 40px 25px 75px;
+    }
+
+    .success-deposit .info-grid {
+        padding: 24px;
+    }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+
+    main.success-deposit {
+        margin: 35px auto 70px;
+        padding: 35px 20px;
+        border-radius: 18px;
+    }
+
+    main.success-deposit > section.success-hero {
+        padding: 15px 5px 0;
+        margin-bottom: 25px;
+    }
+
+    .success-deposit .check-circle {
+        width: 75px;
+        height: 75px;
+        font-size: 33px;
+    }
+
+    .success-deposit .success-hero h1 {
+        font-size: 29px;
+    }
+
+    .success-deposit .success-hero p {
+        font-size: 13px;
+    }
+
+    .success-deposit .order-number-box {
+        padding: 55px 15px 25px;
+    }
+
+    .success-deposit .info-grid {
+        padding: 20px 18px;
+    }
+
+    .success-deposit .success-summary-heading {
+        font-size: 19px;
+    }
+
+    .success-deposit .info-item h3,
+    .success-deposit .info-item p {
+        font-size: 12px;
+    }
+
+    .success-deposit .email-box {
+        padding: 20px 15px;
+        gap: 12px;
+    }
+
+    .success-deposit .email-icon {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+        font-size: 18px;
+    }
+
+    .success-deposit .email-box h3 {
+        font-size: 13px;
+    }
+
+    .success-deposit .email-box p {
+        font-size: 12px;
+    }
+
+    .success-deposit .track-section > p {
+        font-size: 14px;
+    }
+
+    .success-deposit .track-btn {
+        width: 100%;
+    }
+}
+
+/* =========================================
+   SMALL PHONES
+========================================= */
+
+@media (max-width: 390px) {
+
+    main.success-deposit {
+        padding: 25px 12px 55px;
+    }
+
+    .success-deposit .info-grid {
+        padding: 18px 12px;
+    }
+
+    .success-deposit .info-item > div:last-child {
+        gap: 10px;
+    }
+
+    .success-deposit .info-item h3,
+    .success-deposit .info-item p {
+        font-size: 11px;
+    }
+
+    .success-deposit #orderNumber {
+        font-size: 15px;
+    }
+}
+/* END OF SUCCESS/SUCCESS DEPOSIT PAGE */
+
