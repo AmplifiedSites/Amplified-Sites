@@ -18,15 +18,48 @@ function formatOrderId(orderId) {
    FETCH ORDER
 ========================= */
 async function fetchOrder(orderId) {
+
     const cleaned = formatOrderId(orderId);
-    const { data, error } = await supabaseClient
-        .from("orders")
-        .select("*")
-        .eq("order_id", cleaned)
-        .single();
-    console.log("Supabase returned:", data, error);
-    if (error) return null;
-    return data;
+
+    const clientEmail =
+        sessionStorage.getItem("tracking_email") ||
+        localStorage.getItem("client_email");
+
+    if (!cleaned || !clientEmail) {
+        console.error("Missing order number or customer email.");
+        return null;
+    }
+
+    try {
+
+        const response = await fetch(
+            "https://api.amplifiedsites.com/find-order",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    order_id: cleaned,
+                    client_email: clientEmail.trim().toLowerCase()
+                })
+            }
+        );
+
+        if (!response.ok) {
+            return null;
+        }
+
+        const data = await response.json();
+
+        return data.order || null;
+
+    } catch (error) {
+
+        console.error("TRACK ORDER ERROR:", error);
+
+        return null;
+    }
 }
 /* =========================
    UI HELPERS
@@ -181,21 +214,35 @@ function renderOrder(order) {
 /* =========================
    TRACK ORDER
 ========================= */
-async function handleTrack() {
-    const input = document.getElementById("orderInput");
-    if (!input) return;
 
-    const orderId = formatOrderId(input.value);
-    if (!orderId) return;
+async function handleTrack(autoOrderId = null) {
+
+    const input = document.getElementById("orderInput");
+
+    const orderId = formatOrderId(
+        typeof autoOrderId === "string" && autoOrderId
+            ? autoOrderId
+            : input?.value
+    );
+
+    if (!orderId) {
+        console.error("Tracking failed: Missing order number.");
+        return;
+    }
+
+    console.log("Tracking order:", orderId);
 
     currentOrderId = orderId;
 
     const order = await fetchOrder(orderId);
 
     if (!order) {
-        alert("Order not found");
+        console.error("Tracking failed: Order lookup returned no result.");
+        alert("Order not found. Please check your order number and email.");
         return;
     }
+
+    console.log("Order found:", order.order_id);
 
     renderOrder(order);
 }
@@ -203,7 +250,9 @@ async function handleTrack() {
 /* =========================
    EVENTS
 ========================= */
+
 document.addEventListener("DOMContentLoaded", () => {
+
     const btn = document.getElementById("trackBtn");
     const input = document.getElementById("orderInput");
 
@@ -213,17 +262,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (input) {
         input.addEventListener("keydown", (e) => {
-            if (e.key === "Enter") handleTrack();
+            if (e.key === "Enter") {
+                handleTrack();
+            }
         });
     }
 
-    const params = new URLSearchParams(window.location.search);
-    const order = params.get("order");
+    // =========================================
+    // AUTOMATIC ORDER TRACKING
+    // =========================================
 
-    if (order) {
-        if (input) input.value = order;
-        handleTrack();
+    const params = new URLSearchParams(window.location.search);
+
+    const orderId =
+        params.get("order_id") ||
+        params.get("order");
+
+    if (orderId) {
+    if (input) {
+        input.value = orderId;
     }
+
+    handleTrack(orderId);
+}
 });
 
 /* =========================
@@ -249,3 +310,5 @@ supabaseClient
         }
     )
     .subscribe();
+
+    
