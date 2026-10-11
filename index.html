@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Amplified Sites</title>
+        <link rel="icon" type="image/png" href="ampsiteslogo.png" />
+        <link rel="stylesheet" href="index.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+        <script src="supabase-public.js" defer></script>
+        <script src="index.js" defer></script>
+    </head>
+    <body>
+        <canvas id="index-background"></canvas>
+        <header id="headerContent">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="ampsiteslogo.png" alt="Logo" />
+                </div>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="trackprogress.html">Track Progress</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+                <a href="viewpackage.html" class="quote-btn">View Package</a>
+            </nav>
+        </header>
+        <section class="hero">
+            <div class="hero-content" id="heroContent">
+                <div class="hero-left">
+                    <div class="badge">Helping Businesses Grow Online</div>
+                    <h1>
+                        <span>Amplifying Your Website</span>
+                        Beyond Expectations
+                    </h1>
+                    <p>From concept to launch, goal is to create websites that amplify your success.</p>
+                    <div class="buttons">
+                        <a href="start-journey.html" class="primary">Start Your Journey →</a>
+                        <a href="view-portfolio.html" class="secondary">View Portfolio</a>
+                    </div>
+                </div>
+                <div class="hero-right">
+                    <div class="logo-wrapper">
+                        <div class="glow"></div>
+                        <div class="orbit orbit1"></div>
+                        <div class="orbit orbit2"></div>
+                        <div class="orbit orbit3"></div>
+                        <div class="energy-ring"></div>
+                        <div class="logo-rotate" id="logoRotate">
+                            <img src="hero-amp.png" class="main-logo" />
+                        </div>
+                        <div class="particle-container">
+                            <span class="particle"></span>
+                            <span class="particle"></span>
+                            <span class="particle"></span>
+                            <span class="particle"></span>
+                            <span class="particle"></span>
+                            <span class="particle"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="as-services-section">
+            <div class="as-heading-wrap">
+                <div class="as-small-badge">WHAT I OFFER</div>
+                <h2 class="as-main-title">
+                    Building Websites That Help
+                    <br />Your <span>Business</span> Grow
+                </h2>
+                <p class="as-main-text">I build websites designed to grow your business and help bring in customers</p>
+            </div>
+            <div class="as-feature-grid">
+                <div class="as-feature-card">
+                    <div class="as-icon-circle">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3>UI/UX Designs</h3>
+                    <p>Effective designs that make your websites easy to use.</p>
+                    <div class="as-more-info">
+                        <p>
+                            UI (User Interface) is how your website looks. UX (User Experience) is how easy and smooth
+                            it is to use.
+                        </p>
+                    </div>
+                    <div class="as-arrow">→</div>
+                </div>
+                <div class="as-feature-card">
+                    <div class="as-icon-circle">
+                        <i class="fa-solid fa-pen"></i>
+                    </div>
+                    <h3>Custom Design</h3>
+                    <p>Beautiful, modern designs tailored to your brand</p>
+                    <div class="as-more-info">
+                        <p>
+                            Every design is built from scratch to match your brand identity and stand out from
+                            competitors.
+                        </p>
+                    </div>
+                    <div class="as-arrow">→</div>
+                </div>
+                <div class="as-feature-card">
+                    <div class="as-icon-circle">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                    </div>
+                    <h3>Mobile Responsive</h3>
+                    <p>Perfectly responsive on every device</p>
+                    <div class="as-more-info">
+                        <p>Your website will look and perform perfectly on phones, tablets, and all screen sizes.</p>
+                    </div>
+                    <div class="as-arrow">→</div>
+                </div>
+                <div class="as-feature-card">
+                    <div class="as-icon-circle">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3>Secure & Reliable</h3>
+                    <p>Built with security and reliability in mind</p>
+                    <div class="as-more-info">
+                        <p>
+                            Clean code, best practices, and performance optimization to keep your site fast and secure.
+                        </p>
+                    </div>
+                    <div class="as-arrow">→</div>
+                </div>
+            </div>
+        </section>
+        <section class="as-process-section">
+            <div class="as-process-header">
+                <div class="as-process-tag">OUR PROCESS</div>
+                <h2>
+                    A Simple Process for
+                    <span>Exceptional</span> Results
+                </h2>
+            </div>
+            <div class="as-process-line">
+                <div class="as-process-step">
+                    <div class="as-step-circle">1</div>
+                    <h3>Discover</h3>
+                    <p>We learn about your business, goals, and vision for your website.</p>
+                </div>
+                <div class="as-process-step">
+                    <div class="as-step-circle">2</div>
+                    <h3>Design</h3>
+                    <p>We create a clean, professional design tailored to your brand.</p>
+                </div>
+                <div class="as-process-step">
+                    <div class="as-step-circle">3</div>
+                    <h3>Develop</h3>
+                    <p>We build your website with responsive, modern web technologies</p>
+                </div>
+                <div class="as-process-step">
+                    <div class="as-step-circle">4</div>
+
+                    <h3>Launch</h3>
+                    <p>After final review and approval, your website goes live.</p>
+                </div>
+            </div>
+        </section>
+        <section class="as-reviews-section" id="reviews">
+            <div class="as-reviews-heading">
+                <span class="as-reviews-tag">CLIENT FEEDBACK</span>
+                <h2>What Our <span>Clients Say</span></h2>
+                <p>
+                    Share your experience or see what our clients
+                    have to say about Amplified Sites.
+                </p>
+            </div>
+            <div class="as-reviews-layout">
+                <div class="as-review-form-box">
+                    <h3>Write a Review</h3>
+                    <p class="as-review-description">
+                        We'd love to hear about your experience.
+                    </p>
+                    <form id="asReviewForm">
+                        <label for="asReviewName">Your Name *</label>
+                        <input
+                            type="text"
+                            id="asReviewName"
+                            placeholder="Enter your name"
+                            maxlength="100"
+                            required>
+                        <label for="asReviewEmail">Email Address *</label>
+                        <input
+                            type="email"
+                            id="asReviewEmail"
+                            name="email"
+                            placeholder="Example@Email.com"
+                            maxlength="254"
+                            autocomplete="email"
+                            required>
+                        <label for="asReviewBusiness">
+                            Business Name (Optional)
+                        </label>
+                        <input
+                            type="text"
+                            id="asReviewBusiness"
+                            placeholder="Enter your business name"
+                            maxlength="100">
+                        <label>Your Rating *</label>
+                        <div class="as-review-rating"
+                            id="asReviewRating"
+                            role="group"
+                            aria-label="Select your rating">
+                            <button type="button" data-rating="1"
+                                    aria-label="1 star">★</button>
+                            <button type="button" data-rating="2"
+                                    aria-label="2 stars">★</button>
+                            <button type="button" data-rating="3"
+                                    aria-label="3 stars">★</button>
+                            <button type="button" data-rating="4"
+                                    aria-label="4 stars">★</button>
+                            <button type="button" data-rating="5"
+                                    aria-label="5 stars">★</button>
+                        </div>
+                        <input type="hidden" id="asReviewStars" value="0">
+                        <label for="asReviewMessage">Your Review *</label>
+                        <textarea
+                            id="asReviewMessage"
+                            placeholder="Tell us about your experience..."
+                            maxlength="2000"
+                            rows="5"
+                            required
+                        ></textarea>
+                        <button type="submit" id="asReviewSubmit">
+                            Submit Review
+                        </button>
+                        <p id="asReviewStatus"
+                        role="status"
+                        aria-live="polite"></p>
+                    </form>
+                </div>
+                <div class="as-review-display-box">
+                    <div class="as-review-display-heading">
+                        <h3>Client Reviews</h3>
+                        <span id="asReviewCount">0 Reviews</span>
+                    </div>
+                    <div class="as-review-average">
+                        <span id="asReviewAverage">0.0/5</span>
+                        <span class="as-review-average-stars">★★★★★</span>
+                    </div>
+                    <div class="as-review-list" id="asReviewList">
+                        <p class="as-review-loading">
+                            Loading reviews...
+                        </p>
+                    </div>
+                    <div class="as-review-pagination">
+                        <button type="button" id="asReviewPrev">
+                            <i class="fa-solid fa-chevron-left"></i>
+                            Previous
+                        </button>
+                        <span id="asReviewPage">Page 1 of 1</span>
+                        <button type="button" id="asReviewNext">
+                            Next
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="ampsiteslogo.png" alt="get-in-touch" />
+
+                        <h2>Amplified Sites</h2>
+                    </div>
+                    <p>Building simple, beautiful websites for businesses.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <a>Website Design</a>
+                    <a>Web Development</a>
+                    <a>E-commerce Solutions</a>
+                    <a>SEO & Digital Marketing</a>
+                    <a>Website Support</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <a href="privacy.html" class="privacy">Privacy Policy</a>
+                    <a href="terms.html" class="terms">Terms of Service</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <p>✉️ Amplifiedsites@Outlook.com</p>
+                    <p>🗺️ Manitowoc, WI</p>
+                </div>
+                <div class="copy-right">© 2026 Amplified Sites. All rights reserved.</div>
+                <div class="copy-right">Designed by Amplified Sites</div>
+            </div>
+        </footer>
+    </body>
+</html>

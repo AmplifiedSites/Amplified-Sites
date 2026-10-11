@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amplified Sites</title>
+    <link rel="icon" type="image/png" href="ampsiteslogo.png">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="trackprogress.js" defer></script>
+    <script defer src="page.js"></script>
+    <title>Amplified Sites</title>
+</head>
+<body>
+    <canvas id="background"></canvas>
+    <header class="track-progress-hero">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="ampsiteslogo.png" alt="ampsiteslogo"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="trackprogress.html">Track Progress</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+            <a href="viewpackage.html" class="quote-btn">View Package</a>
+        </nav>
+    </header>
+    <main class="track-prog">
+        <section class="tracker-hero">
+            <div class="hero-left">
+                <h1>Track Your <span>Progress</span></h1>
+                <p>
+                    Enter your order number to see real-time progress
+                    on your website project.
+                </p>
+            </div>
+            <div class="tracker-box">
+                <h3>Enter Your Order Number</h3>
+                <div class="track-form">
+                    <input type="text" id="orderInput" placeholder="Enter your order ID (e.g. AMPSG9K3H2M)">
+                    <button id="trackBtn">Track Project</button>
+                </div>
+                <small class="order-num">
+                    Your order number can be found in your confirmation email.
+                </small>
+            </div>
+        </section>
+        <section class="project-dashboard" id="dashboard">
+            <div class="project-header">
+                <div>
+                    <h2>Project: <span id="projectType">Business Website</span></h2>
+                    <p>Order Number: <span id="orderNumber">AS-1001</span></p>
+                </div>
+                <div class="status-pill" id="projectStatus">
+                    ● In progress
+                </div>
+            </div>
+            <div class="dashboard-grid">
+                <div class="prog progress-card">
+                    <h3>Overall Progress</h3>
+                    <div class="progress-content">
+                        <div>
+                            <h1 id="progressPercent">0%</h1>
+                            <p id="currentStage">Development</p>
+                        </div>
+                        <div class="circle-progress" id="circleProgress">
+                            <div class="circle-inner">%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="prog stages-card">
+                    <h3>Project Stages</h3>
+                    <div class="stages">                
+                        <div class="stage"><i class="fa-solid fa-clipboard-list"></i></div>
+                        <div class="stage"><i class="fa-solid fa-pen-ruler"></i></div>
+                        <div class="stage"><i class="fa-solid fa-gears"></i></div>
+                        <div class="stage"><i class="fa-solid fa-clipboard-check"></i></div>
+                        <div class="stage"><i class="fa-solid fa-arrows-rotate"></i></div>
+                        <div class="stage"><i class="fa-solid fa-check"></i></div>
+                    </div>
+                    <div class="nums">                
+                        <div class="num">1</div>
+                        <div class="num">2</div>
+                        <div class="num">3</div>
+                        <div class="num">4</div>
+                        <div class="num">5</div>
+                        <div class="num">6</div>
+                    </div>
+                    <div class="plans">                
+                        <div class="plan">Planning</i></div>
+                        <div class="plan">Design</div>
+                        <div class="plan">Development</div>
+                        <div class="plan">Testing</div>
+                        <div class="plan">Revisions</div>
+                        <div class="plan">Complete</div>
+                    </div>
+                </div>
+                <div class="prog updates-card">
+                    <h3>Latest Update</h3>
+                <div id="updatesList">
+                    <p><i class="fa-solid fa-check"></i> Homepage completed</p>
+                    <p><i class="fa-solid fa-check"></i> Contact page completed</p>
+                    <p><i class="fa-solid fa-circle"></i> Working on Services page</p>
+                </div>
+                </div>
+                <div class="prog details-card">
+                    <h3>Project Details</h3>
+                    <div class="cal-grid">
+                        <div>
+                            <h4><i class="fa-solid fa-calendar"></i></h4>
+                        </div>
+                        <div>
+                            <h4><i class="fa-solid fa-envelope"></i></h4>
+                        </div>
+                        <div>
+                            <h4><i class="fa-solid fa-user-gear"></i></h4>
+                        </div>
+                    </div>
+                    <div class="details-grid">
+                        <div>
+                            <h4>Estimated Completion</h4>
+                            <p id="completionDate">June 20, 2026</p>
+                        </div>
+                        <div>
+                            <h4>Need Help?</h4>
+                            <p id="timeRemaining">Amplifiedsites@Outlook.com</p>
+                        </div>
+                        <div>
+                            <h4>Web Designed By</h4>
+                            <p id="projectManager">Amplified Sites</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <img src="ampsiteslogo.png" alt="get-in-touch">
+                    <h2>Amplified Sites</h2>
+                </div>
+                 <p>
+                    Building simple, beautiful websites for businesses.
+                </p>
+            </div>
+            <div class="footer-column">
+                <h3>Services</h3>
+                    <a>Website Design</a>
+                    <a>Web Development</a>
+                    <a>E-commerce Solutions</a>
+                    <a>SEO & Digital Marketing</a>
+                    <a>Website Support</a>
+            </div>
+            <div class="footer-column">
+                <h3>Legal</h3>
+                    <a href="privacy.html" class="privacy">Privacy Policy</a>
+                    <a href="terms.html" class="terms">Terms of Service</a>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <p>✉️ Amplifiedsites@Outlook.com</p>
+                <p>🗺️ Manitowoc, WI</p>
+            </div>
+         <div class="copy-right">© 2026 Amplified Sites. All rights reserved.</div>
+         <div class="copy-right">Designed by Amplified Sites</div>
+    </footer>
+</body>
+</html>

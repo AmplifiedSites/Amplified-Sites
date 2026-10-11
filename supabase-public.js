@@ -1,0 +1,13 @@
+
+// =========================================
+// AMPLIFIED SITES - PUBLIC SUPABASE
+// =========================================
+
+const PUBLIC_SUPABASE_URL = "https://obnpotxehcktfdcseocz.supabase.co";
+
+const PUBLIC_SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ibnBvdHhlaGNrdGZkY3Nlb2N6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEzNjU4NTQsImV4cCI6MjA5Njk0MTg1NH0.ewsB-9T3j1V2BlhaDai9OpIAbPWK6NDQpvPf5SRNFfA";
+
+const publicSupabase = window.supabase.createClient(
+    PUBLIC_SUPABASE_URL,
+    PUBLIC_SUPABASE_KEY
+);
