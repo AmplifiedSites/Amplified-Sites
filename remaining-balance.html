@@ -67,6 +67,33 @@
                     🔒 Your information is secure and will never be shared.
                 </div>
             </div>
+            <div id="orderFoundCard" class="balance-modal-overlay" style="display: none;">
+                <div class="balance-modal">
+                    <div class="balance-modal-header">
+                        <h2>Order Details</h2>
+                        <button type="button"
+                                id="closeBalanceModal"
+                                class="balance-modal-close"
+                                aria-label="Close order details">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                    <div class="balance-modal-body">
+                        <p>Order Number: <span id="foundOrderNumber"></span></p>
+                        <p>Business Name: <span id="foundBusinessName"></span></p>
+                        <p>Website Package: <span id="foundPackage"></span></p>
+                        <p>Total Price: <span id="foundTotalPrice"></span></p>
+                        <p>Deposit Paid: <span id="foundDepositPaid"></span></p>
+                        <p>Remaining Balance: <span id="foundBalance"></span></p>
+                        <p>Order Date: <span id="foundOrderDate"></span></p>
+                        <p id="paymentStatus"></p>
+                        <button type="button" id="payBalanceBtn">
+                            <i class="fa-solid fa-credit-card"></i>
+                            Pay Remaining Balance
+                        </button>
+                    </div>
+                </div>
+            </div>
             <div class="secure-grid">
                 <div class="secure-card">
                     <div class="secure-icon"><i class="fa-solid fa-lock"></i></div>
