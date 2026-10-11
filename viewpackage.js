@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
             };
             }
             document.getElementById("orderFoundCard").style.display =
-                "block";
+                "flex";
         } catch (error) {
             console.error(error);
             alert("Something went wrong. Please try again.");
@@ -311,3 +311,40 @@ async function loadWebsitePackages() {
 // =========================================
 
 document.addEventListener("DOMContentLoaded", loadWebsitePackages);
+
+// =========================================
+// REMAINING BALANCE POPUP CONTROLS
+// =========================================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const modal = document.getElementById("orderFoundCard");
+    const closeButton = document.getElementById("closeBalanceModal");
+
+    if (!modal || !closeButton) return;
+
+    function closeBalancePopup() {
+        modal.style.display = "none";
+    }
+
+    // CLOSE BUTTON
+    closeButton.addEventListener("click", closeBalancePopup);
+
+    // CLICK OUTSIDE POPUP
+    modal.addEventListener("click", (event) => {
+        if (event.target === modal) {
+            closeBalancePopup();
+        }
+    });
+
+    // ESCAPE KEY
+    document.addEventListener("keydown", (event) => {
+        if (
+            event.key === "Escape" &&
+            modal.style.display !== "none"
+        ) {
+            closeBalancePopup();
+        }
+    });
+
+});
