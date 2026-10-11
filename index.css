@@ -5612,6 +5612,61 @@ footer{
     margin-top: 5px;
 }
 
+/* ==========================================
+   COMPACT VIEW PACKAGES
+========================================== */
+
+.pricing-section {
+    padding: 55px 4%;
+}
+
+.pricing-header {
+    margin-bottom: 30px;
+}
+
+.pricing-header h2 {
+    font-size: 2.3rem;
+    margin-bottom: 10px;
+}
+
+.pricing-grid {
+    gap: 18px;
+}
+
+.pricing-card {
+    padding: 25px 20px;
+    border-radius: 16px;
+}
+
+.pricing-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+}
+
+.price {
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+
+.card-description {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 18px;
+    min-height: 0;
+}
+
+.pricing-card li {
+    font-size: 13px;
+    margin-bottom: 9px;
+    gap: 8px;
+}
+
+.pricing-btn {
+    height: 42px;
+    margin-top: 20px;
+    font-size: 13px;
+}
+
 /* Mobile responsiveness */
 @media (max-width: 600px) {
     .pricing-grid,
@@ -8012,6 +8067,7 @@ main.success-deposit > section.success-hero {
     font-size: 12px;
     line-height: 1.7;
 }
+
 
 /* =========================================
    TABLET
