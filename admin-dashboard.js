@@ -4,22 +4,45 @@ document.body.style.display = "none";
    AUTH
 ========================= */
 async function checkAuth() {
-    const { data: { session } } =
-        await window.supabaseClient.auth.getSession();
+    document.body.style.display = "none";
 
-    if (!session) {
+    try {
+        const { data: { user }, error: authError } =
+            await window.supabaseClient.auth.getUser();
+
+        if (authError || !user) {
+            window.location.replace("admin-login.html");
+            return;
+        }
+
+        const { data: admin, error: adminError } =
+            await window.supabaseClient
+                .from("admin_users")
+                .select("user_id")
+                .eq("user_id", user.id)
+                .maybeSingle();
+
+        if (adminError || !admin) {
+            console.error("Admin access denied:", adminError);
+
+            await window.supabaseClient.auth.signOut();
+            window.location.replace("admin-login.html");
+            return;
+        }
+
+        await loadOrders();
+        await loadAdminPackages();
+        await loadAdminNotifications();
+        startAdminNotificationsRealtime();
+
+        document.body.style.display = "block";
+
+    } catch (error) {
+        console.error("Authentication error:", error);
         window.location.replace("admin-login.html");
-        return;
     }
-
-    
-document.body.style.display = "block";
-
-// Load notifications and activate Realtime
-await loadAdminNotifications();
-startAdminNotificationsRealtime();
-
 }
+
 checkAuth();
 
 /* =========================
@@ -783,7 +806,7 @@ if (refundRemainingGroup && refundRemainingField) {
 
     const fields = {
         editOrderPackage: order.web_package || "",
-        editOrderProgress: order.progress ?? 0,
+        editOrderProgress: order.progress ?? 10,
         editOrderStage: order.stage || "Planning",
         editOrderStatus: order.order_status || "In Progress",
         editOrderEstimate: order.estimated_completion || "",
@@ -810,6 +833,27 @@ if (refundRemainingGroup && refundRemainingField) {
     });
 
 // =========================================
+// LOCK PACKAGE AFTER DEPOSIT PAYMENT
+// LOCK PROGRESS PERCENTAGE
+// =========================================
+
+const packageField = orderField("editOrderPackage");
+const progressField = orderField("editOrderProgress");
+
+// Lock package after deposit has been paid
+if (packageField) {
+    packageField.disabled =
+        order.deposit_paid === true ||
+        order.fully_paid === true ||
+        readOnly;
+}
+
+// Progress is controlled by project stage
+if (progressField) {
+    progressField.readOnly = true;
+}
+
+// =========================================
 // REFUND HISTORY READ-ONLY MODE
 // =========================================
 
@@ -831,8 +875,17 @@ modal.querySelectorAll("input, select, textarea").forEach(field => {
         field.disabled = true;
     } else if (paymentFields.includes(field.id)) {
         field.readOnly = true;
+    } else if (field.id === "editOrderPackage") {
+        field.disabled =
+            readOnly ||
+            order.deposit_paid === true ||
+            order.fully_paid === true;
+
     } else if (field.type === "checkbox" || field.tagName === "SELECT") {
         field.disabled = readOnly;
+    } else if (field.id === "editOrderProgress") {
+        field.readOnly = true;
+
     } else {
         field.readOnly = readOnly;
     }
@@ -1011,8 +1064,12 @@ async function saveOrder(event) {
     const updates = {
 
         // PROJECT
-        web_package: orderField("editOrderPackage").value.trim(),
-        progress: progress,
+        web_package:
+        selectedOrder.deposit_paid === true ||
+        selectedOrder.fully_paid === true
+            ? selectedOrder.web_package
+            : orderField("editOrderPackage").value.trim(),
+        progress: stageProgress[orderField("editOrderStage").value] ?? 10,
         stage: orderField("editOrderStage").value,
         order_status: orderField("editOrderStatus").value,
         estimated_completion:
@@ -1090,7 +1147,7 @@ const stageProgress = {
     "Development": 50,
     "Testing": 75,
     "Revisions": 90,
-    "Complete": 100
+    "Completed": 100
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -1200,7 +1257,7 @@ resetTimer();
 /* =========================
    INIT
 ========================= */
-loadOrders();
+// Orders are loaded after admin authorization in checkAuth().
 
 // =========================================
 // ADMIN NAVIGATION
@@ -1540,12 +1597,6 @@ function renderAdminPackages() {
 }
 
 // =========================================
-// INITIALIZE PACKAGE LOADING
-// =========================================
-
-document.addEventListener("DOMContentLoaded", loadAdminPackages);
-
-// =========================================
 // PACKAGE EDIT MODAL
 // =========================================
 
@@ -1674,12 +1725,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("cancelPackageBtn")
         ?.addEventListener("click", closePackageModal);
 
-    modal?.addEventListener("click", event => {
-        if (event.target === modal) {
-            closePackageModal();
-        }
-    });
-
 });
 
 // =========================================
@@ -1719,9 +1764,9 @@ async function saveWebsitePackage(event) {
     if (
         !packageName ||
         !Number.isFinite(price) ||
-        price <= 0 ||
+        price < 0 ||
         !Number.isFinite(depositPercentage) ||
-        depositPercentage <= 0 ||
+        depositPercentage < 0 ||
         depositPercentage > 100
     ) {
         showAdminToast("Please enter valid package details.", "error");
@@ -4211,6 +4256,7 @@ document.addEventListener("click", async (event) => {
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`,
+                    "ngrok-skip-browser-warning": "true"
                 },
                 body: JSON.stringify({
                     message_id: messageId,
@@ -4399,6 +4445,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     headers: {
                         "Content-Type": "application/json",
                         "Authorization": `Bearer ${token}`,
+                        "ngrok-skip-browser-warning": "true"
                     },
                     body: JSON.stringify({
                         message_ids: selectedIds
@@ -4615,6 +4662,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     headers: {
                         "Content-Type": "application/json",
                         "Authorization": `Bearer ${token}`,
+                        "ngrok-skip-browser-warning": "true"
                     },
                     body: JSON.stringify({
                         message_ids: selectedIds
