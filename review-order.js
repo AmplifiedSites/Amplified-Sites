@@ -4,7 +4,7 @@
 
 function generateOrderNumber() {
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    let result = "AMP-";
+    let result = "AMP";
 
     for (let i = 0; i < 8; i++) {
         result += chars.charAt(
@@ -118,13 +118,104 @@ const checkoutButton =
         "checkoutBtn"
     );
 
+// =========================================
+// FREE OR PAID PACKAGE BUTTON
+// =========================================
+
+const isFreePackage =
+    totalPrice !== null &&
+    totalPrice.trim() !== "" &&
+    Number(totalPrice) === 0;
+
+const secureNote = document.querySelector(".secure-note");
+
+if (isFreePackage) {
+    checkoutButton.textContent = "Confirm Free Order";
+
+    if (secureNote) {
+        secureNote.textContent = "No payment required";
+    }
+}
+
 checkoutButton.addEventListener(
     "click",
     async (e) => {
 
         e.preventDefault();
 
-        try {
+try {
+
+    // =========================================
+    // FREE WEBSITE ORDER
+    // =========================================
+
+    if (isFreePackage) {
+
+    const validUuid =
+        /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
+    const missingFields = [];
+
+    if (!packageId || !validUuid.test(packageId)) {
+        missingFields.push("Package ID (Supabase UUID)");
+    }
+
+    if (!clientName?.trim()) {
+        missingFields.push("Client Name");
+    }
+
+    if (!clientEmail?.trim() ||
+        !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(clientEmail)) {
+        missingFields.push("Client Email");
+    }
+
+    if (!clientPhone?.trim()) {
+        missingFields.push("Client Phone");
+    }
+
+    if (missingFields.length > 0) {
+        throw new Error(
+            "Missing or invalid information:\n" +
+            missingFields.join("\n")
+        );
+    }
+
+    checkoutButton.disabled = true;
+    checkoutButton.textContent = "Creating Order...";
+
+        const response = await fetch(
+            "https://api.amplifiedsites.com/create-free-order",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    package_id: packageId,
+                    client_name: clientName,
+                    client_email: clientEmail,
+                    client_phone: clientPhone,
+                    business_name: businessName
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(
+                data.error || "Unable to create free order."
+            );
+        }
+
+        localStorage.setItem("order_id", data.order_id);
+        localStorage.setItem("orderNumber", data.order_id);
+
+        window.location.href =
+            "success-free.html";
+
+        return;
+    }
 
             checkoutButton.disabled = true;
             checkoutButton.textContent = "Redirecting...";
@@ -191,8 +282,9 @@ checkoutButton.addEventListener(
             checkoutButton.disabled =
                 false;
 
-            checkoutButton.textContent =
-                "Continue To Secure Checkout";
+            checkoutButton.textContent = isFreePackage
+                ? "Confirm Free Order"
+                : "Continue To Secure Checkout";
         }
     }
 );
