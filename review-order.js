@@ -134,8 +134,8 @@ checkoutButton.addEventListener(
 
             const response =
                 await fetch(
-                    "http://localhost:3000/create-checkout-session",
-                    {
+                    "https://api.amplifiedsites.com/create-checkout-session",
+                    { 
                         method: "POST",
                         headers: {
                             "Content-Type":
