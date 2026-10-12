@@ -1495,9 +1495,437 @@ img{
     white-space: nowrap;
 }
 
-/* MOBILE RESPONSIVENESS */
+/* =========================================
+   COMPACT HOMEPAGE SPACING
+========================================= */
+
+/* Hero section */
+.hero {
+    min-height: auto;
+    padding-bottom: 0;
+}
+
+/* MOVE HERO CONTENT CLOSER TO HEADER */
+
+.hero-content {
+    position: relative;
+    top: -140px;
+    transform: none;
+    transition: none;
+}
+/* Services section */
+.as-services-section {
+    padding-top: 35px;
+    padding-bottom: 35px;
+}
+
+/* Services heading */
+.as-heading-wrap {
+    margin-bottom: 25px;
+}
+
+/* Showcase section */
+.as-showcase {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+/* How It Works section */
+.as-process-section {
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+
+/* Process heading */
+.as-process-header {
+    margin-bottom: 30px;
+}
+
+/* Customer reviews */
+.as-reviews-section {
+    padding-top: 30px;
+    padding-bottom: 40px;
+}
+
+/* =========================================
+   RESPONSIVE HOMEPAGE
+========================================= */
+
+/* Large screens */
+@media (max-width: 1400px) {
+
+    .navbar,
+    .hero-content,
+    .features,
+    .as-services-section,
+    .as-showcase,
+    .as-process-section {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .hero h1 {
+        font-size: clamp(3rem, 5vw, 4.5rem);
+    }
+}
+
+/* =========================================
+   TABLETS
+========================================= */
+
+@media (max-width: 1100px) {
+
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .hero-left,
+    .hero-right {
+        width: 100%;
+    }
+
+    .hero p {
+        margin: 0 auto 30px;
+    }
+
+    .buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .logo-wrapper {
+        width: 480px;
+        height: 480px;
+        max-width: 100%;
+    }
+
+    .main-logo {
+        width: 380px;
+    }
+
+    .features,
+    .as-feature-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .as-showcase {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .as-browser-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .as-process-line {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .as-process-line::before {
+        display: none;
+    }
+}
+
+/* =========================================
+   SMALL TABLETS
+========================================= */
+
+@media (max-width: 900px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .navbar ul {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .hero {
+        padding-bottom: 0;
+    }
+
+    .hero-content {
+        padding: 30px 25px;
+        gap: 30px;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    .logo-wrapper {
+        width: 360px;
+        height: 360px;
+    }
+
+    .main-logo {
+        width: 300px;
+    }
+
+    .features,
+    .as-feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* FIX SERVICE CARD ARROWS */
+
+    .as-feature-card {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+        padding: 25px;
+        min-width: 0;
+        height: auto;
+    }
+
+    .as-feature-card > p {
+        width: 100%;
+        overflow-wrap: break-word;
+    }
+
+    .as-feature-card .as-more-info {
+        width: 100%;
+    }
+
+    .as-feature-card .as-arrow {
+        position: static;
+        right: auto;
+        bottom: auto;
+        margin-top: 20px;
+        margin-left: auto;
+        flex-shrink: 0;
+        width: 42px;
+        height: 42px;
+    }
+
+    .as-browser-nav {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .as-browser-nav div {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .as-reviews-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .as-review-list {
+        min-height: auto;
+    }
+}
+
+/* =========================================
+   PHONES
+========================================= */
+
+@media (max-width: 768px) {
+
+    section {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .hero-content {
+        padding: 25px 20px;
+        gap: 30px;
+    }
+
+    .badge {
+        font-size: 11px;
+        letter-spacing: 1px;
+    }
+
+    .hero h1 {
+        font-size: 2.4rem;
+        line-height: 1.2;
+    }
+
+    .hero p {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    .buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .primary,
+    .secondary {
+        width: 100%;
+        text-align: center;
+    }
+
+    .logo-wrapper {
+        width: 280px;
+        height: 280px;
+    }
+
+    .main-logo {
+        width: 230px;
+    }
+
+    .glow {
+        width: 180px;
+        height: 180px;
+    }
+
+    .as-services-section {
+        padding: 35px 20px;
+    }
+
+    .as-heading-wrap {
+        margin-bottom: 25px;
+    }
+
+    .as-main-title,
+    .as-showcase-left h2,
+    .as-process-header h2 {
+        font-size: 2.2rem;
+    }
+
+    .as-feature-card {
+        padding: 25px 22px;
+    }
+
+    .as-feature-card .as-arrow {
+        margin-top: 18px;
+    }
+
+    .as-browser-address {
+        width: 100%;
+        font-size: 0.8rem;
+    }
+
+    .as-browser-body {
+        padding: 25px;
+    }
+
+    .as-browser-text h3 {
+        font-size: 2rem;
+    }
+
+    .as-browser-buttons {
+        flex-direction: column;
+    }
+
+    .as-browser-buttons button {
+        width: 100%;
+    }
+
+    .as-process-section {
+        margin: 35px auto;
+    }
+
+    .as-process-line {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================
+   SMALL PHONES
+========================================= */
 
 @media (max-width: 480px) {
+
+    .navbar {
+        padding: 15px;
+    }
+
+    .logo img {
+        width: 140px;
+    }
+
+    .navbar ul {
+        gap: 15px;
+    }
+
+    .navbar a {
+        font-size: 14px;
+    }
+
+    .hero {
+        min-height: auto;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 0.95rem;
+    }
+
+    .hero-content {
+        gap: 25px;
+    }
+
+    .logo-wrapper {
+        width: 220px;
+        height: 220px;
+    }
+
+    .main-logo {
+        width: 180px;
+    }
+
+    .card,
+    .as-feature-card {
+        padding: 22px;
+    }
+
+    .as-feature-card .as-arrow {
+        position: static;
+        margin-top: 18px;
+        margin-left: auto;
+    }
+
+    .as-main-title,
+    .as-showcase-left h2,
+    .as-process-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .as-browser-text h3 {
+        font-size: 1.6rem;
+    }
+
+    /* Customer reviews */
+
+    .as-reviews-section {
+        padding: 30px 15px 45px;
+    }
+
+    .as-reviews-heading {
+        margin-bottom: 25px;
+    }
+
+    .as-reviews-heading h2 {
+        font-size: 2rem;
+    }
+
+    .as-review-form-box,
+    .as-review-display-box {
+        padding: 18px;
+    }
+
     .as-review-average {
         gap: 8px;
         padding: 14px 10px;
@@ -1511,48 +1939,6 @@ img{
         font-size: 19px;
         letter-spacing: 1px;
     }
-}
-
-/* MOBILE */
-
-@media (max-width: 700px) {
-    .as-reviews-section {
-        padding: 30px 15px 45px;
-    }
-
-    .as-reviews-heading h2 {
-        font-size: 2rem;
-    }
-
-    .as-review-form-box,
-    .as-review-display-box {
-        padding: 18px;
-    }
-}
-
-@media (max-width: 900px) {
-    .as-reviews-layout {
-        grid-template-columns: 1fr;
-    }
-
-    .as-review-list {
-        min-height: auto;
-    }
-}
-
-@media (max-width: 700px) {
-    .as-reviews-section {
-        padding: 40px 20px 65px;
-    }
-
-    .as-reviews-heading {
-        margin-bottom: 30px;
-    }
-
-    .as-review-form-box,
-    .as-review-display-box {
-        padding: 25px 20px;
-    }
 
     .as-review-pagination button {
         padding: 10px;
@@ -1565,370 +1951,30 @@ img{
 }
 
 /* =========================================
-   MOBILE SPACING
+   VERY SMALL PHONES
 ========================================= */
 
-@media (max-width: 768px) {
+@media (max-width: 360px) {
 
-    .hero {
-        padding-bottom: 25px;
+    .hero h1 {
+        font-size: 1.7rem;
     }
 
-    .hero-content {
-        padding-top: 50px;
-        padding-bottom: 40px;
-        gap: 35px;
-    }
-
-    .features {
-        padding-top: 25px;
-        padding-bottom: 40px;
-    }
-
-    .as-services-section {
-        padding-top: 40px;
-        padding-bottom: 40px;
-    }
-
-    .as-heading-wrap {
-        margin-bottom: 30px;
-    }
-
-    .as-showcase {
-        margin-top: 30px;
-        margin-bottom: 30px;
-    }
-
-    .as-process-section {
-        margin-top: 40px;
-        margin-bottom: 40px;
-    }
-
-    .as-process-header {
-        margin-bottom: 30px;
-    }
-}
-
-@media (max-width:1400px){
-
-    .navbar,
-    .hero-content,
-    .features,
-    .as-services-section,
-    .as-showcase,
-    .as-process-section{
-        padding-left:30px;
-        padding-right:30px;
-    }
-
-    .hero h1{
-        font-size:clamp(3rem,5vw,4.5rem);
-    }
-
-}
-
-/* -----------------------------
-   Tablets
-------------------------------*/
-
-@media (max-width:1100px){
-
-    .hero-content{
-        flex-direction:column;
-        text-align:center;
-        gap:70px;
-    }
-
-    .hero-left,
-    .hero-right{
-        width:100%;
-    }
-
-    .hero p{
-        margin:0 auto 40px;
-    }
-
-    .buttons{
-        justify-content:center;
-        flex-wrap:wrap;
-    }
-
-    .logo-wrapper{
-        width:480px;
-        height:480px;
-    }
-
-    .main-logo{
-        width:380px;
-    }
-
-    .features{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .as-showcase{
-        grid-template-columns:1fr;
-        text-align:center;
-        gap:60px;
-    }
-
-    .as-browser-content{
-        grid-template-columns:1fr;
-        gap:40px;
-    }
-
-    .as-process-line{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .as-process-line::before{
-        display:none;
-    }
-
-}
-
-/* -----------------------------
-   Small Tablets
-------------------------------*/
-
-@media (max-width:900px){
-
-    .navbar{
-        flex-direction:column;
-        gap:20px;
-        padding:20px;
-    }
-
-    .navbar ul{
-        justify-content:center;
-        flex-wrap:wrap;
-        gap:20px;
-    }
-
-    .hero{
-        padding-bottom:10rem;
-    }
-
-    .hero-content{
-        padding:80px 25px;
-    }
-
-    .hero h1{
-        font-size:3rem;
-    }
-
-    .hero p{
-        font-size:1.1rem;
-    }
-
-    .logo-wrapper{
-        width:360px;
-        height:360px;
-    }
-
-    .main-logo{
-        width:300px;
-    }
-
-    .features{
-        grid-template-columns:1fr;
-    }
-
-    .as-browser-nav{
-        flex-direction:column;
-        gap:20px;
-        align-items:center;
-    }
-
-    .as-browser-nav div{
-        flex-wrap:wrap;
-        justify-content:center;
-    }
-
-}
-
-/* -----------------------------
-   Phones
-------------------------------*/
-
-@media (max-width:768px){
-
-    section{
-        padding-left:20px;
-        padding-right:20px;
-    }
-
-    .hero-content{
-        padding:70px 20px;
-    }
-
-    .badge{
-        font-size:11px;
-        letter-spacing:1px;
-    }
-
-    .hero h1{
-        font-size:2.4rem;
-        line-height:1.2;
-    }
-
-    .hero p{
-        font-size:1rem;
-        line-height:1.7;
-    }
-
-    .buttons{
-        flex-direction:column;
-        width:100%;
+    .hero p {
+        font-size: 0.9rem;
     }
 
     .primary,
-    .secondary{
-        width:100%;
-        text-align:center;
+    .secondary {
+        padding: 15px;
+        font-size: 0.9rem;
     }
 
-    .logo-wrapper{
-        width:280px;
-        height:280px;
+    .main-logo {
+        width: 150px;
     }
-
-    .main-logo{
-        width:230px;
-    }
-
-    .glow{
-        width:180px;
-        height:180px;
-    }
-
-    .as-main-title,
-    .as-showcase-left h2,
-    .as-process-header h2{
-        font-size:2.2rem;
-    }
-
-    .as-browser-address{
-        width:100%;
-        font-size:.8rem;
-    }
-
-    .as-browser-body{
-        padding:25px;
-    }
-
-    .as-browser-text h3{
-        font-size:2rem;
-    }
-
-    .as-browser-buttons{
-        flex-direction:column;
-    }
-
-    .as-browser-buttons button{
-        width:100%;
-    }
-
-    .as-feature-card,
-    .card{
-        padding:28px;
-    }
-
-    .as-process-line{
-        grid-template-columns:1fr;
-    }
-
 }
 
-/* -----------------------------
-   Small Phones
-------------------------------*/
-
-@media (max-width:480px){
-
-    .navbar{
-        padding:15px;
-    }
-
-    .logo img{
-        width:140px;
-    }
-
-    .navbar ul{
-        gap:15px;
-    }
-
-    .navbar a{
-        font-size:14px;
-    }
-
-    .hero{
-        min-height:auto;
-    }
-
-    .hero h1{
-        font-size:2rem;
-    }
-
-    .hero p{
-        font-size:.95rem;
-    }
-
-    .logo-wrapper{
-        width:220px;
-        height:220px;
-    }
-
-    .main-logo{
-        width:180px;
-    }
-
-    .hero-content{
-        gap:50px;
-    }
-
-    .card,
-    .as-feature-card{
-        padding:22px;
-    }
-
-    .as-main-title,
-    .as-showcase-left h2,
-    .as-process-header h2{
-        font-size:1.8rem;
-    }
-
-    .as-browser-text h3{
-        font-size:1.6rem;
-    }
-
-}
-
-/* -----------------------------
-   Very Small Phones
-------------------------------*/
-
-@media (max-width:360px){
-
-    .hero h1{
-        font-size:1.7rem;
-    }
-
-    .hero p{
-        font-size:.9rem;
-    }
-
-    .primary,
-    .secondary{
-        padding:15px;
-        font-size:.9rem;
-    }
-
-    .main-logo{
-        width:150px;
-    }
-
-}
 /* END OF INDEX PAGE */
 
 /* START YOUR JOURNEY PAGE*/
