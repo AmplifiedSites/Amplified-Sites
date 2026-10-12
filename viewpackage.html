@@ -26,9 +26,8 @@
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="trackprogress.html">Track Progress</a></li>
-                <li><a href="remaining-balance.html">Remaining Balance</a></li>
-                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="trackprogress.html">Order Status</a></li>
+                <li><a href="remaining-balance.html">Balance Due</a></li>
             </ul>
             <a href="start-journey.html" class="quote-btn">Start Your Journey</a>
         </nav>
@@ -61,156 +60,12 @@
                     <span class="small-icons">
                         <i class="fa-solid fa-circle-check"></i>
                     </span>
-                    Additional features and custom add-ons are available
-                    to enhance your website. Pricing
+                    Additional features, monthly website support and custom 
+                    add-ons are available to enhance your website. Pricing
                     <br>
                     varies depending on the type, complexity, and scope
                     of the requested add-on.
                 </p>
-                <br>
-                <p>
-                    <span class="small-icons">
-                        <i class="fa-solid fa-circle-check"></i>
-                    </span>
-                    Every website includes 30 days of complimentary
-                    website support after launch.
-                    After the initial
-                    <br>
-                    30-day period, ongoing website support and maintenance is
-                    available for $50 per month,
-                    <br>
-                    which includes website updates, troubleshooting,
-                    and general assistance as needed.
-                </p>
-            </div>
-        </section>
-        <section id="steps-pay">
-            <div class="secure-grid">
-                <div class="secure-card">
-                    <div class="secure-icon"><i class="fa-solid fa-lock"></i></div>
-                    <div class="secure-text">
-                        <h3>Secure Payment</h3>
-                        <p>Your payment is processed securely through stripe.</p>
-                    </div>
-                </div>
-                <div class="secure-card">
-                    <div class="secure-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
-                    <div class="secure-text">
-                        <h3>50% Project Deposit</h3>
-                        <p>The intial deposit secures your spot and allows work to begin.</p>
-                    </div>
-                </div>
-                <div class="secure-card">
-                    <div class="secure-icon"><i class="fa-solid fa-square-check"></i></div>    
-                    <div class="secure-text">
-                        <h3>Balance Due Upon Completion</h3>
-                        <p>The remaining balance is paid when your website is <br>complete and ready for launch.</p>
-                    </div>
-                </div>
-                <div class="steps-card">
-                    <div class="steps-icon"><span><i class="fa-solid fa-user-shield"></i></span></div>    
-                    <div class="steps-text">
-                        <h3><span>No RIsk. No Pressure.</span></h3>
-                        <p>You ONLY pay if you like the concept and want to 
-                            <br>move forward with your project.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="find-order-card">
-                <div class="card-header">
-                    <div class="icon-circle">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <h2>Find Your Order</h2>
-                </div>
-                <p class="card-text">
-                    Access your order details, view your remaining balance, and complete your payment securely
-                </p>
-                <form id="orderForm">
-                    <label>Order Number</label>
-                    <input
-                        type="text"
-                        id="paymentOrderNumber"
-                        placeholder="Enter your order ID (e.g. AMPSG9K3H2M)"
-                        required>
-                    <label>Email Address</label>
-                    <input
-                        type="email"
-                        id="paymentEmail"
-                        placeholder="you@example.com"
-                        required
-                        >
-                    <button type="submit">
-                        Find Order
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-                </form>
-                <div class="security-note">
-                    🔒 Your information is secure and will never be shared.
-                </div>
-            </div>
-        </section>
-        <section class="orderpay">
-            <div class="order-found-card" id="orderFoundCard">
-                <div class="order-found-header">
-                    <div class="success-icon">
-                        <i class="fa-solid fa-check"></i>
-                    </div>
-                    <div>
-                        <h2>Order Found!</h2>
-                        <p>Here are your order details.</p>
-                    </div>
-                </div>
-                <div class="order-top-info">
-                    <div>
-                        <span>Order Number</span>
-                        <h3 id="foundOrderNumber">AMPXREFS2K0H</h3>
-                    </div>
-                    <div>
-                        <span>Order Date</span>
-                        <h3 id="foundOrderDate">June 16, 2026</h3>
-                    </div>
-                </div>
-                <div class="order-details">
-                    <div class="detail-row">
-                        <span>Business Name:</span>
-                        <strong id="foundBusinessName">Amplified Sites</strong>
-                    </div>
-                    <div class="detail-row">
-                        <span>Package:</span>
-                        <strong id="foundPackage">Business Website</strong>
-                    </div>
-                    <div class="detail-row">
-                        <span>Total Price:</span>
-                        <strong id="foundTotalPrice">$650.00</strong>
-                    </div>
-                    <div class="detail-row">
-                        <span>Deposit Paid:</span>
-                        <strong id="foundDepositPaid">$325.00</strong>
-                    </div>
-                </div>
-                <div class="balance-section">
-                    <div class="balance-row">
-                        <span>Remaining Balance:</span>
-                        <strong id="foundBalance">$325.00</strong>
-                    </div>
-                </div>
-                <a
-                    id="payBalanceBtn"
-                    class="pay-btn"
-                    href=""
-                    target="_blank"
-                >
-                    <i class="fa-solid fa-lock"></i>
-                    Pay Remaining Balance
-                </a>
-
-                <p id="paymentStatus"></p>
-                <div class="secure-payment">
-                    <i class="fa-solid fa-shield-halved"></i>
-                    Secure payment powered by Stripe
-                </div>
             </div>
         </section>
         <footer>
