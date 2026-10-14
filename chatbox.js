@@ -370,17 +370,29 @@ document.addEventListener("DOMContentLoaded", () => {
             chatStarted = true;
 
             // Start receiving admin replies automatically
-displayedChatMessageIds.clear();
-startCustomerChatUpdates();
+            displayedChatMessageIds.clear();
+            startCustomerChatUpdates();
 
             const welcomeMessage = chatMessages.querySelector(
                 ".as-chat-message.support"
             );
 
             if (welcomeMessage) {
-                welcomeMessage.textContent =
-                    `Hey ${customerName}! How can we help you today?`;
-            }
+            welcomeMessage.innerHTML = `
+                Hey ${customerName}! 👋 How can I help you today?
+                <br>
+                🕒 <strong>My Hours:</strong> Mon–Sun, 8 AM–4 PM CT
+                <br>
+                If I'm unavailable, please use the
+                <a href="https://amplifiedsites.com/contact.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                style="color:#55a2ff; text-decoration:underline; font-weight:600;">
+                Contact Form
+                </a>.
+                I'll respond as soon as possible!
+            `;
+        }
 
             chatWindow.classList.add("as-chat-started");
 
