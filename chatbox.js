@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // BACKEND CONFIGURATION
     // =========================================
 
-    const CHAT_API = "http://localhost:3000/chat";
+    const CHAT_API = "https://api.amplifiedsites.com/chat";
 
     // =========================================
     // CHAT ELEMENTS
