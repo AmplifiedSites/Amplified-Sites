@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amplified Sites</title>
+    <link rel="icon" type="image/png" href="ampsiteslogo.png">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script defer src="success-deposit.js"></script>
+    <script defer src="page.js"></script>
+    <link rel="stylesheet" href="chatbox.css">
+    <script defer src="chatbox.js"></script>
+</head>
+<body>
+    <canvas id="background"></canvas>
+    <header class="deposit-success-hero">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="ampsiteslogo.png" alt="ampsiteslogo"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="trackprogress.html">Order Status</a></li>
+                <li><a href="remaining-balance.html">Balance Due</a></li>
+            </ul>
+            <a href="start-journey.html" class="quote-btn">Start Your Journey</a>
+        </nav>
+    </header>
+    <main class="success-deposit">
+        <section class="success-hero">
+            <div class="check-circle">
+                <i class="fas fa-check"></i>
+            </div>
+            <h1>Deposit Successful!</h1>
+            <p>Thank you for choosing us for your website project.</p>
+            <p>Your order has been successfully received and development is now underway.</p>
+        </section>
+        <section class="order-section">
+            <div class="order-card">
+                <h2>Your Order Number</h2>
+                <div class="order-number-box">
+                    <span id="orderNumber">
+                        Loading...
+                    </span>
+                    <button id="copyBtn" class="copy-btn">
+                        <i class="far fa-copy"></i>
+                        Copy
+                    </button>
+                </div>
+                <div class="info-grid">
+                    <h2 class="success-summary-heading">Order Summary</h2>
+                    <div class="info-item">
+                        <div class="icon-circle2">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <div>
+                            <h3>Package Selected</h3>
+                            <p id="packageName">
+                                <strong>Loading...</strong>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="icon-circle2">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div>
+                            <h3>Deposit Paid</h3>
+                            <p id="depositPaid">
+                                <strong>Loading...</strong>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="icon-circle2">
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                        <div>
+                            <h3>Estimated Completion</h3>
+
+                            <p id="estimatedCompletion">
+                                <strong>Loading...</strong>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="icon-circle2">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div>
+                            <h3>Project Stage</h3>
+                            <p id="projectStatus">
+                                <strong>Loading...</strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="email-box">
+                    <div class="email-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h3>A confirmation email has been sent!</h3>
+                        <p>
+                            We've sent your order details to the email address
+                            you provided. If you don't see it, please check
+                            your spam folder.
+                        </p>
+                    </div>
+                </div>
+                <div class="track-section">
+                    <p>
+                        <strong>You can now track your project progress anytime.</strong>
+                    </p>
+                    <a id="trackBtn" class="track-btn" href="#">
+                        <i class="fas fa-arrow-trend-up"></i>
+                        Track My Order
+                    </a>
+                    <small>
+                        <strong>Use your order number above to track your project progress.</strong>
+                    </small>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <img src="ampsiteslogo.png" alt="get-in-touch">
+                    <h2>Amplified Sites</h2>
+                </div>
+                 <p>
+                    Building simple, beautiful websites for businesses.
+                </p>
+            </div>
+            <div class="footer-column">
+                <h3>Services</h3>
+                    <a>Website Design</a>
+                    <a>Web Development</a>
+                    <a>E-commerce Solutions</a>
+                    <a>SEO & Digital Marketing</a>
+                    <a>Website Support</a>
+            </div>
+            <div class="footer-column">
+                <h3>Legal</h3>
+                    <a href="privacy.html" class="privacy">Privacy Policy</a>
+                    <a href="terms.html" class="terms">Terms of Service</a>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <p>✉️ Amplifiedsites@Outlook.com</p>
+                <p>🗺️ Manitowoc, WI</p>
+            </div>
+         <div class="copy-right">© 2026 Amplified Sites. All rights reserved.</div>
+         <div class="copy-right">Designed by Amplified Sites</div>
+    </footer>
+<div id="asChatWindow" class="as-chat-window" hidden>
+            <!-- CHAT HEADER -->
+            <div class="as-chat-header">
+                <div class="as-chat-header-info">
+                    <i class="fa-solid fa-headset"></i>
+                    <div>
+                        <h3>Amplified Sites Support</h3>
+                        <p>How can we help you?</p>
+                    </div>
+                </div>
+                <button
+                    type="button"
+                    id="asChatClose"
+                    class="as-chat-close"
+                    aria-label="Close chat window">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <!-- CUSTOMER INFORMATION FORM -->
+            <form id="asChatCustomerForm" class="as-chat-customer-form">
+                <h3>Start a Conversation</h3>
+                <p>
+                    Please enter your information before
+                    starting a live chat with us.
+                </p>
+                <label for="asChatCustomerName">Your Name *</label>
+                <input
+                    type="text"
+                    id="asChatCustomerName"
+                    placeholder="Enter your full name"
+                    maxlength="100"
+                    autocomplete="name"
+                    required>
+                <label for="asChatCustomerEmail">Email Address *</label>
+                <input
+                    type="email"
+                    id="asChatCustomerEmail"
+                    placeholder="Example@Email.com"
+                    maxlength="254"
+                    autocomplete="email"
+                    required>
+                <button type="submit" id="asChatStart">
+                    Start Chat
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </form>
+            <!-- CHAT MESSAGES -->
+            <div class="as-chat-messages" id="asChatMessages">
+                <div class="as-chat-message support">
+                    Welcome to Amplified Sites!
+                    How can we help you today?
+                </div>
+            </div>
+            <!-- END CHAT CONFIRMATION -->
+            <div id="asChatEndConfirm" class="as-chat-confirm" hidden>
+                <div class="as-chat-confirm-box">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <h3>End Conversation?</h3>
+                    <p>Are you sure you want to end this chat?</p>
+                    <div class="as-chat-confirm-actions">
+                        <button type="button" id="asChatCancelEnd">
+                            Cancel
+                        </button>
+                        <button type="button" id="asChatConfirmEnd">
+                            Yes, End Chat
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- END CHAT BUTTON -->
+            <div class="as-chat-end-area">
+                <button type="button" id="asChatEnd">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                    End Chat
+                </button>
+            </div>
+            <!-- CHAT INPUT -->
+            <div class="as-chat-input-area">
+                <input
+                    type="text"
+                    id="asChatInput"
+                    placeholder="Type your message..."
+                    maxlength="2000"
+                    aria-label="Chat message">
+                <button
+                    type="button"
+                    id="asChatSend"
+                    aria-label="Send message">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+        <button
+            type="button"
+            id="asChatToggle"
+            aria-label="Open live chat">
+            <i class="fa-solid fa-comments"></i>
+        </button>
+    </body>
+</html>

@@ -1,0 +1,733 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+body {
+    background:linear-gradient(to right,#020617,#02325f,#020617);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.amp-login{
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;  
+    align-items: center;       
+    gap: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 3s ease forwards;
+}
+@keyframes fadeIn {
+    to {
+        opacity:1;
+        transform: translateY(0);  
+    }  
+}
+
+.amp-image img{
+    max-width: 500px;
+    height: auto;
+}
+
+.login-container {
+    background: rgba(8, 8, 8, 0.459);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    font-weight: 500;
+}
+
+h2 {
+    color: #469494;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #374151;
+    border-radius: 8px;
+    background: #0b1220ad;
+    color: white;
+    outline: none;
+    font-weight: 600;
+}
+
+input::placeholder {
+    color: #9ca3af;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background: #1b6785;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+ button:hover {
+    background: #2564eb2f;
+    box-shadow: 0 0 10px #2563eb2f;
+}
+
+.note {
+    text-align: center;
+    color: #9ca3af;
+    font-size: 12px;
+    margin-top: 15px;
+}
+
+.error {
+    color: #ef4444;
+    text-align: center;
+    font-size: 13px;
+    margin-top: 10px;
+    display: none;
+}
+
+.amp-image{
+    perspective:1200px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.amp-image img{
+    width:350px;
+    transform-style:preserve-3d;
+    animation: rotate3D 8s linear infinite;
+    backface-visibility: visible;
+}
+.forgot-password {
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+    color: #2563eb;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.forgot-password:hover {
+    color: #3b82f6;
+    text-decoration: underline;
+}
+
+@keyframes rotate3D{
+    from{
+        transform: rotateY(0deg);
+    }
+    to{
+        transform: rotateY(360deg);
+    }
+}
+
+@media (max-width: 900px) {
+
+    body {
+        flex-direction: column;
+        height: auto;
+        padding: 40px 15px;
+    }
+
+    .amp-login {
+        flex-direction: column;
+    }
+
+    .amp-image {
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+    .amp-image img {
+        width: 220px;
+        height: auto;
+    }
+
+    .login-container {
+        width: 100%;
+        max-width: 420px;
+    }
+}
+
+/* ADMIN-FORGOT-PASSWORD */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background: linear-gradient(to right, #020617, #02325f, #020617);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* ================================
+   FORGOT PASSWORD CONTAINER
+================================ */
+
+.amp-forgot {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================================
+   LOGO
+================================ */
+
+.amp-image {
+    perspective: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.amp-image img {
+    width: 350px;
+    height: auto;
+    transform-style: preserve-3d;
+    animation: rotate3D 8s linear infinite;
+    backface-visibility: visible;
+}
+
+@keyframes rotate3D {
+    from {
+        transform: rotateY(0deg);
+    }
+
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+/* ================================
+   FORGOT PASSWORD FORM
+================================ */
+
+#forgotPasswordForm {
+    width: 400px;
+    padding: 40px;
+
+    background: rgba(8, 8, 8, 0.459);
+
+    border-radius: 12px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+
+    font-weight: 500;
+}
+
+/* ================================
+   HEADING
+================================ */
+
+#forgotPasswordForm h2 {
+    color: #469494;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 26px;
+}
+
+/* ================================
+   DESCRIPTION
+================================ */
+
+.forgot-description {
+    color: #9ca3af;
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* ================================
+   INPUT
+================================ */
+
+#forgotPasswordForm input {
+    width: 100%;
+    padding: 12px;
+
+    margin: 10px 0;
+
+    border: 1px solid #374151;
+    border-radius: 8px;
+
+    background: #0b1220ad;
+    color: white;
+
+    outline: none;
+
+    font-weight: 600;
+
+    transition: 0.2s ease;
+}
+
+#forgotPasswordForm input:focus {
+    border-color: #1b6785;
+    box-shadow: 0 0 8px rgba(27, 103, 133, 0.35);
+}
+
+#forgotPasswordForm input::placeholder {
+    color: #9ca3af;
+}
+
+/* ================================
+   RESET BUTTON
+================================ */
+
+#resetBtn {
+    width: 100%;
+    padding: 12px;
+
+    margin-top: 15px;
+
+    background: #1b6785;
+
+    border: none;
+    border-radius: 8px;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+#resetBtn:hover {
+    background: #2564eb;
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.35);
+}
+
+#resetBtn:active {
+    transform: scale(0.98);
+}
+
+/* ================================
+   SUCCESS MESSAGE
+================================ */
+
+.success {
+    color: #22c55e;
+    text-align: center;
+    font-size: 13px;
+    margin-top: 12px;
+    display: none;
+}
+
+/* ================================
+   ERROR MESSAGE
+================================ */
+
+.error {
+    color: #ef4444;
+    text-align: center;
+    font-size: 13px;
+    margin-top: 12px;
+    display: none;
+}
+
+/* ================================
+   BACK TO LOGIN
+================================ */
+
+.back-login {
+    display: block;
+
+    margin-top: 20px;
+
+    text-align: center;
+
+    color: #2563eb;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+}
+
+.back-login:hover {
+    color: #3b82f6;
+    text-decoration: underline;
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 900px) {
+
+    body {
+        height: auto;
+        min-height: 100vh;
+        padding: 40px 15px;
+    }
+
+    .amp-forgot {
+        min-height: auto;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .amp-image {
+        padding: 20px;
+    }
+
+    .amp-image img {
+        width: 220px;
+    }
+
+    #forgotPasswordForm {
+        width: 100%;
+        max-width: 420px;
+        padding: 35px 25px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .amp-image img {
+        width: 180px;
+    }
+
+    #forgotPasswordForm {
+        padding: 30px 20px;
+    }
+
+    #forgotPasswordForm h2 {
+        font-size: 23px;
+    }
+}
+/* END OF ADMIN-FORGOT-PASSWORD */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background: linear-gradient(to right, #020617, #02325f, #020617);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* ================================
+   RESET PASSWORD CONTAINER
+================================ */
+
+.amp-reset {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================================
+   LOGO
+================================ */
+
+.amp-image {
+    perspective: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.amp-image img {
+    width: 350px;
+    height: auto;
+    transform-style: preserve-3d;
+    animation: rotate3D 8s linear infinite;
+    backface-visibility: visible;
+}
+
+@keyframes rotate3D {
+    from {
+        transform: rotateY(0deg);
+    }
+
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+/* ================================
+   RESET FORM
+================================ */
+
+#resetPasswordForm {
+    width: 400px;
+    padding: 40px;
+
+    background: rgba(8, 8, 8, 0.459);
+
+    border-radius: 12px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+
+    font-weight: 500;
+}
+
+/* ================================
+   HEADING
+================================ */
+
+#resetPasswordForm h2 {
+    color: #469494;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 26px;
+}
+
+/* ================================
+   DESCRIPTION
+================================ */
+
+.reset-description {
+    color: #9ca3af;
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* ================================
+   LABELS
+================================ */
+
+#resetPasswordForm label {
+    display: block;
+    color: #e5e7eb;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 12px;
+    margin-bottom: 6px;
+}
+
+/* ================================
+   INPUTS
+================================ */
+
+#resetPasswordForm input {
+    width: 100%;
+    padding: 12px;
+
+    border: 1px solid #374151;
+    border-radius: 8px;
+
+    background: #0b1220ad;
+    color: white;
+
+    outline: none;
+
+    font-weight: 600;
+
+    transition: 0.2s ease;
+}
+
+#resetPasswordForm input::placeholder {
+    color: #9ca3af;
+}
+
+#resetPasswordForm input:focus {
+    border-color: #1b6785;
+    box-shadow: 0 0 8px rgba(27, 103, 133, 0.35);
+}
+
+/* ================================
+   PASSWORD REQUIREMENTS
+================================ */
+
+.password-requirements {
+    color: #9ca3af;
+    font-size: 11px;
+    margin-top: 8px;
+    line-height: 1.5;
+}
+
+/* ================================
+   UPDATE BUTTON
+================================ */
+
+#updatePasswordBtn {
+    width: 100%;
+    padding: 12px;
+
+    margin-top: 18px;
+
+    background: #1b6785;
+
+    border: none;
+    border-radius: 8px;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+#updatePasswordBtn:hover {
+    background: #2564eb;
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.35);
+}
+
+#updatePasswordBtn:active {
+    transform: scale(0.98);
+}
+
+/* ================================
+   SUCCESS MESSAGE
+================================ */
+
+.success {
+    color: #22c55e;
+    text-align: center;
+    font-size: 13px;
+    margin-top: 12px;
+    display: none;
+}
+
+/* ================================
+   ERROR MESSAGE
+================================ */
+
+.error {
+    color: #ef4444;
+    text-align: center;
+    font-size: 13px;
+    margin-top: 12px;
+    display: none;
+}
+
+/* ================================
+   BACK TO LOGIN
+================================ */
+
+.back-login {
+    display: block;
+
+    margin-top: 20px;
+
+    text-align: center;
+
+    color: #2563eb;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+}
+
+.back-login:hover {
+    color: #3b82f6;
+    text-decoration: underline;
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 900px) {
+
+    body {
+        height: auto;
+        padding: 40px 15px;
+    }
+
+    .amp-reset {
+        min-height: auto;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .amp-image {
+        padding: 20px;
+    }
+
+    .amp-image img {
+        width: 220px;
+    }
+
+    #resetPasswordForm {
+        width: 100%;
+        max-width: 420px;
+        padding: 35px 25px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .amp-image img {
+        width: 180px;
+    }
+
+    #resetPasswordForm {
+        padding: 30px 20px;
+    }
+
+    #resetPasswordForm h2 {
+        font-size: 23px;
+    }
+}

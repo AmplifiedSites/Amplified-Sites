@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Free Order Confirmation | Amplified Sites</title>
+        <link rel="icon" type="image/png" href="ampsiteslogo.png" />
+        <link rel="stylesheet" href="index.css" />
+        <link rel="stylesheet" href="success-free.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+        <script defer src="page.js"></script>
+        <script defer src="success-free.js"></script>
+        <link rel="stylesheet" href="chatbox.css">
+        <script defer src="chatbox.js"></script>
+    </head>
+    <body class="free-success-page">
+        <canvas id="background"></canvas>
+        <header class="review-hero">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html"><img src="ampsiteslogo.png" alt="Amplified Sites logo" /></a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="trackprogress.html">Order Status</a></li>
+                    <li><a href="remaining-balance.html">Balance Due</a></li>
+                </ul>
+                <a href="viewpackage.html" class="quote-btn">View Package</a>
+            </nav>
+        </header>
+
+        <main class="free-success-main">
+            <section class="free-success-card" aria-labelledby="freeSuccessTitle">
+                <div class="free-success-icon"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
+                <span class="free-success-eyebrow">AMPLIFIED SITES • ORDER CONFIRMATION</span>
+                <h1 id="freeSuccessTitle">Your Free Website Order Is Confirmed!</h1>
+                <p class="free-success-intro">
+                    Thank you for choosing Amplified Sites. Your free website request has been received and your project
+                    is ready for our team to review.
+                </p>
+
+                <div class="free-success-order">
+                    <p class="free-success-order-label">Your Order Number</p>
+                    <div class="free-success-order-number">
+                        <strong id="freeOrderNumber">Loading...</strong>
+                        <button
+                            id="copyFreeOrder"
+                            type="button"
+                            aria-label="Copy order number"
+                            title="Copy order number"
+                        >
+                            <i class="fa-regular fa-copy" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <p class="free-success-hint">
+                        Keep this number and your email address to track your website project.
+                    </p>
+                </div>
+
+                <div class="free-success-summary">
+                    <h2>Order Summary</h2>
+
+                    <div class="free-success-summary-row">
+                        <span>Package Selected</span>
+                        <strong id="packageName">Loading...</strong>
+                    </div>
+
+                    <div class="free-success-summary-row">
+                        <span>Remaining Balance Paid</span>
+                        <strong id="depositPaid">Loading...</strong>
+                    </div>
+
+                    <div class="free-success-summary-row">
+                        <span>Payment Status</span>
+                        <strong id="paymentStatus">Loading...</strong>
+                    </div>
+
+                    <div class="free-success-summary-row">
+                        <span>Project Stage</span>
+                        <strong id="projectStatus">Loading...</strong>
+                    </div>
+                </div>
+
+                <div class="free-success-next">
+                    <h2>What's Next?</h2>
+                    <p>
+                        We'll review your website request and follow up using the contact information you provided. You
+                        can check your project's progress using your order number and email address.
+                    </p>
+                </div>
+                <div class="free-success-actions">
+                    <a href="trackprogress.html" class="free-success-primary"
+                        ><i class="fa-solid fa-chart-line" aria-hidden="true"></i> Track Progress</a
+                    >
+                    <a href="index.html" class="free-success-secondary"
+                        ><i class="fa-solid fa-house" aria-hidden="true"></i> Home Page</a
+                    >
+                </div>
+                <p class="free-success-support">Questions? <a href="start-journey.html">Contact Amplified Sites</a></p>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="ampsiteslogo.png" alt="Amplified Sites logo" />
+                        <h2>Amplified Sites</h2>
+                    </div>
+                    <p>Building simple, beautiful websites for businesses.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <a>Website Design</a>
+                    <a>Web Development</a>
+                    <a>E-commerce Solutions</a>
+                    <a>SEO &amp; Digital Marketing</a>
+                    <a>Website Support</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <a href="privacy.html" class="privacy">Privacy Policy</a>
+                    <a href="terms.html" class="terms">Terms of Service</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <p>✉️ Amplifiedsites@Outlook.com</p>
+                    <p>🗺️ Manitowoc, WI</p>
+                </div>
+                <div class="copy-right">© 2026 Amplified Sites. All rights reserved.</div>
+                <div class="copy-right">Designed by Amplified Sites</div>
+            </div>
+        </footer>
+   <div id="asChatWindow" class="as-chat-window" hidden>
+            <!-- CHAT HEADER -->
+            <div class="as-chat-header">
+                <div class="as-chat-header-info">
+                    <i class="fa-solid fa-headset"></i>
+                    <div>
+                        <h3>Amplified Sites Support</h3>
+                        <p>How can we help you?</p>
+                    </div>
+                </div>
+                <button
+                    type="button"
+                    id="asChatClose"
+                    class="as-chat-close"
+                    aria-label="Close chat window">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <!-- CUSTOMER INFORMATION FORM -->
+            <form id="asChatCustomerForm" class="as-chat-customer-form">
+                <h3>Start a Conversation</h3>
+                <p>
+                    Please enter your information before
+                    starting a live chat with us.
+                </p>
+                <label for="asChatCustomerName">Your Name *</label>
+                <input
+                    type="text"
+                    id="asChatCustomerName"
+                    placeholder="Enter your full name"
+                    maxlength="100"
+                    autocomplete="name"
+                    required>
+                <label for="asChatCustomerEmail">Email Address *</label>
+                <input
+                    type="email"
+                    id="asChatCustomerEmail"
+                    placeholder="Example@Email.com"
+                    maxlength="254"
+                    autocomplete="email"
+                    required>
+                <button type="submit" id="asChatStart">
+                    Start Chat
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </form>
+            <!-- CHAT MESSAGES -->
+            <div class="as-chat-messages" id="asChatMessages">
+                <div class="as-chat-message support">
+                    Welcome to Amplified Sites!
+                    How can we help you today?
+                </div>
+            </div>
+            <!-- END CHAT CONFIRMATION -->
+            <div id="asChatEndConfirm" class="as-chat-confirm" hidden>
+                <div class="as-chat-confirm-box">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <h3>End Conversation?</h3>
+                    <p>Are you sure you want to end this chat?</p>
+                    <div class="as-chat-confirm-actions">
+                        <button type="button" id="asChatCancelEnd">
+                            Cancel
+                        </button>
+                        <button type="button" id="asChatConfirmEnd">
+                            Yes, End Chat
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- END CHAT BUTTON -->
+            <div class="as-chat-end-area">
+                <button type="button" id="asChatEnd">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                    End Chat
+                </button>
+            </div>
+            <!-- CHAT INPUT -->
+            <div class="as-chat-input-area">
+                <input
+                    type="text"
+                    id="asChatInput"
+                    placeholder="Type your message..."
+                    maxlength="2000"
+                    aria-label="Chat message">
+                <button
+                    type="button"
+                    id="asChatSend"
+                    aria-label="Send message">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+        <button
+            type="button"
+            id="asChatToggle"
+            aria-label="Open live chat">
+            <i class="fa-solid fa-comments"></i>
+        </button>
+    </body>
+</html>

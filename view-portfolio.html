@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amplified Sites</title>
+    <link rel="icon" type="image/png" href="ampsiteslogo.png">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script defer src="page.js"></script>
+    <script src="viewpackage.js" defer></script>
+    <link rel="stylesheet" href="chatbox.css">
+    <script defer src="chatbox.js"></script>
+    <title>Amplified Sites</title>
+</head>
+<body class="view-package-body">
+    <canvas id="background"></canvas>
+    <header class="view-package-hero">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="ampsiteslogo.png" alt="ampsiteslogo"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="trackprogress.html">Order Status</a></li>
+                <li><a href="remaining-balance.html">Balance Due</a></li>
+            </ul>
+            <a href="start-journey.html" class="quote-btn">Start Your Journey</a>
+        </nav>
+    </header>
+        <main>
+            <section class="portfolio-intro">
+                <span class="portfolio-eyebrow">OUR PORTFOLIO</span>
+                <h1>Websites Built to <span>Stand Out</span></h1>
+                <p>Explore our work and see how thoughtful design can bring a business's vision to life.</p>
+            </section>
+            <section class="as-showcase">
+                <div class="as-showcase-left">
+                    <div class="as-showcase-tag">MODERN, CLEAN, EFFECTIVE</div>
+                    <h2>Find the Right <span>Packages</span> for Your Business Growth</h2>
+                    <p>Choose a package that fits your business goals and budget.</p>
+                    <a href="viewpackage.html" class="as-showcase-btn"> View Packages → </a>
+                </div>
+                <div class="as-browser-window">
+                    <div class="as-browser-top">
+                        <div class="as-browser-dots">
+                            <span class="red"></span>
+                            <span class="yellow"></span>
+                            <span class="green"></span>
+                        </div>
+                        <div class="as-browser-address">Yourbrand.com</div>
+                    </div>
+                    <div class="as-browser-body">
+                        <div class="as-browser-nav">
+                            <strong>Your Brand Name</strong>
+                            <div>
+                                <a>Home</a>
+                                <a>About</a>
+                                <a>Services</a>
+                                <a>Contact</a>
+                                <a>FAQ</a>
+                                <button>View Package</button>
+                            </div>
+                        </div>
+                        <div class="as-browser-content">
+                            <div class="as-browser-text">
+                                <h3>
+                                    Your Own Brand<br />
+                                    <span>Built From Your Vision</span>
+                                </h3>
+                                <p>Share your vision, and I’ll turn it into a website that works for your business.</p>
+                                <div class="as-browser-buttons">
+                                    <button>Get Started</button>
+                                    <button class="ghost">Your Projects</button>
+                                </div>
+                            </div>
+                            <div class="as-browser-art">
+                                <div class="wave wave1"></div>
+                                <div class="wave wave2"></div>
+                                <div class="wave wave3"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="portfolio-work" id="portfolio-work">
+                <div class="portfolio-work-heading">
+                    <span class="portfolio-eyebrow">OUR WORK</span>
+                    <h2>Featured <span>Projects</span></h2>
+                    <p>As new websites launch, you'll find them here.</p>
+                </div>
+                <div class="portfolio-project-grid" id="portfolioProjectGrid">
+                    <!-- FUTURE PROJECT TEMPLATE: Copy this card into the grid, update its content,
+                    and remove the empty-state block below once your first project is ready.
+                    <article class="portfolio-project-card">
+                    <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="portfolio-project-image">
+                    <img src="your-project-screenshot.png" alt="Screenshot of Project Name website" loading="lazy">
+                    </a>
+                    <div class="portfolio-project-content">
+                    <span class="portfolio-project-type">BUSINESS WEBSITE</span>
+                    <h3>Project Name</h3>
+                    <p>A short description of the business and the website you created.</p>
+                    <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="portfolio-project-link">Visit Website →</a>
+                    </div>
+                    </article>
+                    -->
+                        <div class="portfolio-empty-state">
+                        <div class="portfolio-empty-icon" aria-hidden="true">✦</div>
+                        <h3>More Projects Coming Soon</h3>
+                        <p>Our portfolio is growing. Check back to explore new websites and creative work.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="portfolio-cta">
+                <span class="portfolio-eyebrow">YOUR IDEA IS NEXT</span>
+                <h2>Let's Build Something <span>Great</span></h2>
+                <p>Have a website in mind or question to ask?</p>
+                <a href="start-journey.html" class="portfolio-primary-btn">Contact Form →</a>
+            </section>
+        </main>
+        <footer>
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="ampsiteslogo.png" alt="get-in-touch" />
+
+                        <h2>Amplified Sites</h2>
+                    </div>
+                    <p>Building simple, beautiful websites for businesses.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <a>Website Design</a>
+                    <a>Web Development</a>
+                    <a>E-commerce Solutions</a>
+                    <a>SEO & Digital Marketing</a>
+                    <a>Website Support</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <a href="privacy.html" class="privacy">Privacy Policy</a>
+                    <a href="terms.html" class="terms">Terms of Service</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <p>✉️ Amplifiedsites@Outlook.com</p>
+                    <p>🗺️ Manitowoc, WI</p>
+                </div>
+                <div class="copy-right">© 2026 Amplified Sites. All rights reserved.</div>
+                <div class="copy-right">Designed by Amplified Sites</div>
+            </div>
+        </footer>
+<div id="asChatWindow" class="as-chat-window" hidden>
+            <!-- CHAT HEADER -->
+            <div class="as-chat-header">
+                <div class="as-chat-header-info">
+                    <i class="fa-solid fa-headset"></i>
+                    <div>
+                        <h3>Amplified Sites Support</h3>
+                        <p>How can we help you?</p>
+                    </div>
+                </div>
+                <button
+                    type="button"
+                    id="asChatClose"
+                    class="as-chat-close"
+                    aria-label="Close chat window">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <!-- CUSTOMER INFORMATION FORM -->
+            <form id="asChatCustomerForm" class="as-chat-customer-form">
+                <h3>Start a Conversation</h3>
+                <p>
+                    Please enter your information before
+                    starting a live chat with us.
+                </p>
+                <label for="asChatCustomerName">Your Name *</label>
+                <input
+                    type="text"
+                    id="asChatCustomerName"
+                    placeholder="Enter your full name"
+                    maxlength="100"
+                    autocomplete="name"
+                    required>
+                <label for="asChatCustomerEmail">Email Address *</label>
+                <input
+                    type="email"
+                    id="asChatCustomerEmail"
+                    placeholder="Example@Email.com"
+                    maxlength="254"
+                    autocomplete="email"
+                    required>
+                <button type="submit" id="asChatStart">
+                    Start Chat
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </form>
+            <!-- CHAT MESSAGES -->
+            <div class="as-chat-messages" id="asChatMessages">
+                <div class="as-chat-message support">
+                    Welcome to Amplified Sites!
+                    How can we help you today?
+                </div>
+            </div>
+            <!-- END CHAT CONFIRMATION -->
+            <div id="asChatEndConfirm" class="as-chat-confirm" hidden>
+                <div class="as-chat-confirm-box">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <h3>End Conversation?</h3>
+                    <p>Are you sure you want to end this chat?</p>
+                    <div class="as-chat-confirm-actions">
+                        <button type="button" id="asChatCancelEnd">
+                            Cancel
+                        </button>
+                        <button type="button" id="asChatConfirmEnd">
+                            Yes, End Chat
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- END CHAT BUTTON -->
+            <div class="as-chat-end-area">
+                <button type="button" id="asChatEnd">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                    End Chat
+                </button>
+            </div>
+            <!-- CHAT INPUT -->
+            <div class="as-chat-input-area">
+                <input
+                    type="text"
+                    id="asChatInput"
+                    placeholder="Type your message..."
+                    maxlength="2000"
+                    aria-label="Chat message">
+                <button
+                    type="button"
+                    id="asChatSend"
+                    aria-label="Send message">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+        <button
+            type="button"
+            id="asChatToggle"
+            aria-label="Open live chat">
+            <i class="fa-solid fa-comments"></i>
+        </button>
+    </body>
+</html>
