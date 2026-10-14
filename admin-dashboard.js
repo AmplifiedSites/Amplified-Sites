@@ -5714,8 +5714,8 @@ async function loadAdminChatConversations() {
 
     if (!chatList) return;
 
-    // Keep existing conversations visible while refreshing
-    if (!chatList.querySelector(".admin-chat-conversation")) {
+    // Show loading only when the list is completely empty
+    if (!chatList.hasChildNodes()) {
         chatList.textContent = "Loading conversations...";
     }
 
