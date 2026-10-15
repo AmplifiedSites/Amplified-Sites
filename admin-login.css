@@ -686,6 +686,19 @@ body {
 }
 
 /* ==========================================
+   IPHONE INPUT AUTO-ZOOM FIX
+========================================== */
+
+#loginForm input,
+#forgotPasswordForm input,
+#resetPasswordForm input {
+    font-size: 16px !important;
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+/* ==========================================
    ADMIN LOGIN / RESET - MOBILE RESPONSIVE
 ========================================== */
 
@@ -798,3 +811,4 @@ body {
         text-align: center;
     }
 }
+
