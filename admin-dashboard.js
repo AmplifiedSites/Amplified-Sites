@@ -6769,6 +6769,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!editBtn) return;
 
+        console.log("PORTFOLIO DELETE CLICK DETECTED");
+
         const projectId = editBtn.dataset.id;
 
         const { data: project, error } = await window.supabaseClient
@@ -6991,48 +6993,50 @@ function confirmPortfolioDelete() {
 // ==========================================
 // PORTFOLIO - DELETE PROJECT
 // ==========================================
+document.addEventListener("click", async (event) => {
 
-document.addEventListener("DOMContentLoaded", () => {
-    const grid = document.getElementById("portfolioAdminGrid");
+    const deleteBtn = event.target.closest(".portfolio-delete-btn");
 
-    grid?.addEventListener("click", async (event) => {
-        const deleteBtn = event.target.closest(".portfolio-delete-btn");
+    if (!deleteBtn) return;
 
-        if (!deleteBtn) return;
+    console.log("PORTFOLIO DELETE CLICK DETECTED");
 
-        const projectId = deleteBtn.dataset.id;
+    const projectId = deleteBtn.dataset.id;
 
-        const confirmed = await confirmPortfolioDelete();
+    const confirmed = await confirmPortfolioDelete();
 
-        if (!confirmed) return;
+    if (!confirmed) return;
 
-        deleteBtn.disabled = true;
+    deleteBtn.disabled = true;
 
-        try {
-            const { data, error } = await window.supabaseClient
-                .from("portfolio_projects")
-                .delete()
-                .eq("id", projectId)
-                .select("id");
+    try {
 
-            if (error) throw error;
+        const { data, error } = await window.supabaseClient
+            .from("portfolio_projects")
+            .delete()
+            .eq("id", projectId)
+            .select("id");
 
-            if (!data?.length) {
-                throw new Error("Project was not deleted.");
-            }
+        if (error) throw error;
 
-            await loadPortfolioProjects();
-
-            showAdminToast("Project deleted successfully!", "success");
-
-        } catch (error) {
-            console.error("Portfolio delete error:", error);
-            showAdminToast("Unable to delete project.", "error");
-            deleteBtn.disabled = false;
+        if (!data?.length) {
+            throw new Error("Project was not deleted. Check Supabase permissions.");
         }
-    });
+
+        await loadPortfolioProjects();
+
+        showAdminToast("Project deleted successfully!", "success");
+
+    } catch (error) {
+
+        console.error("Portfolio delete error:", error);
+
+        showAdminToast("Unable to delete project.", "error");
+
+        deleteBtn.disabled = false;
+    }
+
 });
-console.log(typeof confirmPortfolioDelete);
 
 /* ==========================================
    PORTFOLIO - UPLOAD IMAGE
