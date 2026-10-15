@@ -7131,3 +7131,25 @@ Array.from(this.files).forEach(file => {
 
 galleryCount.textContent = `${savedCount + this.files.length} / 4`;
 });
+
+// ==========================================
+// PORTFOLIO - MAIN PHOTO PREVIEW
+// ==========================================
+
+document.getElementById("portfolioProjectImage")
+    ?.addEventListener("change", function () {
+
+        const file = this.files[0];
+        const preview = document.getElementById("portfolioMainPreview");
+
+        if (!file || !preview) return;
+
+        const imageUrl = URL.createObjectURL(file);
+
+        preview.innerHTML = `
+            <div class="portfolio-image-item">
+                <img src="${imageUrl}" alt="Main Screenshot">
+            </div>
+        `;
+
+    });
