@@ -5704,7 +5704,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // LIVE CHAT - LOAD ADMIN CONVERSATIONS
 // =========================================
 
-const ADMIN_CHAT_API = "https://api.amplifiedsites.com/chat";
+const ADMIN_CHAT_API = "http://localhost:3000/chat";
 
 let adminChatConversations = [];
 
@@ -6450,4 +6450,680 @@ document.addEventListener("DOMContentLoaded", () => {
         updateAdminChatUnreadCount();
     }, 3000);
 
+});
+
+/* ==========================================
+   ADMIN PORTFOLIO - TAB NAVIGATION
+========================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const portfolioBtn = document.querySelector(
+        '[data-section="portfolio-section"]'
+    );
+
+    portfolioBtn?.addEventListener("click", () => {
+
+        // Update page title
+        const pageTitle = document.getElementById("adminPageTitle");
+
+        if (pageTitle) {
+            pageTitle.textContent = "Portfolio Management";
+        }
+
+    });
+
+});
+
+// ==========================================
+// PORTFOLIO IMAGE EDITING STATE
+// ==========================================
+let portfolioMainImageUrl = null;
+let portfolioGalleryImageUrls = [];
+
+/* ==========================================
+   PORTFOLIO - ADD PROJECT POPUP
+========================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const modal = document.getElementById("portfolioModal");
+    const addBtn = document.getElementById("addPortfolioProjectBtn");
+    const closeBtn = document.getElementById("closePortfolioModal");
+    const cancelBtn = document.getElementById("cancelPortfolioModal");
+    const form = document.getElementById("portfolioProjectForm");
+
+    // Open popup
+    addBtn?.addEventListener("click", () => {
+
+        form.reset();
+
+        document.getElementById("portfolioProjectId").value = "";
+        document.getElementById("portfolioModalTitle").textContent = "Add Project";
+
+        // Reset saved image state
+        portfolioMainImageUrl = null;
+        portfolioGalleryImageUrls = [];
+
+        // Clear image previews
+        document.getElementById("portfolioMainPreview").innerHTML = "";
+        document.getElementById("portfolioGalleryPreview").innerHTML = "";
+
+        // Reset gallery counter
+        document.getElementById("portfolioGalleryCount").textContent = "0 / 4";
+
+        // Clear selected images
+        document.getElementById("portfolioProjectImage").value = "";
+        document.getElementById("portfolioProjectGallery").value = "";
+
+        modal.hidden = false;
+    });
+
+    // Close popup
+    function closeModal() {
+        modal.hidden = true;
+    }
+
+    closeBtn?.addEventListener("click", closeModal);
+    cancelBtn?.addEventListener("click", closeModal);
+
+});
+
+
+/* ==========================================
+   PORTFOLIO - SAVE PROJECT
+========================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const form = document.getElementById("portfolioProjectForm");
+    const saveBtn = document.getElementById("savePortfolioProject");
+
+    form?.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const projectName = document.getElementById("portfolioProjectName").value.trim();
+
+        if (!projectName) {
+            alert("Please enter a project name.");
+            return;
+        }
+
+        const projectData = {
+            project_name: projectName,
+            category: document.getElementById("portfolioProjectCategory").value.trim(),
+            description: document.getElementById("portfolioProjectDescription").value.trim(),
+            website_url: document.getElementById("portfolioProjectWebsite").value.trim() || null,
+            video_url: document.getElementById("portfolioProjectVideo").value.trim() || null,
+            is_published: document.getElementById("portfolioProjectPublished").checked
+        };
+
+        // ==========================================
+        // SAVE EXISTING PORTFOLIO IMAGE CHANGES
+        // ==========================================
+
+        const projectId = document.getElementById("portfolioProjectId").value;
+
+        if (projectId) {
+            projectData.image_url = portfolioMainImageUrl;
+            projectData.gallery_urls = [...portfolioGalleryImageUrls];
+        }
+
+        saveBtn.disabled = true;
+        saveBtn.textContent = "Saving...";
+
+        try {
+
+    // Upload Main Screenshot if one was selected
+    const mainImageFile = document.getElementById("portfolioProjectImage").files[0];
+
+    if (mainImageFile) {
+        projectData.image_url = await uploadPortfolioImage(mainImageFile);
+    }
+
+    // ==========================================
+    // UPLOAD ADDITIONAL PORTFOLIO SCREENSHOTS
+    // ==========================================
+
+    const galleryInput = document.getElementById("portfolioProjectGallery");
+
+    const galleryFiles = Array.from(galleryInput.files);
+
+    const existingGallery = projectId
+        ? [...portfolioGalleryImageUrls]
+        : [];
+
+    if (existingGallery.length + galleryFiles.length > 4) {
+        throw new Error("You can have a maximum of 4 additional screenshots.");
+    }
+
+    const galleryUrls = [...existingGallery];
+
+    for (const file of galleryFiles) {
+        const imageUrl = await uploadPortfolioImage(file);
+        galleryUrls.push(imageUrl);
+    }
+
+    projectData.gallery_urls = galleryUrls;
+
+    let result;
+
+    if (projectId) {
+        result = await window.supabaseClient
+            .from("portfolio_projects")
+            .update({
+                ...projectData,
+                updated_at: new Date().toISOString()
+            })
+            .eq("id", projectId)
+            .select()
+            .single();
+    } else {
+        result = await window.supabaseClient
+            .from("portfolio_projects")
+            .insert(projectData)
+            .select()
+            .single();
+    }
+
+    if (result.error) throw result.error;
+
+            // Verify that Supabase saved the project
+
+            const toast = document.createElement("div");
+            toast.className = "admin-toast";
+
+            toast.innerHTML = `
+                <div class="admin-toast-icon">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+
+                <div class="admin-toast-content">
+                    <strong>Project Saved Successfully</strong>
+                    <p>Your portfolio project has been saved.</p>
+                </div>
+
+                <button type="button" class="admin-toast-close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            `;
+
+            document.querySelectorAll(".admin-toast").forEach(el => el.remove());
+            document.body.appendChild(toast);
+
+            const dismissToast = () => {
+                toast.classList.add("hide");
+                setTimeout(() => toast.remove(), 300);
+            };
+
+            toast.querySelector(".admin-toast-close")
+                .addEventListener("click", dismissToast);
+
+            setTimeout(dismissToast, 3500);
+
+
+        } catch (error) {
+            console.error("Portfolio save error:", error);
+            alert("Failed to save project: " + error.message);
+
+        } finally {
+            saveBtn.disabled = false;
+            saveBtn.innerHTML = '<i class="fa-solid fa-floppy-disk"></i> Save Project';
+        }
+    });
+
+});
+
+
+/* ==========================================
+   PORTFOLIO - LOAD PROJECTS
+========================================== */
+
+async function loadPortfolioProjects() {
+
+    const grid = document.getElementById("portfolioAdminGrid");
+
+    if (!grid) return;
+
+    const { data, error } = await window.supabaseClient
+        .from("portfolio_projects")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+    if (error) {
+        console.error("Portfolio load error:", error);
+        grid.textContent = "Failed to load portfolio projects.";
+        return;
+    }
+
+    if (!data || data.length === 0) {
+        grid.textContent = "No portfolio projects added yet.";
+        return;
+    }
+
+    grid.innerHTML = data.map(project => `
+        <div class="admin-package-card">
+
+            <h3>${escapeOrderText(project.project_name)}</h3>
+
+            <div class="portfolio-category-row">
+                <p class="admin-package-description">
+                    ${escapeOrderText(project.category || "No category")}
+                </p>
+                <span class="status ${project.is_published ? "success" : "warning"}">
+                    ${project.is_published ? "Published" : "Draft"}
+                </span>
+            </div>
+
+        <div class="admin-package-actions" style="margin-top: 20px;">
+
+            <button
+                type="button"
+                class="admin-package-edit portfolio-edit-btn"
+                data-id="${project.id}">
+                <i class="fa-solid fa-pen"></i> Edit
+            </button>
+
+            <button
+                type="button"
+                class="admin-package-delete portfolio-delete-btn"
+                data-id="${project.id}">
+                <i class="fa-solid fa-trash"></i> Delete
+            </button>
+
+        </div>
+
+
+                </div>
+            `).join("");
+        }
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const portfolioBtn = document.querySelector(
+        '[data-section="portfolio-section"]'
+    );
+
+    // Load projects whenever Portfolio becomes active
+    document.querySelectorAll('[data-section="portfolio-section"]')
+        .forEach(button => {
+            button.addEventListener("click", () => {
+                loadPortfolioProjects();
+            });
+        });
+
+});
+
+
+/* ==========================================
+   PORTFOLIO - EDIT PROJECT
+========================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const grid = document.getElementById("portfolioAdminGrid");
+
+    grid?.addEventListener("click", async (event) => {
+
+        const editBtn = event.target.closest(".portfolio-edit-btn");
+
+        if (!editBtn) return;
+
+        const projectId = editBtn.dataset.id;
+
+        const { data: project, error } = await window.supabaseClient
+            .from("portfolio_projects")
+            .select("*")
+            .eq("id", projectId)
+            .single();
+
+        if (error || !project) {
+            console.error("Portfolio edit error:", error);
+            alert("Failed to load project.");
+            return;
+        }
+
+        // Fill form with existing project information
+        document.getElementById("portfolioProjectId").value = project.id;
+        document.getElementById("portfolioProjectName").value = project.project_name || "";
+        document.getElementById("portfolioProjectCategory").value = project.category || "";
+        document.getElementById("portfolioProjectDescription").value = project.description || "";
+        document.getElementById("portfolioProjectWebsite").value = project.website_url || "";
+        document.getElementById("portfolioProjectVideo").value = project.video_url || "";
+        document.getElementById("portfolioProjectPublished").checked = project.is_published;
+
+        // Clear file inputs
+        document.getElementById("portfolioProjectImage").value = "";
+        document.getElementById("portfolioProjectGallery").value = "";
+
+portfolioMainImageUrl = project.image_url || null;
+
+portfolioGalleryImageUrls = Array.isArray(project.gallery_urls)
+    ? [...project.gallery_urls]
+    : [];
+
+// ==========================================
+// DISPLAY SAVED PORTFOLIO SCREENSHOTS
+// ==========================================
+
+// Main Screenshot
+const mainPreview = document.getElementById("portfolioMainPreview");
+
+if (mainPreview) {
+    mainPreview.innerHTML = "";
+
+    if (project.image_url) {
+        mainPreview.innerHTML = `
+            <div class="portfolio-image-item">
+                <img src="${escapeOrderText(project.image_url)}"
+                    alt="Main Screenshot">
+                <button type="button"
+                        class="portfolio-image-remove"
+                        data-image-type="main"
+                        aria-label="Remove main screenshot">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        `;
+    }
+}
+
+        // Additional Screenshots
+        const galleryPreview = document.getElementById("portfolioGalleryPreview");
+
+        const savedGallery = Array.isArray(project.gallery_urls)
+            ? project.gallery_urls
+            : [];
+
+        if (galleryPreview) {
+            galleryPreview.innerHTML = savedGallery.map(url => `
+                <div class="portfolio-image-item">
+                    <img src="${escapeOrderText(url)}"
+                        alt="Additional Screenshot">
+                    <button type="button"
+                            class="portfolio-image-remove"
+                            data-image-type="gallery"
+                            data-image-index="${savedGallery.indexOf(url)}"
+                            aria-label="Remove additional screenshot">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            `).join("");
+        }
+
+        // Update Gallery Counter
+        const galleryCount = document.getElementById("portfolioGalleryCount");
+
+// ==========================================
+// REMOVE SAVED PORTFOLIO IMAGES
+// ==========================================
+
+const portfolioImageSection = document.querySelector(
+    ".portfolio-images-section"
+);
+
+if (portfolioImageSection && !portfolioImageSection.dataset.removeHandler) {
+
+    portfolioImageSection.dataset.removeHandler = "true";
+
+    portfolioImageSection.addEventListener("click", (event) => {
+
+        const removeButton = event.target.closest(
+            ".portfolio-image-remove"
+        );
+
+        if (!removeButton) return;
+
+        const imageType = removeButton.dataset.imageType;
+
+        if (imageType === "main") {
+
+            portfolioMainImageUrl = null;
+
+            document.getElementById("portfolioMainPreview")
+                .innerHTML = "";
+
+        }
+
+        if (imageType === "gallery") {
+
+            const index = Number(removeButton.dataset.imageIndex);
+
+            portfolioGalleryImageUrls.splice(index, 1);
+
+            const galleryPreview = document.getElementById(
+                "portfolioGalleryPreview"
+            );
+
+            galleryPreview.innerHTML = portfolioGalleryImageUrls.map(
+                (url, index) => `
+                    <div class="portfolio-image-item">
+                        <img src="${escapeOrderText(url)}"
+                             alt="Additional Screenshot">
+
+                        <button type="button"
+                                class="portfolio-image-remove"
+                                data-image-type="gallery"
+                                data-image-index="${index}"
+                                aria-label="Remove additional screenshot">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                `
+            ).join("");
+
+            document.getElementById("portfolioGalleryCount")
+                .textContent = `${portfolioGalleryImageUrls.length} / 4`;
+        }
+
+    });
+}
+
+        if (galleryCount) {
+            galleryCount.textContent = `${savedGallery.length} / 4`;
+        }
+
+        // Update popup title
+        document.getElementById("portfolioModalTitle").textContent = "Edit Project";
+
+        // Open popup
+        document.getElementById("portfolioModal").hidden = false;
+
+    });
+
+});
+
+    loadPortfolioProjects();
+
+// ==========================================
+// PORTFOLIO - CUSTOM DELETE CONFIRMATION
+// ==========================================
+
+function confirmPortfolioDelete() {
+    return new Promise(resolve => {
+        const overlay = document.createElement("div");
+        overlay.className = "portfolio-delete-overlay";
+
+        overlay.innerHTML = `
+            <div class="portfolio-delete-box">
+                <div class="portfolio-delete-icon">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+
+                <h3>Delete Portfolio Project?</h3>
+
+                <p>
+                    Are you sure you want to permanently delete
+                    this project? This action cannot be undone.
+                </p>
+
+                <div class="portfolio-delete-actions">
+                    <button type="button" class="portfolio-delete-cancel">
+                        Cancel
+                    </button>
+
+                    <button type="button" class="portfolio-delete-confirm">
+                        Delete Project
+                    </button>
+                </div>
+            </div>
+        `;
+
+        function finish(confirmed) {
+            overlay.remove();
+            resolve(confirmed);
+        }
+
+        overlay.querySelector(".portfolio-delete-cancel")
+            .addEventListener("click", () => finish(false));
+
+        overlay.querySelector(".portfolio-delete-confirm")
+            .addEventListener("click", () => finish(true));
+
+        overlay.addEventListener("click", event => {
+            if (event.target === overlay) finish(false);
+        });
+
+        document.body.appendChild(overlay);
+    });
+}
+
+// ==========================================
+// PORTFOLIO - DELETE PROJECT
+// ==========================================
+
+document.addEventListener("DOMContentLoaded", () => {
+    const grid = document.getElementById("portfolioAdminGrid");
+
+    grid?.addEventListener("click", async (event) => {
+        const deleteBtn = event.target.closest(".portfolio-delete-btn");
+
+        if (!deleteBtn) return;
+
+        const projectId = deleteBtn.dataset.id;
+
+        const confirmed = await confirmPortfolioDelete();
+
+        if (!confirmed) return;
+
+        deleteBtn.disabled = true;
+
+        try {
+            const { data, error } = await window.supabaseClient
+                .from("portfolio_projects")
+                .delete()
+                .eq("id", projectId)
+                .select("id");
+
+            if (error) throw error;
+
+            if (!data?.length) {
+                throw new Error("Project was not deleted.");
+            }
+
+            await loadPortfolioProjects();
+
+            showAdminToast("Project deleted successfully!", "success");
+
+        } catch (error) {
+            console.error("Portfolio delete error:", error);
+            showAdminToast("Unable to delete project.", "error");
+            deleteBtn.disabled = false;
+        }
+    });
+});
+console.log(typeof confirmPortfolioDelete);
+
+/* ==========================================
+   PORTFOLIO - UPLOAD IMAGE
+========================================== */
+
+async function uploadPortfolioImage(file) {
+
+    const allowedTypes = [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+    ];
+
+    if (!allowedTypes.includes(file.type)) {
+        throw new Error("Only JPG, PNG, and WebP images are allowed.");
+    }
+
+    if (file.size > 10 * 1024 * 1024) {
+        throw new Error("Image must be 10MB or smaller.");
+    }
+
+    const extension = file.name.split(".").pop().toLowerCase();
+
+    const filePath = `${crypto.randomUUID()}.${extension}`;
+
+    const { error } = await window.supabaseClient.storage
+        .from("portfolio-images")
+        .upload(filePath, file, {
+            contentType: file.type
+        });
+
+    if (error) throw error;
+
+    const { data } = window.supabaseClient.storage
+        .from("portfolio-images")
+        .getPublicUrl(filePath);
+
+    return data.publicUrl;
+}
+
+// Keep additional screenshots selected one at a time
+const portfolioGalleryInput =
+    document.getElementById("portfolioProjectGallery");
+
+const portfolioSelectedFiles = new DataTransfer();
+
+portfolioGalleryInput?.addEventListener("change", function () {
+console.log("Gallery photos selected:", this.files.length);
+    for (const file of this.files) {
+        if (![...portfolioSelectedFiles.files].some(
+            existing => existing.name === file.name &&
+                        existing.size === file.size
+        )) {
+            portfolioSelectedFiles.items.add(file);
+        }
+    }
+
+    this.files = portfolioSelectedFiles.files;
+
+    const galleryPreview = document.getElementById("portfolioGalleryPreview");
+const galleryCount = document.getElementById("portfolioGalleryCount");
+
+const savedCount = portfolioGalleryImageUrls.length;
+const availableSlots = Math.max(0, 4 - savedCount);
+
+while (portfolioSelectedFiles.files.length > availableSlots) {
+    portfolioSelectedFiles.items.remove(
+        portfolioSelectedFiles.files.length - 1
+    );
+}
+
+this.files = portfolioSelectedFiles.files;
+
+galleryPreview.querySelectorAll(".portfolio-pending-image").forEach(
+    item => item.remove()
+);
+
+Array.from(this.files).forEach(file => {
+    const imageUrl = URL.createObjectURL(file);
+
+    const imageItem = document.createElement("div");
+    imageItem.className = "portfolio-image-item portfolio-pending-image";
+
+    const img = document.createElement("img");
+    img.src = imageUrl;
+    img.alt = "New Screenshot";
+    img.onload = () => URL.revokeObjectURL(imageUrl);
+
+    imageItem.appendChild(img);
+    galleryPreview.appendChild(imageItem);
+});
+
+galleryCount.textContent = `${savedCount + this.files.length} / 4`;
 });
