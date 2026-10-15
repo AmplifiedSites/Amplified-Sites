@@ -46,6 +46,14 @@
                         </button>
                     </li>
                     <li>
+                        <button type="button"
+                                class="dash-btn"
+                                data-section="portfolio-section">
+                            <i class="fa-solid fa-briefcase"></i>
+                            <span>Portfolio</span>
+                        </button>
+                    </li>
+                    <li>
                         <button type="button" class="dash-btn" data-section="legal-section">
                             <i class="fa-solid fa-scale-balanced"></i>
                             <span>Legal</span>
@@ -261,6 +269,148 @@
                         </div>
                     </div>
                 </section>
+                <section class="admin-section" id="portfolio-section">
+                    <div class="section-heading">
+                        <div>
+                            <h2>Portfolio Management</h2>
+                            <p>Manage projects displayed on the Amplified Sites website.</p>
+                        </div>
+                        <button type="button"
+                                class="primary-admin-btn"
+                                id="addPortfolioProjectBtn">
+                            <i class="fa-solid fa-plus"></i>
+                            Add Project
+                        </button>
+                    </div>
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text"
+                            id="portfolioSearch"
+                            placeholder="Search portfolio projects..."
+                            autocomplete="off">
+                    </div>
+                    <div class="portfolio-admin-grid" id="portfolioAdminGrid">
+                        <p>No portfolio projects added yet.</p>
+                    </div>
+                </section>
+                <div class="portfolio-modal" id="portfolioModal" hidden>
+                    <div class="portfolio-modal-content">
+                        <div class="portfolio-modal-header">
+                            <h2 id="portfolioModalTitle">Add Project</h2>
+                            <button type="button"
+                                    id="closePortfolioModal"
+                                    aria-label="Close">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                        <form id="portfolioProjectForm">
+                            <input type="hidden" id="portfolioProjectId">
+                            <label for="portfolioProjectName">
+                                Project Name *
+                            </label>
+                            <input type="text"
+                                id="portfolioProjectName"
+                                required>
+                            <label for="portfolioProjectCategory">
+                                Category
+                            </label>
+                            <input type="text"
+                                id="portfolioProjectCategory"
+                                placeholder="e.g. E-Commerce Website">
+                            <label for="portfolioProjectDescription">
+                                Description
+                            </label>
+                            <textarea id="portfolioProjectDescription"
+                                    rows="4"></textarea>
+                            <label for="portfolioProjectWebsite">
+                                Website URL
+                            </label>
+                            <input type="url"
+                                id="portfolioProjectWebsite"
+                                placeholder="https://example.com">
+                            <div class="portfolio-images-section">
+                                <div class="portfolio-images-header">
+                                    <h3>
+                                        <i class="fa-regular fa-images"></i>
+                                        Project Images
+                                    </h3>
+                                    <p>
+                                        Manage your main screenshot and additional
+                                        project images.
+                                    </p>
+                                </div>
+                                <div class="portfolio-image-group">
+                                    <div class="portfolio-gallery-heading">
+                                        <label>Main Screenshot</label>
+                                        <span>Cover Image</span>
+                                    </div>
+                                    <div id="portfolioMainPreview"
+                                        class="portfolio-image-preview">
+                                    </div>
+                                    <label for="portfolioProjectImage"
+                                        class="portfolio-upload-box">
+                                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                                        <span>Choose Main Screenshot</span>
+                                        <small>PNG, JPG or WebP · Max 10MB</small>
+                                    </label>
+                                    <input type="file"
+                                        id="portfolioProjectImage"
+                                        accept="image/png,image/jpeg,image/webp"
+                                        hidden>
+
+                                </div>
+                                <div class="portfolio-image-group">
+                                    <div class="portfolio-gallery-heading">
+                                        <label>Additional Screenshots</label>
+                                        <span id="portfolioGalleryCount">
+                                            0 / 4
+                                        </span>
+                                    </div>
+                                    <div id="portfolioGalleryPreview"
+                                        class="portfolio-gallery-preview">
+                                    </div>
+                                    <label for="portfolioProjectGallery"
+                                        class="portfolio-upload-box">
+                                        <i class="fa-solid fa-images"></i>
+                                        <span>Choose Additional Screenshots</span>
+                                        <small>
+                                            Select up to 4 images · PNG, JPG or WebP
+                                        </small>
+                                    </label>
+                                    <input type="file"
+                                        id="portfolioProjectGallery"
+                                        accept="image/png,image/jpeg,image/webp"
+                                        multiple
+                                        hidden>
+                                </div>
+                            </div>
+                            <label for="portfolioProjectVideo">
+                                Demo Video URL (Optional)
+                            </label>
+                            <input type="url"
+                                id="portfolioProjectVideo"
+                                placeholder="https://example.com/demo">
+                            <label class="portfolio-publish-label">
+                                <input type="checkbox"
+                                    id="portfolioProjectPublished">
+                                Publish on Website
+                            </label>
+                            <div class="portfolio-modal-actions">
+                                <button type="button"
+                                        class="admin-cancel-btn"
+                                        id="cancelPortfolioModal">
+                                    Cancel
+                                </button>
+                                <button type="submit"
+                                        class="primary-admin-btn"
+                                        id="savePortfolioProject">
+                                    <i class="fa-solid fa-floppy-disk"></i>
+                                    Save Project
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 <section class="admin-section" id="messages-section">
                     <div class="section-heading">
                         <div>
