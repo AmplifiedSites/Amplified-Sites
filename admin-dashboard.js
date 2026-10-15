@@ -5704,7 +5704,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // LIVE CHAT - LOAD ADMIN CONVERSATIONS
 // =========================================
 
-const ADMIN_CHAT_API = "http://localhost:3000/chat";
+const ADMIN_CHAT_API = "https://api.amplifiedsites.com/chat";
 
 let adminChatConversations = [];
 
