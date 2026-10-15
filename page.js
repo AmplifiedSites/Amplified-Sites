@@ -401,5 +401,86 @@ if (journeyForm) {
 
 }
 
+// ==========================================
+// PUBLIC PORTFOLIO - LOAD PROJECTS
+// ==========================================
+
+async function loadPortfolioProjects() {
+
+    const portfolioGrid = document.getElementById("portfolioProjectGrid");
+
+    if (!portfolioGrid) return;
+
+    const { data: projects, error } = await supabaseClient
+        .from("portfolio_projects")
+        .select("id, project_name, category, description, image_url, website_url")
+        .eq("is_published", true);
+
+    if (error) {
+        console.error("PORTFOLIO LOAD ERROR:", error);
+        return;
+    }
+
+    console.log("PUBLIC PORTFOLIO PROJECTS:", projects);
+
+    // CLEAR EXISTING PORTFOLIO CONTENT
+portfolioGrid.innerHTML = "";
+
+// CREATE PROJECT CARDS
+projects.forEach(project => {
+
+    const card = document.createElement("article");
+    card.className = "portfolio-project-card";
+
+    const imageLink = document.createElement("a");
+    imageLink.className = "portfolio-project-image";
+    imageLink.href = project.website_url || "#";
+    imageLink.target = "_blank";
+    imageLink.rel = "noopener noreferrer";
+
+    const image = document.createElement("img");
+    image.src = project.image_url || "";
+    image.alt = project.project_name || "Project screenshot";
+    image.loading = "lazy";
+
+    imageLink.appendChild(image);
+
+    const content = document.createElement("div");
+    content.className = "portfolio-project-content";
+
+    const category = document.createElement("span");
+    category.className = "portfolio-project-type";
+    category.textContent = project.category || "WEBSITE";
+
+    const title = document.createElement("h3");
+    title.textContent = project.project_name;
+
+    const description = document.createElement("p");
+    description.textContent = project.description || "";
+
+    content.appendChild(category);
+    content.appendChild(title);
+    content.appendChild(description);
+
+    if (project.website_url) {
+        const visitLink = document.createElement("a");
+        visitLink.className = "portfolio-project-link";
+        visitLink.href = project.website_url;
+        visitLink.target = "_blank";
+        visitLink.rel = "noopener noreferrer";
+        visitLink.textContent = "Visit Website →";
+
+        content.appendChild(visitLink);
+    }
+
+    card.appendChild(imageLink);
+    card.appendChild(content);
+
+    portfolioGrid.appendChild(card);
+
+});
+}
+
+document.addEventListener("DOMContentLoaded", loadPortfolioProjects);
 
   
