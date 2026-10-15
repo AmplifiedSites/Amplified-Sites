@@ -6514,8 +6514,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Clear selected images
         document.getElementById("portfolioProjectImage").value = "";
-        document.getElementById("portfolioProjectGallery").value = "";
+       resetPortfolioSelectedFiles();
 
+        modal.style.removeProperty("display");
         modal.hidden = false;
     });
 
@@ -6625,11 +6626,16 @@ document.addEventListener("DOMContentLoaded", () => {
             .select()
             .single();
     }
+if (result.error) throw result.error;
 
-    if (result.error) throw result.error;
+// Close the popup after successful save
+const portfolioPopup = document.getElementById("portfolioModal");
 
-            // Verify that Supabase saved the project
+portfolioPopup.hidden = true;
+portfolioPopup.style.setProperty("display", "none", "important");
 
+// Refresh portfolio projects
+await loadPortfolioProjects();
             const toast = document.createElement("div");
             toast.className = "admin-toast";
 
@@ -6796,7 +6802,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Clear file inputs
         document.getElementById("portfolioProjectImage").value = "";
-        document.getElementById("portfolioProjectGallery").value = "";
+        resetPortfolioSelectedFiles();
 
 portfolioMainImageUrl = project.image_url || null;
 
@@ -6929,7 +6935,8 @@ if (portfolioImageSection && !portfolioImageSection.dataset.removeHandler) {
         document.getElementById("portfolioModalTitle").textContent = "Edit Project";
 
         // Open popup
-        document.getElementById("portfolioModal").hidden = false;
+       document.getElementById("portfolioModal").style.removeProperty("display");
+document.getElementById("portfolioModal").hidden = false;
 
     });
 
@@ -7082,6 +7089,17 @@ const portfolioGalleryInput =
     document.getElementById("portfolioProjectGallery");
 
 const portfolioSelectedFiles = new DataTransfer();
+
+function resetPortfolioSelectedFiles() {
+    portfolioSelectedFiles.items.clear();
+
+    const galleryInput =
+        document.getElementById("portfolioProjectGallery");
+
+    if (galleryInput) {
+        galleryInput.value = "";
+    }
+}
 
 portfolioGalleryInput?.addEventListener("change", function () {
 console.log("Gallery photos selected:", this.files.length);
