@@ -5417,20 +5417,6 @@ img {
     box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
 }
 
-.wave1 {
-    animation: portfolioWave 6s linear infinite;
-}
-
-.wave2 {
-    width: 85%;
-    animation: portfolioWave 8s linear infinite reverse;
-}
-
-.wave3 {
-    width: 105%;
-    animation: portfolioWave 10s linear infinite;
-}
-
 @keyframes portfolioWave {
     from {
         transform: translate(-50%, -50%)
@@ -16582,13 +16568,7 @@ main.success-deposit > section.success-hero {
         max-height: calc(100dvh - 105px);
     }
 }
-@media screen and (max-width: 768px) {
-  input,
-  textarea,
-  select {
-    font-size: 16px !important;
-  }
-}
+
 @media (max-width: 600px) {
     #asChatToggle {
         width: 55px;
