@@ -431,7 +431,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const { data, count, error } = await reviewClient
             .from("website_reviews")
             .select(
-                "name,business_name,rating,review,created_at",
+                "name,business_name,rating,review,verified,created_at",
                 { count: "exact" }
             )
             .eq("status", "approved")
@@ -510,6 +510,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         data.forEach(review => {
+          console.log("REVIEW DATA:", review.name, review.verified);
 
             const card = document.createElement("div");
             card.className = "as-review-item";
@@ -538,6 +539,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
             author.appendChild(name);
 
+            if (review.verified === true) {
+            const verifiedBadge = document.createElement("span");
+
+            verifiedBadge.className = "as-review-verified";
+
+            verifiedBadge.textContent = "✓ Verified";
+
+            author.appendChild(verifiedBadge);
+        }
+
             if (review.business_name) {
                 const business = document.createElement("span");
                 business.textContent = review.business_name;
@@ -545,6 +556,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             card.append(author, stars, message);
+            console.log("AUTHOR HTML:", author.outerHTML);
 
             reviewList.appendChild(card);
 
