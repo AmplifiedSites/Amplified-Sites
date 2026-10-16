@@ -11,17 +11,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script defer src="supabase-public.js"></script>
     <script defer src="page.js"></script>
-    <script src="viewpackage.js" defer></script>
+    <script defer src="legal-public.js"></script>
+    <script defer src="client-info.js"></script>
     <link rel="stylesheet" href="chatbox.css">
     <script defer src="chatbox.js"></script>
-    <title>Amplified Sites</title>
 </head>
-<body class="view-package-body">
+<body>
     <canvas id="background"></canvas>
-    <header class="view-package-hero">
+    <header class="client-hero">
         <nav class="navbar">
             <div class="logo">
                 <a href="index.html"><img src="ampsiteslogo.png" alt="ampsiteslogo"></a>
@@ -32,191 +31,187 @@
                 <li><a href="trackprogress.html">Order Status</a></li>
                 <li><a href="remaining-balance.html">Balance Due</a></li>
             </ul>
-            <a href="start-journey.html" class="quote-btn">Start Your Journey</a>
+            <a href="viewpackage.html" class="quote-btn">View Package</a>
         </nav>
     </header>
-    <section class="pricing-section" id="package">
-        <div class="pricing-header">
-            <span class="pricing-tag">
-                CHOOSE YOUR PLAN
-            </span>
-            <h2>Our <span>Packages</span></h2>
-            <p>
-                Once you have received your custom website concept and 
-                reviewed the design direction,
-                submit your <br>non-refundable 50% deposit to secure 
-                your project and begin the website development process.
-            </p>
+     <section class="client-info">
+        <div id="customers">
+            <div class="info1">
+               <form class="inform-form" id="clientForm">
+                    <h3>Please provide your information below<br> to proceed with your order</h3>
+                    <input type="hidden" name="_next" value="https://amplifiedsites.com/thankyoupage.html">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_autoresponse" value="Thank you for contacting Amplified Sites. We received your project details and will get back to you within 24 hours.">
+                    <p>
+                        <span class="contactinfo">Full Name</span>
+                        <input
+                            id="name"
+                            type="text"
+                            name="name"
+                            placeholder="John Doe"
+                            required>
+                    </p>
+                    <p>
+                        <span class="contactinfo">Email</span>
+                        <input
+                            id="email"
+                            type="email"
+                            name="email"
+                            placeholder="you@example.com"
+                            required>
+                    </p>
+                    <p>
+                        <span class="contactinfo">Phone Number *</span>
+                        <input
+                            id="phone"
+                            type="tel"
+                            name="phone"
+                            placeholder="555-555-5555"
+                            required>
+                    </p>
+                    <p>
+                        <span class="contactinfo">Business Name (Optional)</span>
+                        <input
+                            id="business"
+                            type="text"
+                            name="business"
+                            placeholder="Your Business Name">
+                    </p>
+                    <p><button class="btn primary" type="submit">Continue to Payment <i class="fas fa-arrow-right"></i></button></p>
+                    <p class="sec-inform">🔒 Your information is secure and will never be shared.</p>
+                </form>
+            </div>
         </div>
-        <!-- ================= DYNAMIC WEBSITE PACKAGES ================= -->
-        <div class="pricing-grid" id="pricingGrid">
-            <p class="packages-loading">
-                Loading website packages...
-            </p>
-        </div>
-        </section>    
-        <!-- ================= EXTRA ADD ONS ================= -->
-        <section class="add-on">
-            <div class="extra-add">
-                <h3>
-                    Extra <span>Add-Ons</span>
-                </h3>
-                <p class="addons-description">
-                    Enhance your website with additional features,
-                    custom functionality, and ongoing web support
-                    for your business.
-                </p>
-                <div class="addons-features">
-                    <div class="addons-feature">
-                        <i class="fa-solid fa-puzzle-piece"></i>
-                        <h4>Custom Features</h4>
-                    </div>
-                    <div class="addons-feature">
-                        <i class="fa-solid fa-screwdriver-wrench"></i>
-                        <h4>Website Support</h4>
-                    </div>
-                    <div class="addons-feature">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <h4>Additional Services</h4>
-                    </div>
+     </section>
+     <footer>
+        <div class="footer-grid">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <img src="ampsiteslogo.png" alt="get-in-touch">
+                    <h2>Amplified Sites</h2>
                 </div>
-                <p class="addons-pricing">
-                    <i class="fa-solid fa-circle-info"></i>
-                    Pricing varies depending on the type,
-                    complexity, and scope of the requested add-on.
+                 <p>
+                    Building simple, beautiful websites for businesses.
                 </p>
             </div>
-        </section>
-        <footer>
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <div class="footer-logo">
-                        <img src="ampsiteslogo.png" alt="get-in-touch">
-                        <h2>Amplified Sites</h2>
-                    </div>
-                    <p>
-                        Building simple, beautiful websites for businesses.
-                    </p>
-                </div>
-                <div class="footer-column">
-                    <h3>Services</h3>
+            <div class="footer-column">
+                <h3>Services</h3>
                     <a>Website Design</a>
                     <a>Web Development</a>
                     <a>E-commerce Solutions</a>
                     <a>SEO & Digital Marketing</a>
                     <a>Website Support</a>
-                </div>
-                <div class="footer-column">
+            </div>
+            <div class="footer-column">
                     <h3>Legal</h3>
-                    <a href="privacy.html" class="privacy">Privacy Policy</a>
-                    <a href="terms.html" class="terms">Terms of Service</a>
                     <div id="publicLegalDocuments"></div>
                 </div>
-                <div class="footer-column">
-                    <h3>Contact</h3>
-                    <p>✉️ Amplifiedsites@Outlook.com</p>
-                    <p>🗺️ Manitowoc, WI</p>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <p>✉️ Amplifiedsites@Outlook.com</p>
+                <p>🗺️ Manitowoc, WI</p>
+            </div>
+         <div class="copy-right">© 2026 Amplified Sites. All rights reserved.</div>
+         <div class="copy-right">Designed by Amplified Sites</div>
+    </footer>
+    <div id="asChatWindow" class="as-chat-window" hidden>
+                <!-- CHAT HEADER -->
+                <div class="as-chat-header">
+                    <div class="as-chat-header-info">
+                        <i class="fa-solid fa-headset"></i>
+                        <div>
+                            <h3>Amplified Sites Support</h3>
+                            <p>How can we help you?</p>
+                        </div>
+                    </div>
+                    <button
+                        type="button"
+                        id="asChatClose"
+                        class="as-chat-close"
+                        aria-label="Close chat window">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
                 </div>
-            <div class="copy-right">© 2026 Amplified Sites. All rights reserved.</div>
-            <div class="copy-right">Designed by Amplified Sites</div>
-        </footer>
-<div id="asChatWindow" class="as-chat-window" hidden>
-            <!-- CHAT HEADER -->
-            <div class="as-chat-header">
-                <div class="as-chat-header-info">
-                    <i class="fa-solid fa-headset"></i>
-                    <div>
-                        <h3>Amplified Sites Support</h3>
-                        <p>How can we help you?</p>
+                <!-- CUSTOMER INFORMATION FORM -->
+                <form id="asChatCustomerForm" class="as-chat-customer-form">
+                    <h3>Start a Conversation</h3>
+                    <p>
+                        Please enter your information before
+                        starting a live chat with us.
+                    </p>
+                    <label for="asChatCustomerName">Your Name *</label>
+                    <input
+                        type="text"
+                        id="asChatCustomerName"
+                        placeholder="Enter your full name"
+                        maxlength="100"
+                        autocomplete="name"
+                        required>
+                    <label for="asChatCustomerEmail">Email Address *</label>
+                    <input
+                        type="email"
+                        id="asChatCustomerEmail"
+                        placeholder="Example@Email.com"
+                        maxlength="254"
+                        autocomplete="email"
+                        required>
+                    <button type="submit" id="asChatStart">
+                        Start Chat
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </form>
+                <!-- CHAT MESSAGES -->
+                <div class="as-chat-messages" id="asChatMessages">
+                    <div class="as-chat-message support">
+                        Welcome to Amplified Sites!
+                        How can we help you today?
                     </div>
                 </div>
-                <button
-                    type="button"
-                    id="asChatClose"
-                    class="as-chat-close"
-                    aria-label="Close chat window">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-            <!-- CUSTOMER INFORMATION FORM -->
-            <form id="asChatCustomerForm" class="as-chat-customer-form">
-                <h3>Start a Conversation</h3>
-                <p>
-                    Please enter your information before
-                    starting a live chat with us.
-                </p>
-                <label for="asChatCustomerName">Your Name *</label>
-                <input
-                    type="text"
-                    id="asChatCustomerName"
-                    placeholder="Enter your full name"
-                    maxlength="100"
-                    autocomplete="name"
-                    required>
-                <label for="asChatCustomerEmail">Email Address *</label>
-                <input
-                    type="email"
-                    id="asChatCustomerEmail"
-                    placeholder="Example@Email.com"
-                    maxlength="254"
-                    autocomplete="email"
-                    required>
-                <button type="submit" id="asChatStart">
-                    Start Chat
-                    <i class="fa-solid fa-arrow-right"></i>
-                </button>
-            </form>
-            <!-- CHAT MESSAGES -->
-            <div class="as-chat-messages" id="asChatMessages">
-                <div class="as-chat-message support">
-                    Welcome to Amplified Sites!
-                    How can we help you today?
-                </div>
-            </div>
-            <!-- END CHAT CONFIRMATION -->
-            <div id="asChatEndConfirm" class="as-chat-confirm" hidden>
-                <div class="as-chat-confirm-box">
-                    <i class="fa-solid fa-circle-exclamation"></i>
-                    <h3>End Conversation?</h3>
-                    <p>Are you sure you want to end this chat?</p>
-                    <div class="as-chat-confirm-actions">
-                        <button type="button" id="asChatCancelEnd">
-                            Cancel
-                        </button>
-                        <button type="button" id="asChatConfirmEnd">
-                            Yes, End Chat
-                        </button>
+                <!-- END CHAT CONFIRMATION -->
+                <div id="asChatEndConfirm" class="as-chat-confirm" hidden>
+                    <div class="as-chat-confirm-box">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <h3>End Conversation?</h3>
+                        <p>Are you sure you want to end this chat?</p>
+                        <div class="as-chat-confirm-actions">
+                            <button type="button" id="asChatCancelEnd">
+                                Cancel
+                            </button>
+                            <button type="button" id="asChatConfirmEnd">
+                                Yes, End Chat
+                            </button>
+                        </div>
                     </div>
                 </div>
+                <!-- END CHAT BUTTON -->
+                <div class="as-chat-end-area">
+                    <button type="button" id="asChatEnd">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                        End Chat
+                    </button>
+                </div>
+                <!-- CHAT INPUT -->
+                <div class="as-chat-input-area">
+                    <input
+                        type="text"
+                        id="asChatInput"
+                        placeholder="Type your message..."
+                        maxlength="2000"
+                        aria-label="Chat message">
+                    <button
+                        type="button"
+                        id="asChatSend"
+                        aria-label="Send message">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </div>
             </div>
-            <!-- END CHAT BUTTON -->
-            <div class="as-chat-end-area">
-                <button type="button" id="asChatEnd">
-                    <i class="fa-solid fa-circle-xmark"></i>
-                    End Chat
-                </button>
-            </div>
-            <!-- CHAT INPUT -->
-            <div class="as-chat-input-area">
-                <input
-                    type="text"
-                    id="asChatInput"
-                    placeholder="Type your message..."
-                    maxlength="2000"
-                    aria-label="Chat message">
-                <button
-                    type="button"
-                    id="asChatSend"
-                    aria-label="Send message">
-                    <i class="fa-solid fa-paper-plane"></i>
-                </button>
-            </div>
-        </div>
-        <button
-            type="button"
-            id="asChatToggle"
-            aria-label="Open live chat">
-            <i class="fa-solid fa-comments"></i>
-        </button>
-    </body>
-</html>
+            <button
+                type="button"
+                id="asChatToggle"
+                aria-label="Open live chat">
+                <i class="fa-solid fa-comments"></i>
+            </button>
+        </body>
+    </html>
