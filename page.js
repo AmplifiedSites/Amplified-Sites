@@ -516,12 +516,9 @@ function initializePortfolioCarousel() {
     const prev = document.getElementById("portfolioPrev");
     const next = document.getElementById("portfolioNext");
     const dotsContainer = document.getElementById("portfolioCarouselDots");
-    const carousel = document.querySelector(".portfolio-carousel");
 
-    if (!cards.length || !prev || !next || !dotsContainer || !carousel) return;
-
+    if (!cards.length || !prev || !next || !dotsContainer) return;
     let currentIndex = 0;
-    let autoRotate = null;
 
     dotsContainer.innerHTML = "";
 
@@ -534,7 +531,6 @@ function initializePortfolioCarousel() {
         dot.addEventListener("click", () => {
             currentIndex = index;
             updateCarousel();
-            restartAutoRotate();
         });
 
         dotsContainer.appendChild(dot);
@@ -576,35 +572,6 @@ function initializePortfolioCarousel() {
         });
     }
 
-    // ==========================================
-    // AUTOMATIC ROTATION
-    // ==========================================
-
-    function stopAutoRotate() {
-        clearInterval(autoRotate);
-        autoRotate = null;
-    }
-
-    function startAutoRotate() {
-
-        stopAutoRotate();
-
-        if (cards.length <= 1 || document.hidden ||
-            window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-            return;
-        }
-
-        autoRotate = setInterval(() => {
-            currentIndex = (currentIndex + 1) % cards.length;
-            updateCarousel();
-        }, 5000);
-    }
-
-    function restartAutoRotate() {
-        startAutoRotate();
-    }
-
-
 // ==========================================
 // CLICK SIDE PROJECT TO ROTATE
 // ==========================================
@@ -621,7 +588,6 @@ cards.forEach((card, index) => {
         currentIndex = index;
 
         updateCarousel();
-        restartAutoRotate();
     });
 
 });
@@ -633,40 +599,16 @@ cards.forEach((card, index) => {
     prev.addEventListener("click", () => {
         currentIndex = (currentIndex - 1 + cards.length) % cards.length;
         updateCarousel();
-        restartAutoRotate();
     });
 
     next.addEventListener("click", () => {
         currentIndex = (currentIndex + 1) % cards.length;
         updateCarousel();
-        restartAutoRotate();
-    });
-
-    // Pause while the visitor is viewing a project
-    carousel.addEventListener("mouseenter", stopAutoRotate);
-    carousel.addEventListener("mouseleave", startAutoRotate);
-
-    // Pause while using keyboard navigation
-    carousel.addEventListener("focusin", stopAutoRotate);
-    carousel.addEventListener("focusout", event => {
-        if (!carousel.contains(event.relatedTarget)) {
-            startAutoRotate();
-        }
-    });
-
-    // Pause when the browser tab is hidden
-    document.addEventListener("visibilitychange", () => {
-        if (document.hidden) {
-            stopAutoRotate();
-        } else {
-            startAutoRotate();
-        }
     });
 
     window.addEventListener("resize", updateCarousel);
 
     updateCarousel();
-    startAutoRotate();
 }
 
 // ==========================================
