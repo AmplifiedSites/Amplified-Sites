@@ -92,13 +92,30 @@
                     <span class="portfolio-eyebrow">Our Projects</span>
                     <h2>Featured <span>Projects</span></h2>
                 </div>
-                <div class="portfolio-project-grid" id="portfolioProjectGrid">
+                <div class="portfolio-carousel">
+                    <button
+                        type="button"
+                        class="portfolio-carousel-prev"
+                        id="portfolioPrev"
+                        aria-label="Previous project">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <div class="portfolio-project-grid" id="portfolioProjectGrid">
                         <div class="portfolio-empty-state">
-                        <div class="portfolio-empty-icon" aria-hidden="true">✦</div>
-                        <h3>More Projects Coming Soon</h3>
-                        <p>Our portfolio is growing. Check back to explore new websites and creative work.</p>
+                            <div class="portfolio-empty-icon" aria-hidden="true">✦</div>
+                            <h3>More Projects Coming Soon</h3>
+                            <p>Our portfolio is growing. Check back to explore new websites and creative work.</p>
+                        </div>
                     </div>
+                    <button
+                        type="button"
+                        class="portfolio-carousel-next"
+                        id="portfolioNext"
+                        aria-label="Next project">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
                 </div>
+                <div class="portfolio-carousel-dots" id="portfolioCarouselDots"></div>
             </section>
             <section class="portfolio-cta">
                 <span class="portfolio-eyebrow">YOUR IDEA IS NEXT</span>
