@@ -15,6 +15,7 @@
     <script defer src="supabase-public.js"></script>
     <script defer src="success.js"></script>
     <script src="viewpackage.js" defer></script>
+    <script src="legal-public.js" defer></script>
     <script defer src="page.js"></script>
     <link rel="stylesheet" href="chatbox.css">
     <script defer src="chatbox.js"></script>
@@ -49,7 +50,7 @@
                 <h2>Your Order Number</h2>
                 <div class="order-number-box">
                     <span id="orderNumber">
-                        AMP15FDS6F
+                        Loading...
                     </span>
                     <button id="copyBtn" class="copy-btn">
                         <i class="far fa-copy"></i>
@@ -65,7 +66,7 @@
                         <div>
                             <h3>Package Selected</h3>
                             <p id="packageName">
-                                <strong>Standard 5 Page Website</strong>
+                                <strong>Loading...</strong>
                             </p>
                         </div>
                     </div>
@@ -76,7 +77,7 @@
                         <div>
                             <h3>Remaining Balance Paid</h3>
                             <p id="depositPaid">
-                                <strong>$350</strong>
+                                <strong>Loading...</strong>
                             </p>
                         </div>
                     </div>
@@ -87,7 +88,7 @@
                         <div>
                             <h3>Payment Status</h3>
                             <p id="paymentStatus">
-                                <strong>Fully Paid</strong>
+                                <strong>Loading...</strong>
                             </p>
                         </div>
                     </div>
@@ -98,7 +99,7 @@
                         <div>
                             <h3>Project Stage</h3>
                             <p id="projectStatus">
-                            <strong>Completed</strong>
+                            <strong>Loading...</strong>
                             </p>
                         </div>
                     </div>
@@ -132,37 +133,36 @@
         </section>
     </main>
     <footer>
-        <div class="footer-grid">
-            <div class="footer-column">
-                <div class="footer-logo">
-                    <img src="ampsiteslogo.png" alt="get-in-touch">
-                    <h2>Amplified Sites</h2>
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="ampsiteslogo.png" alt="get-in-touch" />
+
+                        <h2>Amplified Sites</h2>
+                    </div>
+                    <p>Building simple, beautiful websites for businesses.</p>
                 </div>
-                 <p>
-                    Building simple, beautiful websites for businesses.
-                </p>
-            </div>
-            <div class="footer-column">
-                <h3>Services</h3>
+                <div class="footer-column">
+                    <h3>Services</h3>
                     <a>Website Design</a>
                     <a>Web Development</a>
                     <a>E-commerce Solutions</a>
                     <a>SEO & Digital Marketing</a>
                     <a>Website Support</a>
-            </div>
-            <div class="footer-column">
+                </div>
+                <div class="footer-column">
                     <h3>Legal</h3>
                     <div id="publicLegalDocuments"></div>
                 </div>
-            <div class="footer-column">
-                <h3>Contact</h3>
-                <p>✉️ Amplifiedsites@Outlook.com</p>
-                <p>🗺️ Manitowoc, WI</p>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <p>✉️ Amplifiedsites@Outlook.com</p>
+                    <p>🗺️ Manitowoc, WI</p>
+                </div>
+                <div class="copy-right">© 2026 Amplified Sites. All rights reserved.</div>
             </div>
-         <div class="copy-right">© 2026 Amplified Sites. All rights reserved.</div>
-         <div class="copy-right">Designed by Amplified Sites</div>
-    </footer>
-<div id="asChatWindow" class="as-chat-window" hidden>
+        </footer>
+        <div id="asChatWindow" class="as-chat-window" hidden>
             <!-- CHAT HEADER -->
             <div class="as-chat-header">
                 <div class="as-chat-header-info">
