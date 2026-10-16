@@ -11,13 +11,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script defer src="supabase-public.js"></script>
     <script defer src="page.js"></script>
+    <script src="viewpackage.js" defer></script>
     <link rel="stylesheet" href="chatbox.css">
     <script defer src="chatbox.js"></script>
+    <title>Amplified Sites</title>
 </head>
-<body class="main-about">
+<body class="view-package-body">
     <canvas id="background"></canvas>
-    <header class="about-hero">
+    <header class="view-package-hero">
         <nav class="navbar">
             <div class="logo">
                 <a href="index.html"><img src="ampsiteslogo.png" alt="ampsiteslogo"></a>
@@ -28,70 +32,95 @@
                 <li><a href="trackprogress.html">Order Status</a></li>
                 <li><a href="remaining-balance.html">Balance Due</a></li>
             </ul>
-            <a href="viewpackage.html" class="quote-btn">View Package</a>
+            <a href="start-journey.html" class="quote-btn">Start Your Journey</a>
         </nav>
     </header>
-    <section class="about">
-        <div class="about-container">
-            <div class="about-image">
-                <img src="amp-logo.png" alt="Laptop2">
-            </div>
-            <div class="about-text">
-            <div class="about-me">About Me</div>
-            <h2>Hi, I’m Jerry</h2>
+    <section class="pricing-section" id="package">
+        <div class="pricing-header">
+            <span class="pricing-tag">
+                CHOOSE YOUR PLAN
+            </span>
+            <h2>Our <span>Packages</span></h2>
             <p>
-                I started Amplified Sites because I genuinely enjoy 
-                web design and creating websites. 
-                What began as a hobby quickly became something 
-                I wanted to turn into a business that helps others. 
-                I understand that many small businesses don't have the time, 
-                resources, or budget for a large agency, and that's where I aim to help.
+                Once you have received your custom website concept and 
+                reviewed the design direction,
+                submit your <br>non-refundable 50% deposit to secure 
+                your project and begin the website development process.
             </p>
-            <p>
-                My focus is on creating clean, modern websites that 
-                represent your business professionally and make it 
-                easier for customers to find and trust you online. 
-                As I continue to grow Amplified Sites, my goal is to 
-                become a trusted partner for small businesses looking 
-                to build their online presence and reach new opportunities.
-            </p>
-            <a href="start-journey.html" class="about-btn">Start Your Journey ➜</a>    
-            </div>
         </div>
-    </section>
-      <footer>
-        <div class="footer-grid">
-            <div class="footer-column">
-                <div class="footer-logo">
-                    <img src="ampsiteslogo.png" alt="get-in-touch">
-                    <h2>Amplified Sites</h2>
+        <!-- ================= DYNAMIC WEBSITE PACKAGES ================= -->
+        <div class="pricing-grid" id="pricingGrid">
+            <p class="packages-loading">
+                Loading website packages...
+            </p>
+        </div>
+        </section>    
+        <!-- ================= EXTRA ADD ONS ================= -->
+        <section class="add-on">
+            <div class="extra-add">
+                <h3>
+                    Extra <span>Add-Ons</span>
+                </h3>
+                <p class="addons-description">
+                    Enhance your website with additional features,
+                    custom functionality, and ongoing web support
+                    for your business.
+                </p>
+                <div class="addons-features">
+                    <div class="addons-feature">
+                        <i class="fa-solid fa-puzzle-piece"></i>
+                        <h4>Custom Features</h4>
+                    </div>
+                    <div class="addons-feature">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                        <h4>Website Support</h4>
+                    </div>
+                    <div class="addons-feature">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <h4>Additional Services</h4>
+                    </div>
                 </div>
-                 <p>
-                    Building simple, beautiful websites for businesses.
+                <p class="addons-pricing">
+                    <i class="fa-solid fa-circle-info"></i>
+                    Pricing varies depending on the type,
+                    complexity, and scope of the requested add-on.
                 </p>
             </div>
-            <div class="footer-column">
-                <h3>Services</h3>
+        </section>
+        <footer>
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="ampsiteslogo.png" alt="get-in-touch">
+                        <h2>Amplified Sites</h2>
+                    </div>
+                    <p>
+                        Building simple, beautiful websites for businesses.
+                    </p>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
                     <a>Website Design</a>
                     <a>Web Development</a>
                     <a>E-commerce Solutions</a>
                     <a>SEO & Digital Marketing</a>
                     <a>Website Support</a>
-            </div>
-            <div class="footer-column">
-                <h3>Legal</h3>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
                     <a href="privacy.html" class="privacy">Privacy Policy</a>
                     <a href="terms.html" class="terms">Terms of Service</a>
-            </div>
-            <div class="footer-column">
-                <h3>Contact</h3>
-                <p>✉️ Amplifiedsites@Outlook.com</p>
-                <p>🗺️ Manitowoc, WI</p>
-            </div>
-         <div class="copy-right">© 2026 Amplified Sites. All rights reserved.</div>
-         <div class="copy-right">Designed by Amplified Sites</div>
-    </footer>
-    <div id="asChatWindow" class="as-chat-window" hidden>
+                    <div id="publicLegalDocuments"></div>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <p>✉️ Amplifiedsites@Outlook.com</p>
+                    <p>🗺️ Manitowoc, WI</p>
+                </div>
+            <div class="copy-right">© 2026 Amplified Sites. All rights reserved.</div>
+            <div class="copy-right">Designed by Amplified Sites</div>
+        </footer>
+<div id="asChatWindow" class="as-chat-window" hidden>
             <!-- CHAT HEADER -->
             <div class="as-chat-header">
                 <div class="as-chat-header-info">
