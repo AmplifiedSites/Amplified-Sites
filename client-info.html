@@ -11,16 +11,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="chatbox.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script defer src="supabase-public.js"></script>
     <script defer src="page.js"></script>
     <script defer src="legal-public.js"></script>
-    <script defer src="client-info.js"></script>
-    <link rel="stylesheet" href="chatbox.css">
     <script defer src="chatbox.js"></script>
-</head>
-<body>
+<body class="main-about">
     <canvas id="background"></canvas>
-    <header class="client-hero">
+    <header class="about-hero">
         <nav class="navbar">
             <div class="logo">
                 <a href="index.html"><img src="ampsiteslogo.png" alt="ampsiteslogo"></a>
@@ -34,57 +33,35 @@
             <a href="viewpackage.html" class="quote-btn">View Package</a>
         </nav>
     </header>
-     <section class="client-info">
-        <div id="customers">
-            <div class="info1">
-               <form class="inform-form" id="clientForm">
-                    <h3>Please provide your information below<br> to proceed with your order</h3>
-                    <input type="hidden" name="_next" value="https://amplifiedsites.com/thankyoupage.html">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_autoresponse" value="Thank you for contacting Amplified Sites. We received your project details and will get back to you within 24 hours.">
-                    <p>
-                        <span class="contactinfo">Full Name</span>
-                        <input
-                            id="name"
-                            type="text"
-                            name="name"
-                            placeholder="John Doe"
-                            required>
-                    </p>
-                    <p>
-                        <span class="contactinfo">Email</span>
-                        <input
-                            id="email"
-                            type="email"
-                            name="email"
-                            placeholder="you@example.com"
-                            required>
-                    </p>
-                    <p>
-                        <span class="contactinfo">Phone Number *</span>
-                        <input
-                            id="phone"
-                            type="tel"
-                            name="phone"
-                            placeholder="555-555-5555"
-                            required>
-                    </p>
-                    <p>
-                        <span class="contactinfo">Business Name (Optional)</span>
-                        <input
-                            id="business"
-                            type="text"
-                            name="business"
-                            placeholder="Your Business Name">
-                    </p>
-                    <p><button class="btn primary" type="submit">Continue to Payment <i class="fas fa-arrow-right"></i></button></p>
-                    <p class="sec-inform">🔒 Your information is secure and will never be shared.</p>
-                </form>
+    <section class="about">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="amp-logo.png" alt="Laptop2">
+            </div>
+            <div class="about-text">
+            <div class="about-me">About Me</div>
+            <h2>Hi, I’m Jerry</h2>
+            <p>
+                I started Amplified Sites because I genuinely enjoy 
+                web design and creating websites. 
+                What began as a hobby quickly became something 
+                I wanted to turn into a business that helps others. 
+                I understand that many small businesses don't have the time, 
+                resources, or budget for a large agency, and that's where I aim to help.
+            </p>
+            <p>
+                My focus is on creating clean, modern websites that 
+                represent your business professionally and make it 
+                easier for customers to find and trust you online. 
+                As I continue to grow Amplified Sites, my goal is to 
+                become a trusted partner for small businesses looking 
+                to build their online presence and reach new opportunities.
+            </p>
+            <a href="start-journey.html" class="about-btn">Start Your Journey ➜</a>    
             </div>
         </div>
-     </section>
-     <footer>
+    </section>
+      <footer>
         <div class="footer-grid">
             <div class="footer-column">
                 <div class="footer-logo">
@@ -113,105 +90,104 @@
                 <p>🗺️ Manitowoc, WI</p>
             </div>
          <div class="copy-right">© 2026 Amplified Sites. All rights reserved.</div>
-         <div class="copy-right">Designed by Amplified Sites</div>
     </footer>
     <div id="asChatWindow" class="as-chat-window" hidden>
-                <!-- CHAT HEADER -->
-                <div class="as-chat-header">
-                    <div class="as-chat-header-info">
-                        <i class="fa-solid fa-headset"></i>
-                        <div>
-                            <h3>Amplified Sites Support</h3>
-                            <p>How can we help you?</p>
-                        </div>
-                    </div>
-                    <button
-                        type="button"
-                        id="asChatClose"
-                        class="as-chat-close"
-                        aria-label="Close chat window">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-                <!-- CUSTOMER INFORMATION FORM -->
-                <form id="asChatCustomerForm" class="as-chat-customer-form">
-                    <h3>Start a Conversation</h3>
-                    <p>
-                        Please enter your information before
-                        starting a live chat with us.
-                    </p>
-                    <label for="asChatCustomerName">Your Name *</label>
-                    <input
-                        type="text"
-                        id="asChatCustomerName"
-                        placeholder="Enter your full name"
-                        maxlength="100"
-                        autocomplete="name"
-                        required>
-                    <label for="asChatCustomerEmail">Email Address *</label>
-                    <input
-                        type="email"
-                        id="asChatCustomerEmail"
-                        placeholder="Example@Email.com"
-                        maxlength="254"
-                        autocomplete="email"
-                        required>
-                    <button type="submit" id="asChatStart">
-                        Start Chat
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                </form>
-                <!-- CHAT MESSAGES -->
-                <div class="as-chat-messages" id="asChatMessages">
-                    <div class="as-chat-message support">
-                        Welcome to Amplified Sites!
-                        How can we help you today?
+            <!-- CHAT HEADER -->
+            <div class="as-chat-header">
+                <div class="as-chat-header-info">
+                    <i class="fa-solid fa-headset"></i>
+                    <div>
+                        <h3>Amplified Sites Support</h3>
+                        <p>How can we help you?</p>
                     </div>
                 </div>
-                <!-- END CHAT CONFIRMATION -->
-                <div id="asChatEndConfirm" class="as-chat-confirm" hidden>
-                    <div class="as-chat-confirm-box">
-                        <i class="fa-solid fa-circle-exclamation"></i>
-                        <h3>End Conversation?</h3>
-                        <p>Are you sure you want to end this chat?</p>
-                        <div class="as-chat-confirm-actions">
-                            <button type="button" id="asChatCancelEnd">
-                                Cancel
-                            </button>
-                            <button type="button" id="asChatConfirmEnd">
-                                Yes, End Chat
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- END CHAT BUTTON -->
-                <div class="as-chat-end-area">
-                    <button type="button" id="asChatEnd">
-                        <i class="fa-solid fa-circle-xmark"></i>
-                        End Chat
-                    </button>
-                </div>
-                <!-- CHAT INPUT -->
-                <div class="as-chat-input-area">
-                    <input
-                        type="text"
-                        id="asChatInput"
-                        placeholder="Type your message..."
-                        maxlength="2000"
-                        aria-label="Chat message">
-                    <button
-                        type="button"
-                        id="asChatSend"
-                        aria-label="Send message">
-                        <i class="fa-solid fa-paper-plane"></i>
-                    </button>
+                <button
+                    type="button"
+                    id="asChatClose"
+                    class="as-chat-close"
+                    aria-label="Close chat window">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <!-- CUSTOMER INFORMATION FORM -->
+            <form id="asChatCustomerForm" class="as-chat-customer-form">
+                <h3>Start a Conversation</h3>
+                <p>
+                    Please enter your information before
+                    starting a live chat with us.
+                </p>
+                <label for="asChatCustomerName">Your Name *</label>
+                <input
+                    type="text"
+                    id="asChatCustomerName"
+                    placeholder="Enter your full name"
+                    maxlength="100"
+                    autocomplete="name"
+                    required>
+                <label for="asChatCustomerEmail">Email Address *</label>
+                <input
+                    type="email"
+                    id="asChatCustomerEmail"
+                    placeholder="Example@Email.com"
+                    maxlength="254"
+                    autocomplete="email"
+                    required>
+                <button type="submit" id="asChatStart">
+                    Start Chat
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </form>
+            <!-- CHAT MESSAGES -->
+            <div class="as-chat-messages" id="asChatMessages">
+                <div class="as-chat-message support">
+                    Welcome to Amplified Sites!
+                    How can we help you today?
                 </div>
             </div>
-            <button
-                type="button"
-                id="asChatToggle"
-                aria-label="Open live chat">
-                <i class="fa-solid fa-comments"></i>
-            </button>
-        </body>
-    </html>
+            <!-- END CHAT CONFIRMATION -->
+            <div id="asChatEndConfirm" class="as-chat-confirm" hidden>
+                <div class="as-chat-confirm-box">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <h3>End Conversation?</h3>
+                    <p>Are you sure you want to end this chat?</p>
+                    <div class="as-chat-confirm-actions">
+                        <button type="button" id="asChatCancelEnd">
+                            Cancel
+                        </button>
+                        <button type="button" id="asChatConfirmEnd">
+                            Yes, End Chat
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- END CHAT BUTTON -->
+            <div class="as-chat-end-area">
+                <button type="button" id="asChatEnd">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                    End Chat
+                </button>
+            </div>
+            <!-- CHAT INPUT -->
+            <div class="as-chat-input-area">
+                <input
+                    type="text"
+                    id="asChatInput"
+                    placeholder="Type your message..."
+                    maxlength="2000"
+                    aria-label="Chat message">
+                <button
+                    type="button"
+                    id="asChatSend"
+                    aria-label="Send message">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+        <button
+            type="button"
+            id="asChatToggle"
+            aria-label="Open live chat">
+            <i class="fa-solid fa-comments"></i>
+        </button>
+    </body>
+</html>
