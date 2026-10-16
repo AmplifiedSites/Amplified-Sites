@@ -448,9 +448,19 @@ async function loadPortfolioProjects() {
 
         imageLink.appendChild(image);
 
-        imageLink.addEventListener("click", () => {
-            openPortfolioGallery(project);
-        });
+        imageLink.addEventListener("click", (event) => {
+
+        const activeCard = document.querySelector(
+            "#portfolioProjectGrid .portfolio-project-card[data-active='true']"
+        );
+
+        if (card !== activeCard) {
+            event.preventDefault();
+            return;
+        }
+
+        openPortfolioGallery(project);
+    });
 
         const content = document.createElement("div");
         content.className = "portfolio-project-content";
@@ -554,8 +564,10 @@ function initializePortfolioCarousel() {
 
             card.style.zIndex = String(10 - distance);
             card.style.opacity = visible ? "1" : "0";
-            card.style.pointerEvents = distance === 0 ? "auto" : "none";
+            card.style.pointerEvents = visible ? "auto" : "none";
+            card.style.cursor = distance === 0 ? "default" : "pointer";
             card.style.visibility = visible ? "visible" : "hidden";
+            card.dataset.active = String(distance === 0);
         });
 
         dots.forEach((dot, index) => {
@@ -591,6 +603,28 @@ function initializePortfolioCarousel() {
     function restartAutoRotate() {
         startAutoRotate();
     }
+
+
+// ==========================================
+// CLICK SIDE PROJECT TO ROTATE
+// ==========================================
+
+cards.forEach((card, index) => {
+
+    card.addEventListener("click", (event) => {
+
+        if (index === currentIndex) return;
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        currentIndex = index;
+
+        updateCarousel();
+        restartAutoRotate();
+    });
+
+});
 
     // ==========================================
     // MANUAL CONTROLS
