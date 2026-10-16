@@ -10885,6 +10885,18 @@ footer{
 }
 
 /* ==========================================
+   LEGAL FOOTER LINKS
+========================================== */
+
+#publicLegalDocuments a {
+    transition: color 0.3s ease;
+}
+
+#publicLegalDocuments a:hover {
+    color: #3b82f6;
+}
+
+/* ==========================================
    FOOTER RESPONSIVE
 ========================================== */
 
