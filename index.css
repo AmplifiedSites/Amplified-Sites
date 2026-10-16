@@ -5743,10 +5743,24 @@ img {
 
 /* MOBILE */
 
+/* MOBILE - PORTFOLIO IMAGE */
+
 @media (max-width: 768px) {
+
     .portfolio-project-card .portfolio-project-image {
-        height: 220px !important;
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 16 / 10 !important;
+        overflow: hidden;
     }
+
+    .portfolio-project-card .portfolio-project-image img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center !important;
+    }
+
 }
 
 /* Mobile spacing */
