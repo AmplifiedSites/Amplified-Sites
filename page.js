@@ -485,10 +485,155 @@ async function loadPortfolioProjects() {
         card.appendChild(imageLink);
         card.appendChild(content);
 
-        portfolioGrid.appendChild(card);
+                portfolioGrid.appendChild(card);
     });
+
+    // INITIALIZE 3D CAROUSEL
+    initializePortfolioCarousel();
 }
 
+
+// ==========================================
+// 3D PORTFOLIO CAROUSEL
+// AUTOMATIC + MANUAL ROTATION
+// ==========================================
+function initializePortfolioCarousel() {
+
+    const cards = Array.from(
+        document.querySelectorAll("#portfolioProjectGrid .portfolio-project-card")
+    );
+
+    const prev = document.getElementById("portfolioPrev");
+    const next = document.getElementById("portfolioNext");
+    const dotsContainer = document.getElementById("portfolioCarouselDots");
+    const carousel = document.querySelector(".portfolio-carousel");
+
+    if (!cards.length || !prev || !next || !dotsContainer || !carousel) return;
+
+    let currentIndex = 0;
+    let autoRotate = null;
+
+    dotsContainer.innerHTML = "";
+
+    const dots = cards.map((card, index) => {
+
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.setAttribute("aria-label", `Show project ${index + 1}`);
+
+        dot.addEventListener("click", () => {
+            currentIndex = index;
+            updateCarousel();
+            restartAutoRotate();
+        });
+
+        dotsContainer.appendChild(dot);
+        return dot;
+    });
+
+    function updateCarousel() {
+
+        const mobile = window.innerWidth <= 768;
+
+        cards.forEach((card, index) => {
+
+            let offset = index - currentIndex;
+
+            if (offset > cards.length / 2) offset -= cards.length;
+            if (offset < -cards.length / 2) offset += cards.length;
+
+            const distance = Math.abs(offset);
+            const visible = distance <= 2;
+
+            const x = mobile ? offset * 65 : offset * 260;
+            const scale = distance === 0 ? 1 : distance === 1 ? 0.82 : 0.65;
+            const rotation = mobile ? 0 : offset * -12;
+
+            card.style.transform =
+                `translateX(calc(-50% + ${x}px)) scale(${scale}) rotateY(${rotation}deg)`;
+
+            card.style.zIndex = String(10 - distance);
+            card.style.opacity = visible ? "1" : "0";
+            card.style.pointerEvents = distance === 0 ? "auto" : "none";
+            card.style.visibility = visible ? "visible" : "hidden";
+        });
+
+        dots.forEach((dot, index) => {
+            dot.classList.toggle("active", index === currentIndex);
+            dot.setAttribute("aria-current", String(index === currentIndex));
+        });
+    }
+
+    // ==========================================
+    // AUTOMATIC ROTATION
+    // ==========================================
+
+    function stopAutoRotate() {
+        clearInterval(autoRotate);
+        autoRotate = null;
+    }
+
+    function startAutoRotate() {
+
+        stopAutoRotate();
+
+        if (cards.length <= 1 || document.hidden ||
+            window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            return;
+        }
+
+        autoRotate = setInterval(() => {
+            currentIndex = (currentIndex + 1) % cards.length;
+            updateCarousel();
+        }, 5000);
+    }
+
+    function restartAutoRotate() {
+        startAutoRotate();
+    }
+
+    // ==========================================
+    // MANUAL CONTROLS
+    // ==========================================
+
+    prev.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+        updateCarousel();
+        restartAutoRotate();
+    });
+
+    next.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % cards.length;
+        updateCarousel();
+        restartAutoRotate();
+    });
+
+    // Pause while the visitor is viewing a project
+    carousel.addEventListener("mouseenter", stopAutoRotate);
+    carousel.addEventListener("mouseleave", startAutoRotate);
+
+    // Pause while using keyboard navigation
+    carousel.addEventListener("focusin", stopAutoRotate);
+    carousel.addEventListener("focusout", event => {
+        if (!carousel.contains(event.relatedTarget)) {
+            startAutoRotate();
+        }
+    });
+
+    // Pause when the browser tab is hidden
+    document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+            stopAutoRotate();
+        } else {
+            startAutoRotate();
+        }
+    });
+
+    window.addEventListener("resize", updateCarousel);
+
+    updateCarousel();
+    startAutoRotate();
+}
 
 // ==========================================
 // PORTFOLIO GALLERY POPUP
