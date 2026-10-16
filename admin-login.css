@@ -44,7 +44,7 @@ body {
 }
 
 h2 {
-    color: #469494;
+    color: #2563eb;
     text-align: center;
     margin-bottom: 25px;
 }
@@ -69,7 +69,7 @@ button {
     width: 100%;
     padding: 12px;
     margin-top: 15px;
-    background: #1b6785;
+    background: #2563eb;
     border: none;
     border-radius: 8px;
     color: white;
@@ -685,21 +685,54 @@ body {
     text-decoration: underline;
 }
 
-/* ==========================================
-   IPHONE INPUT AUTO-ZOOM FIX
-========================================== */
+/* ================================
+   MOBILE
+================================ */
 
-#loginForm input,
-#forgotPasswordForm input,
-#resetPasswordForm input {
-    font-size: 16px !important;
-    line-height: 1.5;
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
+@media (max-width: 900px) {
+
+    body {
+        height: auto;
+        padding: 40px 15px;
+    }
+
+    .amp-reset {
+        min-height: auto;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .amp-image {
+        padding: 20px;
+    }
+
+    .amp-image img {
+        width: 220px;
+    }
+
+    #resetPasswordForm {
+        width: 100%;
+        max-width: 420px;
+        padding: 35px 25px;
+    }
 }
 
+@media (max-width: 480px) {
+
+    .amp-image img {
+        width: 180px;
+    }
+
+    #resetPasswordForm {
+        padding: 30px 20px;
+    }
+
+    #resetPasswordForm h2 {
+        font-size: 23px;
+    }
+}
 /* ==========================================
-   ADMIN LOGIN / RESET - MOBILE RESPONSIVE
+   ADMIN LOGIN - MOBILE RESPONSIVE FIX
 ========================================== */
 
 @media (max-width: 900px) {
@@ -707,7 +740,6 @@ body {
     html,
     body {
         width: 100%;
-        max-width: 100%;
         min-height: 100%;
         height: auto;
         overflow-x: hidden;
@@ -718,10 +750,8 @@ body {
         padding: 0;
     }
 
-    .amp-login,
-    .amp-reset {
+    .amp-login {
         width: 100%;
-        min-height: 100vh;
         min-height: 100dvh;
         height: auto;
         padding: 30px 20px;
@@ -735,9 +765,6 @@ body {
     .amp-image {
         padding: 0;
         width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
 
     .amp-image img {
@@ -746,69 +773,41 @@ body {
         height: auto;
     }
 
-    /* LOGIN FORM */
-
-    #loginForm {
+    .login-container {
         width: 100%;
         max-width: 420px;
         padding: 30px 25px;
-        margin: 0 auto;
     }
 
-    /* RESET PASSWORD FORM */
-
-    #resetPasswordForm {
+    .login-container input {
         width: 100%;
-        max-width: 420px;
-        padding: 30px 25px;
-        margin: 0 auto;
-    }
-
-    /* IPHONE INPUT ZOOM FIX */
-
-    #loginForm input,
-    #resetPasswordForm input,
-    #forgotPasswordForm input {
-        width: 100%;
-        max-width: 100%;
         font-size: 16px;
         min-height: 44px;
     }
 
-    #loginForm button,
-    #resetPasswordForm button {
-        width: 100%;
+    .login-container button {
         font-size: 16px;
         min-height: 44px;
     }
 }
 
-/* ==========================================
-   SMALL PHONES
-========================================== */
+/* SMALL PHONES */
 
 @media (max-width: 480px) {
 
-    .amp-login,
-    .amp-reset {
+    .amp-login {
         padding: 20px 15px;
-        gap: 15px;
     }
 
     .amp-image img {
         width: 150px;
     }
 
-    #loginForm,
-    #resetPasswordForm {
-        width: 100%;
+    .login-container {
         padding: 25px 20px;
     }
 
-    #loginForm h2,
-    #resetPasswordForm h2 {
+    .login-container h2 {
         font-size: 24px;
-        text-align: center;
     }
 }
-
