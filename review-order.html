@@ -11,9 +11,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script defer src="supabase-public.js"></script>
+    <script src="legal-public.js" defer></script>
     <script defer src="page.js"></script>
-    <script defer src="legal-public.js"></script>
     <script defer src="review-order.js"></script>
     <link rel="stylesheet" href="chatbox.css">
     <script defer src="chatbox.js"></script>
@@ -49,8 +50,8 @@
                         <a href="viewpackage.html">Change</a>
                     </div>
                     <div class="package-summary">
-                        <h3 id="reviewPackage">Landing Page</h3>
-                        <span id="reviewPrice">$150</span>
+                        <h3 id="reviewPackage">Loading...</h3>
+                        <span id="reviewPrice">Loading...</span>
                     </div>
                    <ul class="package-features" id="packageFeatures"></ul>
                 </div>
@@ -87,15 +88,15 @@
                     <h2>Order Summary</h2>
                     <div class="summary-row">
                         <span>Website Package:</span>
-                        <strong id="summaryName">Landing Page</strong>
+                        <strong id="summaryName">Loading...</strong>
                     </div>
                     <div class="summary-row">
                         <span>Deposit Due Today:</span>
-                        <strong id="depositAmount">$75</strong>
+                        <strong id="depositAmount">Loading...</strong>
                     </div>
                     <div class="summary-row total-row">
                         <span>Total Project Cost:</span>
-                        <strong id="totalAmount">$150</strong>
+                        <strong id="totalAmount">Loading...</strong>
                     </div>
                     <button
                         id="checkoutBtn"
@@ -110,38 +111,37 @@
             </section>
         </section>
     </main>
-<footer>
-        <div class="footer-grid">
-            <div class="footer-column">
-                <div class="footer-logo">
-                    <img src="ampsiteslogo.png" alt="get-in-touch">
-                    <h2>Amplified Sites</h2>
+        <footer>
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="ampsiteslogo.png" alt="get-in-touch" />
+
+                        <h2>Amplified Sites</h2>
+                    </div>
+                    <p>Building simple, beautiful websites for businesses.</p>
                 </div>
-                 <p>
-                    Building simple, beautiful websites for businesses.
-                </p>
-            </div>
-            <div class="footer-column">
-                <h3>Services</h3>
+                <div class="footer-column">
+                    <h3>Services</h3>
                     <a>Website Design</a>
                     <a>Web Development</a>
                     <a>E-commerce Solutions</a>
                     <a>SEO & Digital Marketing</a>
                     <a>Website Support</a>
-            </div>
-            <div class="footer-column">
+                </div>
+                <div class="footer-column">
                     <h3>Legal</h3>
                     <div id="publicLegalDocuments"></div>
                 </div>
-            <div class="footer-column">
-                <h3>Contact</h3>
-                <p>✉️ Amplifiedsites@Outlook.com</p>
-                <p>🗺️ Manitowoc, WI</p>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <p>✉️ Amplifiedsites@Outlook.com</p>
+                    <p>🗺️ Manitowoc, WI</p>
+                </div>
+                <div class="copy-right">© 2026 Amplified Sites. All rights reserved.</div>
             </div>
-         <div class="copy-right">© 2026 Amplified Sites. All rights reserved.</div>
-         <div class="copy-right">Designed by Amplified Sites</div>
-    </footer>
-<div id="asChatWindow" class="as-chat-window" hidden>
+        </footer>
+        <div id="asChatWindow" class="as-chat-window" hidden>
             <!-- CHAT HEADER -->
             <div class="as-chat-header">
                 <div class="as-chat-header-info">
