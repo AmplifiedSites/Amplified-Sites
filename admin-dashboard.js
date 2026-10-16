@@ -1282,13 +1282,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // PAGE TITLES
     // =========================================
     const adminPageTitles = {
-        "dashboard-section": "Admin Dashboard",
-        "orders-section": "Orders",
-        "messages-section": "Messages",
-        "reviews-section": "Customer Reviews",
-        "packages-section": "Website Packages",
-        "legal-section": "Legal Documents"
-    };
+    "dashboard-section": "Dashboard",
+    "orders-section": "Orders",
+    "messages-section": "Messages",
+    "reviews-section": "Customer Reviews",
+    "portfolio-section": "Portfolio",
+    "packages-section": "Website Packages",
+    "legal-section": "Legal Documents"
+};
 
 
 
