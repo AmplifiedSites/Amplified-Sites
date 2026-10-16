@@ -28,11 +28,6 @@ async function loadPublicLegalDocuments() {
 
             (documents || []).forEach(doc => {
 
-                // Already have their own footer links
-                if (doc.slug === "terms" || doc.slug === "privacy") {
-                    return;
-                }
-
                 const link = document.createElement("a");
 
                 link.href =
