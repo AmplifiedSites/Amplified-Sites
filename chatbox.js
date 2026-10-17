@@ -383,8 +383,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 <br>
                 🕒 <strong>My Hours:</strong> Mon–Sun, 8 AM–4 PM CT
                 <br>
+                <br>
                 If I'm unavailable, please use the
-                <a href="https://amplifiedsites.com/contact.html"
+                <a href="https://amplifiedsites.com/start-journey.html"
                 target="_blank"
                 rel="noopener noreferrer"
                 style="color:#55a2ff; text-decoration:underline; font-weight:600;">
