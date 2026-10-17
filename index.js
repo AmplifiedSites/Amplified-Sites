@@ -299,38 +299,7 @@ function animate() {
 
 animate();
 
- const hero = document.getElementById("heroContent");
 
-window.addEventListener("scroll", () => {
-    const scrollY = window.scrollY;
-    const fadeEnd = window.innerHeight * 0.8;
-    // Fade
-    let opacity = 1 - scrollY / fadeEnd;
-    opacity = Math.max(0, Math.min(1, opacity));
-    // Move upward as it fades
-    const translateY = Math.min(scrollY * 0.35, 120);
-    hero.style.opacity = opacity;
-    hero.style.transform = `translateY(-${translateY}px)`;
-});
-    // Section fade
-    const sections = document.querySelectorAll("section");
-  window.addEventListener("scroll", () => {
-    const triggerPoint = window.innerHeight * 0.8;
-    sections.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top < triggerPoint && rect.bottom > 0) {
-            const progress = Math.min(
-                (triggerPoint - rect.top) / triggerPoint,
-                1
-            );
-            section.style.opacity = progress;
-            section.style.transform = `translateY(${30 - progress * 30}px)`;
-        } else {
-            section.style.opacity = 0;
-            section.style.transform = "translateY(30px)";
-        }
-    });
-});
     // Services hidden section
   const cards = document.querySelectorAll(".as-feature-card");
   cards.forEach(card => {
@@ -700,3 +669,93 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 console.log("AMPLIFIED SITES REVIEW SCRIPT LOADED");
+
+
+/* ==========================================
+   HOMEPAGE - SMOOTH SCROLL FADE IN AND OUT
+========================================== */
+
+(() => {
+
+    function initializeScrollFade() {
+
+        const sections = document.querySelectorAll(
+            ".hero-content, .as-services-section, .as-process-section, .as-reviews-section"
+        );
+
+        if (sections.length === 0) {
+            console.warn("SCROLL FADE: No sections found.");
+            return;
+        }
+
+        console.log("SCROLL FADE LOADED:", sections.length, "sections");
+
+        function updateScrollFade() {
+
+            const screenHeight = window.innerHeight;
+            const fadeDistance = screenHeight * 1.5;
+
+            sections.forEach(section => {
+
+                const rect = section.getBoundingClientRect();
+
+                // Fade in when entering screen
+                const fadeIn = (screenHeight - rect.top) / fadeDistance;
+
+                // Fade out when leaving screen
+                const fadeOut = rect.bottom / fadeDistance;
+
+                // Calculate opacity
+                const opacity = Math.max(
+                    0,
+                    Math.min(1, fadeIn, fadeOut)
+                );
+
+                section.style.opacity = String(opacity);
+
+            });
+
+        }
+
+        let ticking = false;
+
+        function handleScroll() {
+
+            if (ticking) return;
+
+            ticking = true;
+
+            requestAnimationFrame(() => {
+
+                updateScrollFade();
+
+                ticking = false;
+
+            });
+
+        }
+
+        window.addEventListener("scroll", handleScroll, {
+            passive: true
+        });
+
+        window.addEventListener("resize", handleScroll);
+
+        updateScrollFade();
+
+    }
+
+    if (document.readyState === "loading") {
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            initializeScrollFade
+        );
+
+    } else {
+
+        initializeScrollFade();
+
+    }
+
+})();
