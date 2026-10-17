@@ -182,24 +182,29 @@ BACKGROUND CANVAS
     margin-bottom:45px;
 }
 
-/* ------------------------- */
-
-.buttons{
-    display:flex;
-    gap:25px;
-    
+.buttons {
+    display: flex;
+    gap: 25px;
+    position: relative;
+    z-index: 20;
+    align-items: center;
 }
 
-.primary{
-    padding:18px 38px;
-    background:linear-gradient(90deg,#2563eb,#1d4ed8);
-    border-radius:15px;
-    font-weight:600;
-    text-decoration:none;
-    color:white;
-    box-shadow:
-    0 0 40px rgba(37,99,235,.45);
-    transition:.35s;
+.primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 38px;
+    background: linear-gradient(135deg, #1875ff, #1250e8);
+    border: 2px solid #349aff;
+    border-radius: 15px;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 0 18px rgba(37, 99, 235, 0.7);
+    position: relative;
+    z-index: 20;
+    transition: 0.35s;
 }
 
 .primary:hover{
@@ -207,23 +212,27 @@ BACKGROUND CANVAS
     box-shadow: 0 0 70px #55a2ff;
 }
 
-.secondary{
-    padding:18px 30px;
-    text-decoration:none;
-    color:white;
-    font-weight:600;
-    transition:.35s;
-    background: transparent;
-    border: 2px solid #55a2ff;
-    border-radius:15px;
-    box-shadow:
-    0 0 40px rgba(37,99,235,.45);
-    transition:.35s;
+.secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 38px;
+    background: #071329;
+    border: 2px solid #00d9ff;
+    border-radius: 15px;
+    color: #ffffff;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 0 15px rgba(0, 217, 255, 0.5);
+    position: relative;
+    z-index: 20;
+    transition: 0.35s;
 }
 
-.secondary:hover{
-    color:#3b82f6;
-    transform:translateY(-4px);
+.secondary:hover {
+    background: #1250e8;
+    color: white;
+    transform: translateY(-4px);
 }
 
 /* ------------------------- */
@@ -1509,7 +1518,7 @@ img{
 
 .hero-content {
     position: relative;
-    top: -140px;
+    top: -190px;
     transform: none;
     transition: none;
 }
@@ -7756,9 +7765,6 @@ BACKGROUND CANVAS
     position: relative;
     overflow: hidden;
     background: url("earth.png") center bottom / cover no-repeat;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeIn 3s ease forwards;
     padding-bottom: 30rem;
 }
 @keyframes fadeIn {
