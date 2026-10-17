@@ -693,7 +693,7 @@ console.log("AMPLIFIED SITES REVIEW SCRIPT LOADED");
         function updateScrollFade() {
 
             const screenHeight = window.innerHeight;
-            const fadeDistance = screenHeight * 1.5;
+            const fadeDistance = screenHeight * 1.3;
 
             sections.forEach(section => {
 
