@@ -384,7 +384,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 Thank you for stopping by. How can I help you today?
                 <br>
                 <br>
-                My Hours: Monday–Sunday, 8:00 AM–4:00 PM CT
+                Hours: Mon–Sun, 8 AM–4 PM CT
                 <br>
                 If I'm unavailable, please use the
                 <a href="https://amplifiedsites.com/start-journey.html"
