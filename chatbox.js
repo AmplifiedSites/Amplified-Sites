@@ -379,10 +379,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (welcomeMessage) {
             welcomeMessage.innerHTML = `
-                Hey ${customerName}! 👋 How can I help you today?
+                Hey ${customerName}! 👋 
                 <br>
-                🕒 <strong>My Hours:</strong> Mon–Sun, 8 AM–4 PM CT
+                Thank you for stopping by. How can I help you today?
                 <br>
+                <br>
+                My Hours: Monday–Sunday, 8:00 AM–4:00 PM CT
                 <br>
                 If I'm unavailable, please use the
                 <a href="https://amplifiedsites.com/start-journey.html"
@@ -391,7 +393,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 style="color:#55a2ff; text-decoration:underline; font-weight:600;">
                 Contact Form
                 </a>.
-                I'll respond as soon as possible!
+                I'll get back to you as soon as possible!
             `;
         }
 
