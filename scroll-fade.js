@@ -7,7 +7,7 @@
     function initializeScrollFade() {
 
         const sections = document.querySelectorAll(
-            "main > section:not(.hero), body > section:not(.hero), .scroll-fade, .hero-content"
+            "main > section:not(.hero), body > section:not(.hero), .scroll-fade"
         );
 
         if (!sections.length) return;
@@ -24,10 +24,18 @@
                   if (rect.bottom < fadeDistance) {
                      opacity = Math.max(
                         0,
-                        (screenHeight - rect.top) / fadeDistance
+                        rect.bottom / fadeDistance
                         );
                   }
-                section.style.opacity = String(opacity);
+               else if (rect.top > screenHeight - fadeDistance) {
+                  opacity = Math.max(
+                     0,
+                     (screenHeight - rect.top) / fadeDistance
+                     );
+               }
+                section.style.opacity = String(
+                   Math.max(0, Math.min(1, opacity))
+                   );
             });
         }
 
