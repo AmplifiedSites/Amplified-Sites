@@ -1518,7 +1518,7 @@ img{
 
 .hero-content {
     position: relative;
-    top: -190px;
+    top: -180px;
     transform: none;
     transition: none;
 }
@@ -17112,7 +17112,4 @@ main.success-deposit > section.success-hero {
 }
 /* END OF CHAT BOX */
 
-/* ALL PAGES */
-.scroll-fade {
-    will-change: opacity;
-}
+
