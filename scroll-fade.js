@@ -14,19 +14,19 @@
 
         function updateScrollFade() {
             const screenHeight = window.innerHeight;
-            const fadeDistance = screenHeight * 1.5;
+            const fadeDistance = screenHeight * 120;
 
             sections.forEach(section => {
                 const rect = section.getBoundingClientRect();
 
-                const fadeIn = (screenHeight - rect.top) / fadeDistance;
-                const fadeOut = rect.bottom / fadeDistance;
-
-                const opacity = Math.max(
-                    0,
-                    Math.min(1, fadeIn, fadeOut)
-                );
-
+                  let opacity = 1
+                  
+                  if (rect.bottom < fadeDistance) {
+                     opacity = Math.max(
+                        0,
+                        (screenHeight - rect.top) / fadeDistance
+                        );
+                  }
                 section.style.opacity = String(opacity);
             });
         }
