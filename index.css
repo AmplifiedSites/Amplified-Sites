@@ -17112,8 +17112,3 @@ main.success-deposit > section.success-hero {
 }
 /* END OF CHAT BOX */
 
-
-/* ALL PAGES */
-.scroll-fade {
-    will-change: opacity;
-}
