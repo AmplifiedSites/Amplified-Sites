@@ -18,7 +18,9 @@
     <script defer src="viewpackage.js"></script>
     <script defer src="page.js"></script>
     <script defer src="chatbox.js"></script>
-    <script src="scroll-fade.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="scroll-fade.js?v=9" defer></script>
 </head>
 <body class="view-package-body">
     <canvas id="background"></canvas>
@@ -38,19 +40,19 @@
         </nav>
     </header>
         <main>
-            <section class="portfolio-intro">
+            <section class="portfolio-intro slide-left">
                 <span class="portfolio-eyebrow">OUR PORTFOLIO</span>
                 <h1>Websites Built to <span>Stand Out</span></h1>
                 <p>Explore our work and see how thoughtful design can bring a business's vision to life.</p>
             </section>
             <section class="as-showcase">
-                <div class="as-showcase-left">
+                <div class="as-showcase-left slide-left">
                     <div class="as-showcase-tag">MODERN, CLEAN, EFFECTIVE</div>
                     <h2>Find the Right <span>Packages</span> for Your Business Growth</h2>
                     <p>Choose a package that fits your business goals and budget.</p>
                     <a href="viewpackage.html" class="as-showcase-btn"> View Packages → </a>
                 </div>
-                <div class="as-browser-window">
+                <div class="as-browser-window slide-right">
                     <div class="as-browser-top">
                         <div class="as-browser-dots">
                             <span class="red"></span>
@@ -88,11 +90,11 @@
                 </div>
             </section>
             <section class="portfolio-work" id="portfolio-work">
-                <div class="portfolio-work-heading">
+                <div class="portfolio-work-heading slide-left">
                     <span class="portfolio-eyebrow">Our Projects</span>
                     <h2>Featured <span>Projects</span></h2>
                 </div>
-                <div class="portfolio-carousel">
+                <div class="portfolio-carousel slide-right">
                     <button
                         type="button"
                         class="portfolio-carousel-prev"
@@ -117,7 +119,7 @@
                 </div>
                 <div class="portfolio-carousel-dots" id="portfolioCarouselDots"></div>
             </section>
-            <section class="portfolio-cta">
+            <section class="portfolio-cta slide-left">
                 <span class="portfolio-eyebrow">YOUR IDEA IS NEXT</span>
                 <h2>Let's Build Something <span>Great</span></h2>
                 <p>Have a website in mind or question to ask?</p>
