@@ -1,8 +1,13 @@
 /* ==========================================
    AMPLIFIED SITES - SCROLL SLIDE ANIMATION
+   WORKS ACROSS ALL WEBSITE PAGES
 ========================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
+
+    // ==========================================
+    // 1. CHECK GSAP
+    // ==========================================
 
     if (
         typeof gsap === "undefined" ||
@@ -14,35 +19,72 @@ document.addEventListener("DOMContentLoaded", () => {
 
     gsap.registerPlugin(ScrollTrigger);
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    // ==========================================
+    // 2. ACCESSIBILITY
+    // ==========================================
+
+    if (
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches
+    ) {
         return;
     }
 
     // ==========================================
-    // SLIDE ANIMATION FUNCTION
+    // 3. PREVENT DUPLICATE ANIMATIONS
+    // ==========================================
+
+    const animatedElements = new WeakSet();
+
+    // ==========================================
+    // 4. SLIDE ANIMATION FUNCTION
     // ==========================================
 
     function slideIn(selector, direction) {
 
-    const elements = gsap.utils.toArray(selector);
+        const elements = gsap.utils.toArray(selector);
 
-    elements.forEach(element => {
+        elements.forEach(element => {
 
-        const distance = direction === "left" ? -100 : 100;
-
-        const timeline = gsap.timeline({
-            scrollTrigger: {
-                trigger: element,
-                start: "top 95%",
-                end: "bottom -30%",
-                scrub: 2,
-                invalidateOnRefresh: true
+            // Don't animate the same element twice
+            if (animatedElements.has(element)) {
+                return;
             }
-        });
 
-        timeline
+            animatedElements.add(element);
+
+            const distance =
+                direction === "left" ? -100 : 100;
+
+            // ==========================================
+            // SCROLL TIMELINE
+            // ==========================================
+
+            const timeline = gsap.timeline({
+
+                scrollTrigger: {
+                    trigger: element,
+
+                    // Begin entering the screen
+                    start: "top 95%",
+
+                    // Finish after leaving the screen
+                    end: "bottom -30%",
+
+                    // Smooth scroll movement
+                    scrub: 2,
+
+                    invalidateOnRefresh: true
+                }
+
+            });
+
+            // ==========================================
             // SLIDE IN
-            .fromTo(element,
+            // ==========================================
+
+            timeline.fromTo(element,
                 {
                     x: distance,
                     opacity: 0
@@ -53,58 +95,84 @@ document.addEventListener("DOMContentLoaded", () => {
                     duration: 1,
                     ease: "none"
                 }
-            )
+            );
 
+            // ==========================================
             // STAY VISIBLE
-            .to(element, {
+            // ==========================================
+
+            timeline.to(element, {
                 x: 0,
                 opacity: 1,
                 duration: 2,
                 ease: "none"
-            })
+            });
 
+            // ==========================================
             // SLIDE OUT
-            .to(element, {
+            // ==========================================
+
+            timeline.to(element, {
                 x: -distance,
                 opacity: 0,
                 duration: 1,
                 ease: "none"
             });
 
-    });
+        });
 
-}
+    }
 
     // ==========================================
-    // WHAT I OFFER
+    // 5. HOMEPAGE - WHAT I OFFER
     // ==========================================
 
     slideIn(".as-heading-wrap", "left");
+
     slideIn(".as-feature-card", "right");
 
+
     // ==========================================
-    // OUR PROCESS
+    // 6. HOMEPAGE - OUR PROCESS
     // ==========================================
 
     slideIn(".as-process-header", "left");
+
     slideIn(".as-process-step", "right");
 
+
     // ==========================================
-    // CLIENT REVIEWS
+    // 7. HOMEPAGE - CLIENT REVIEWS
     // ==========================================
 
     slideIn(".as-reviews-heading", "left");
+
     slideIn(".as-review-form-box", "left");
+
     slideIn(".as-review-display-box", "right");
 
+
     // ==========================================
-    // REFRESH
+    // 8. UNIVERSAL - ALL WEBSITE PAGES
+    // ==========================================
+
+    // Slide content from the left
+    slideIn(".slide-left", "left");
+
+    // Slide content from the right
+    slideIn(".slide-right", "right");
+
+
+    // ==========================================
+    // 9. REFRESH SCROLLTRIGGER
     // ==========================================
 
     window.addEventListener("load", () => {
         ScrollTrigger.refresh();
     });
 
-    console.log("Scroll slide animations working.");
+    console.log(
+        "Amplified Sites scroll animations loaded successfully."
+    );
 
 });
