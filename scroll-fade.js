@@ -1,3 +1,4 @@
+
 /* ==========================================
    AMPLIFIED SITES - SCROLL SLIDE ANIMATION
    WORKS ACROSS ALL WEBSITE PAGES
@@ -47,7 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         elements.forEach(element => {
 
-            // Don't animate the same element twice
             if (animatedElements.has(element)) {
                 return;
             }
@@ -55,36 +55,13 @@ document.addEventListener("DOMContentLoaded", () => {
             animatedElements.add(element);
 
             const distance =
-                direction === "left" ? -100 : 100;
+                direction === "left" ? -60 : 60;
 
             // ==========================================
-            // SCROLL TIMELINE
+            // SLIDE IN ON SCROLL
             // ==========================================
 
-            const timeline = gsap.timeline({
-
-                scrollTrigger: {
-                    trigger: element,
-
-                    // Begin entering the screen
-                    start: "top 95%",
-
-                    // Finish after leaving the screen
-                    end: "bottom -30%",
-
-                    // Smooth scroll movement
-                    scrub: 2,
-
-                    invalidateOnRefresh: true
-                }
-
-            });
-
-            // ==========================================
-            // SLIDE IN
-            // ==========================================
-
-            timeline.fromTo(element,
+            gsap.fromTo(element,
                 {
                     x: distance,
                     opacity: 0
@@ -92,31 +69,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 {
                     x: 0,
                     opacity: 1,
-                    duration: 1,
-                    ease: "none"
+                    ease: "none",
+
+                    scrollTrigger: {
+                    trigger: element,
+
+                    start: "top 90%",
+                    end: "top 55%",
+
+                    scrub: 1,
+
+                    invalidateOnRefresh: true,
+                    refreshPriority: -1
+                }
                 }
             );
-
-            // ==========================================
-            // STAY VISIBLE
-            // ==========================================
-
-            timeline.to(element, {
-                x: 0,
-                opacity: 1,
-                duration: 2,
-                ease: "none"
-            });
-
-            // ==========================================
-            // SLIDE OUT
-            // ==========================================
-            timeline.to(element, {
-                x: distance,
-                opacity: 0,
-                duration: 1,
-                ease: "none"
-            });
 
         });
 
@@ -127,51 +94,44 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==========================================
 
     slideIn(".as-heading-wrap", "left");
-
     slideIn(".as-feature-card", "right");
-
 
     // ==========================================
     // 6. HOMEPAGE - OUR PROCESS
     // ==========================================
 
     slideIn(".as-process-header", "left");
-
     slideIn(".as-process-step", "right");
-
 
     // ==========================================
     // 7. HOMEPAGE - CLIENT REVIEWS
     // ==========================================
 
     slideIn(".as-reviews-heading", "left");
-
     slideIn(".as-review-form-box", "left");
-
     slideIn(".as-review-display-box", "right");
-
 
     // ==========================================
     // 8. UNIVERSAL - ALL WEBSITE PAGES
     // ==========================================
 
-    // Slide content from the left
     slideIn(".slide-left", "left");
-
-    // Slide content from the right
     slideIn(".slide-right", "right");
 
+// ==========================================
+// REFRESH WHEN PAGE CONTENT CHANGES
+// ==========================================
 
-    // ==========================================
-    // 9. REFRESH SCROLLTRIGGER
-    // ==========================================
+window.addEventListener("load", () => {
+    ScrollTrigger.refresh();
+});
 
-    window.addEventListener("load", () => {
+// Detect changes to page height
+const resizeObserver = new ResizeObserver(() => {
+    requestAnimationFrame(() => {
         ScrollTrigger.refresh();
     });
+});
 
-    console.log(
-        "Amplified Sites scroll animations loaded successfully."
-    );
-
+resizeObserver.observe(document.body);
 });
