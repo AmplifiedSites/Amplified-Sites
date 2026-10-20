@@ -17,7 +17,9 @@
     <script defer src="page.js"></script>
     <script src="viewpackage.js" defer></script>
     <script defer src="chatbox.js"></script>
-    <script src="scroll-fade.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="scroll-fade.js?v=4" defer></script>
 </head>
 <body class="view-package-body">
     <canvas id="background"></canvas>
@@ -37,7 +39,7 @@
         </nav>
     </header>
     <section class="pricing-section" id="package">
-        <div class="pricing-header">
+        <div class="pricing-header slide-left">
             <span class="pricing-tag">
                 CHOOSE YOUR PLAN
             </span>
@@ -58,7 +60,7 @@
         </section>    
         <!-- ================= EXTRA ADD ONS ================= -->
         <section class="add-on">
-            <div class="extra-add">
+            <div class="extra-add slide-left">
                 <h3>
                     Extra <span>Add-Ons</span>
                 </h3>
