@@ -111,9 +111,8 @@ document.addEventListener("DOMContentLoaded", () => {
             // ==========================================
             // SLIDE OUT
             // ==========================================
-
             timeline.to(element, {
-                x: -distance,
+                x: distance,
                 opacity: 0,
                 duration: 1,
                 ease: "none"
