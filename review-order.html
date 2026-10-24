@@ -6,7 +6,6 @@
     <title>Amplified Sites</title>
     <link rel="icon" type="image/png" href="ampsiteslogo.png">
     <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="chatbox.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,14 +13,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script defer src="supabase-public.js"></script>
+    <script src="legal-public.js" defer></script>
     <script defer src="page.js"></script>
-    <script src="viewpackage.js" defer></script>
+    <script defer src="review-order.js"></script>
     <script defer src="chatbox.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
     <script src="scroll-fade.js" defer></script>
 </head>
-<body class="view-package-body">
+<body>
     <canvas id="background"></canvas>
-    <header class="view-package-hero">
+    <header class="review-hero">
         <nav class="navbar">
             <div class="logo">
                 <a href="index.html"><img src="ampsiteslogo.png" alt="ampsiteslogo"></a>
@@ -33,71 +35,94 @@
                 <li><a href="trackprogress.html">Order Status</a></li>
                 <li><a href="remaining-balance.html">Balance Due</a></li>
             </ul>
-            <a href="start-journey.html" class="quote-btn">Start Your Journey</a>
+            <a href="viewpackage.html" class="quote-btn">View Package</a>
         </nav>
     </header>
-    <section class="pricing-section" id="package">
-        <div class="pricing-header">
-            <span class="pricing-tag">
-                CHOOSE YOUR PLAN
-            </span>
-            <h2>Our <span>Packages</span></h2>
+    <main class="review-page">
+        <section class="review-header">
+            <h1>Review Your Order</h1>
             <p>
-                Once you have received your custom website concept and 
-                reviewed the design direction,
-                submit your <br>non-refundable 50% deposit to secure 
-                your project and begin the website development process.
+                Please review your website package and contact information before proceeding to secure checkout.
             </p>
-        </div>
-        <!-- ================= DYNAMIC WEBSITE PACKAGES ================= -->
-        <div class="pricing-grid" id="pricingGrid">
-            <p class="packages-loading">
-                Loading website packages...
-            </p>
-        </div>
-        </section>    
-        <!-- ================= EXTRA ADD ONS ================= -->
-        <section class="add-on">
-            <div class="extra-add">
-                <h3>
-                    Extra <span>Add-Ons</span>
-                </h3>
-                <p class="addons-description">
-                    Enhance your website with additional features,
-                    custom functionality, and ongoing web support
-                    for your business.
-                </p>
-                <div class="addons-features">
-                    <div class="addons-feature">
-                        <i class="fa-solid fa-puzzle-piece"></i>
-                        <h4>Custom Features</h4>
+        </section>
+        <section class="review-layout">
+            <div class="review-details">
+                <div class="review-box">
+                    <div class="review-top">
+                        <h2>Package Selected</h2>
+                        <a href="viewpackage.html">Change</a>
                     </div>
-                    <div class="addons-feature">
-                        <i class="fa-solid fa-screwdriver-wrench"></i>
-                        <h4>Website Support</h4>
+                    <div class="package-summary">
+                        <h3 id="reviewPackage">Loading...</h3>
+                        <span id="reviewPrice">Loading...</span>
                     </div>
-                    <div class="addons-feature">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <h4>Additional Services</h4>
+                   <ul class="package-features" id="packageFeatures"></ul>
+                </div>
+                <div class="review-box">
+                    <div class="review-top">
+                        <h2>Client Information</h2>
+                        <a href="client-info.html">Edit</a>
+                    </div>
+                    <div class="client-grid">
+                        <div>
+                            <label>Name</label>
+                            <p id="reviewName">John Smith</p>
+                        </div>
+
+                        <div>
+                            <label>Email</label>
+                            <p id="reviewEmail">john@email.com</p>
+                        </div>
+
+                        <div>
+                            <label>Phone</label>
+                            <p id="reviewPhone">(555) 555-5555</p>
+                        </div>
+
+                        <div>
+                            <label>Business</label>
+                            <p id="reviewBusiness">Smith Roofing</p>
+                        </div>
                     </div>
                 </div>
-                <p class="addons-pricing">
-                    <i class="fa-solid fa-circle-info"></i>
-                    Pricing varies depending on the type,
-                    complexity, and scope of the requested add-on.
-                </p>
             </div>
+            <section class="checkout-sidebar">
+                <div class="order-summary-card">
+                    <h2>Order Summary</h2>
+                    <div class="summary-row">
+                        <span>Website Package:</span>
+                        <strong id="summaryName">Loading...</strong>
+                    </div>
+                    <div class="summary-row">
+                        <span>Deposit Due Today:</span>
+                        <strong id="depositAmount">Loading...</strong>
+                    </div>
+                    <div class="summary-row total-row">
+                        <span>Total Project Cost:</span>
+                        <strong id="totalAmount">Loading...</strong>
+                    </div>
+                    <button
+                        id="checkoutBtn"
+                        class="continue-payment"
+                        type="button">
+                        Continue To Secure Checkout
+                    </button>
+                    <p class="secure-note">
+                        🔒 Secure checkout powered by Stripe
+                    </p>
+                </div>
+            </section>
         </section>
+    </main>
         <footer>
             <div class="footer-grid">
                 <div class="footer-column">
                     <div class="footer-logo">
-                        <img src="ampsiteslogo.png" alt="get-in-touch">
+                        <img src="ampsiteslogo.png" alt="get-in-touch" />
+
                         <h2>Amplified Sites</h2>
                     </div>
-                    <p>
-                        Building simple, beautiful websites for businesses.
-                    </p>
+                    <p>Building simple, beautiful websites for businesses.</p>
                 </div>
                 <div class="footer-column">
                     <h3>Services</h3>
@@ -116,7 +141,8 @@
                     <p>✉️ Amplifiedsites@Outlook.com</p>
                     <p>🗺️ Manitowoc, WI</p>
                 </div>
-            <div class="copy-right">© 2026 Amplified Sites. All rights reserved.</div>
+                <div class="copy-right">© 2026 Amplified Sites. All rights reserved.</div>
+            </div>
         </footer>
         <div id="asChatWindow" class="as-chat-window" hidden>
             <!-- CHAT HEADER -->
