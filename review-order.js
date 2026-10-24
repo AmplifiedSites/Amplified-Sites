@@ -191,12 +191,12 @@ try {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    package_id: packageId,
-                    client_name: clientName,
-                    client_email: clientEmail,
-                    client_phone: clientPhone,
-                    business_name: businessName
-                })
+                package_name: packageName,
+                client_name: clientName,
+                client_email: clientEmail,
+                client_phone: clientPhone,
+                business_name: businessName
+            })
             }
         );
 
