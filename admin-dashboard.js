@@ -1282,14 +1282,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // PAGE TITLES
     // =========================================
     const adminPageTitles = {
-    "dashboard-section": "Dashboard",
-    "orders-section": "Orders",
-    "messages-section": "Messages",
-    "reviews-section": "Customer Reviews",
-    "portfolio-section": "Portfolio",
-    "packages-section": "Website Packages",
-    "legal-section": "Legal Documents"
-};
+        "dashboard-section": "Admin Dashboard",
+        "orders-section": "Orders",
+        "messages-section": "Messages",
+        "reviews-section": "Customer Reviews",
+        "packages-section": "Website Packages",
+        "legal-section": "Legal Documents"
+    };
 
 
 
@@ -6511,7 +6510,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("portfolioGalleryPreview").innerHTML = "";
 
         // Reset gallery counter
-        document.getElementById("portfolioGalleryCount").textContent = "0 / 4";
+        document.getElementById("portfolioGalleryCount").textContent = "0 screenshots";
 
         // Clear selected images
         document.getElementById("portfolioProjectImage").value = "";
@@ -6594,10 +6593,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const existingGallery = projectId
         ? [...portfolioGalleryImageUrls]
         : [];
-
-    if (existingGallery.length + galleryFiles.length > 4) {
-        throw new Error("You can have a maximum of 4 additional screenshots.");
-    }
 
     const galleryUrls = [...existingGallery];
 
@@ -6922,14 +6917,14 @@ if (portfolioImageSection && !portfolioImageSection.dataset.removeHandler) {
             ).join("");
 
             document.getElementById("portfolioGalleryCount")
-                .textContent = `${portfolioGalleryImageUrls.length} / 4`;
+                .textContent = `${portfolioGalleryImageUrls.length} screenshots`;
         }
 
     });
 }
 
         if (galleryCount) {
-            galleryCount.textContent = `${savedGallery.length} / 4`;
+            galleryCount.textContent = `${savedGallery.length} screenshots`;
         }
 
         // Update popup title
@@ -7115,17 +7110,10 @@ console.log("Gallery photos selected:", this.files.length);
 
     this.files = portfolioSelectedFiles.files;
 
-    const galleryPreview = document.getElementById("portfolioGalleryPreview");
+const galleryPreview = document.getElementById("portfolioGalleryPreview");
 const galleryCount = document.getElementById("portfolioGalleryCount");
 
 const savedCount = portfolioGalleryImageUrls.length;
-const availableSlots = Math.max(0, 4 - savedCount);
-
-while (portfolioSelectedFiles.files.length > availableSlots) {
-    portfolioSelectedFiles.items.remove(
-        portfolioSelectedFiles.files.length - 1
-    );
-}
 
 this.files = portfolioSelectedFiles.files;
 
@@ -7148,7 +7136,7 @@ Array.from(this.files).forEach(file => {
     galleryPreview.appendChild(imageItem);
 });
 
-galleryCount.textContent = `${savedCount + this.files.length} / 4`;
+galleryCount.textContent = `${savedCount + this.files.length} screenshots`;
 });
 
 // ==========================================
