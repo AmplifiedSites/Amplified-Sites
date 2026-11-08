@@ -17,7 +17,11 @@
     <script defer src="page.js"></script>
     <script defer src="legal-public.js"></script>
     <script defer src="chatbox.js"></script>
-    <script src="scroll-fade.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="scroll-fade.js?v=4" defer></script>
+    <script src="about-cms.js" defer></script>
+</head>
 <body class="main-about">
     <canvas id="background"></canvas>
     <header class="about-hero">
@@ -41,29 +45,18 @@
                 <img src="amp-logo.png" alt="Laptop2">
             </div>
             <div class="about-text">
-            <div class="about-me">About Me</div>
-            <h2>Hi, I’m Jerry</h2>
-            <p>
-                I started Amplified Sites because I genuinely enjoy 
-                web design and creating websites. 
-                What began as a hobby quickly became something 
-                I wanted to turn into a business that helps others. 
-                I understand that many small businesses don't have the time, 
-                resources, or budget for a large agency, and that's where I aim to help.
-            </p>
-            <p>
-                My focus is on creating clean, modern websites that 
-                represent your business professionally and make it 
-                easier for customers to find and trust you online. 
-                As I continue to grow Amplified Sites, my goal is to 
-                become a trusted partner for small businesses looking 
-                to build their online presence and reach new opportunities.
-            </p>
-            <a href="start-journey.html" class="about-btn">Start Your Journey ➜</a>    
+                <div class="about-me" id="aboutSectionLabel">
+                    About Me
+                </div>
+                <h2 id="aboutHeading">Hi, I’m Jerry</h2>
+                <p id="aboutParagraph1"></p>
+                <a href="start-journey.html" class="about-btn">
+                    Start Your Journey ➜
+                </a>
             </div>
         </div>
     </section>
-      <footer>
+    <footer>
         <div class="footer-grid">
             <div class="footer-column">
                 <div class="footer-logo">
