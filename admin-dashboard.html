@@ -54,6 +54,15 @@
                         </button>
                     </li>
                     <li>
+                        <button
+                            type="button"
+                            class="dash-btn"
+                            data-section="website-content-section">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            <span>Website Content</span>
+                        </button>
+                    </li>
+                    <li>
                         <button type="button" class="dash-btn" data-section="legal-section">
                             <i class="fa-solid fa-scale-balanced"></i>
                             <span>Legal</span>
@@ -269,10 +278,42 @@
                         </div>
                     </div>
                 </section>
+                <section class="admin-section" id="website-content-section">
+                    <div class="section-heading">
+                        <div>
+                            <p>Edit the content displayed on your public website.</p>
+                        </div>
+                    </div>
+                    <div class="website-content-editor">
+                        <h3>About Me Section</h3>
+                        <form id="aboutCmsForm">
+                            <div class="admin-form-group">
+                                <label for="cmsAboutLabel">Section Label</label>
+                                <input type="text" id="cmsAboutLabel" required>
+                            </div>
+                            <div class="admin-form-group">
+                                <label for="cmsAboutHeading">Heading</label>
+                                <input type="text" id="cmsAboutHeading" required>
+                            </div>
+                            <div class="admin-form-group">
+                                <label for="cmsAboutParagraph1">About Me Description</label>
+                                <textarea
+                                    id="cmsAboutParagraph1"
+                                    rows="10"
+                                    placeholder="Write your About Me description here..."
+                                    required></textarea>
+                            </div>
+                            <button type="submit" class="admin-save-btn">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                                Save Changes
+                            </button>
+                            <p id="aboutCmsStatus" role="status"></p>
+                        </form>
+                    </div>
+                </section>
                 <section class="admin-section" id="portfolio-section">
                     <div class="section-heading">
                         <div>
-                            <h2>Portfolio Management</h2>
                             <p>Manage projects displayed on the Amplified Sites website.</p>
                         </div>
                         <button type="button"
@@ -586,7 +627,6 @@
                 <section class="admin-section" id="reviews-section">
                     <div class="section-heading">
                         <div>
-                            <h2>Customer Reviews</h2>
                             <p>Manage customer feedback, ratings, and approvals.</p>
                         </div>
                         <button type="button"
