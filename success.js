@@ -43,12 +43,29 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.getElementById("trackBtn").href =
             `trackprogress.html?order=${data.order_id}`;
     setInterval(async () => {
-    const res = await fetch(
-   `https://api.amplifiedsites.com/get-order-by-session?session_id=${encodeURIComponent(sessionId)}`
-    );
-    const { order } = await res.json();
-    document.getElementById("projectStatus").textContent = order.stage;
-    }, 3000);
+    // ===============================
+    // AUTO REFRESH PROJECT STATUS
+    // ===============================
+
+    setInterval(async () => {
+        try {
+            const res = await fetch(
+                `https://api.amplifiedsites.com/get-order-by-session?session_id=${encodeURIComponent(sessionId)}`
+            );
+
+            if (!res.ok) return;
+
+            const { order } = await res.json();
+
+            if (order) {
+                document.getElementById("projectStatus").textContent =
+                    order.stage;
+            }
+
+        } catch (error) {
+            console.error("Unable to refresh project status:", error);
+        }
+    }, 15000);
     // ================= COPY ORDER ID BUTTON FUNCTIONALITY =================
         const copyBtn =
             document.getElementById("copyBtn");
