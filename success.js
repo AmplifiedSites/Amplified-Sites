@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             `<strong>${data.stage}</strong>`;
         document.getElementById("trackBtn").href =
             `trackprogress.html?order=${data.order_id}`;
-    setInterval(async () => {
+
     // ===============================
     // AUTO REFRESH PROJECT STATUS
     // ===============================
@@ -66,18 +66,23 @@ document.addEventListener("DOMContentLoaded", async () => {
             console.error("Unable to refresh project status:", error);
         }
     }, 15000);
-    // ================= COPY ORDER ID BUTTON FUNCTIONALITY =================
-        const copyBtn =
-            document.getElementById("copyBtn");
-        copyBtn.addEventListener("click", async () => {
-            await navigator.clipboard.writeText(
-                data.order_id
-            );
+
+    // ===============================
+    // COPY ORDER ID BUTTON FUNCTIONALITY
+    // ===============================
+
+    const copyBtn = document.getElementById("copyBtn");
+
+    copyBtn.addEventListener("click", async () => {
+        await navigator.clipboard.writeText(data.order_id);
+
+        copyBtn.innerHTML =
+            `<i class="fa-solid fa-check"></i> Copied!`;
+
+        setTimeout(() => {
             copyBtn.innerHTML =
-                `<i class="fa-solid fa-check"></i> Copied!`;
-            setTimeout(() => {
-                copyBtn.innerHTML =
-                    `<i class="far fa-copy"></i> Copy`;
-            }, 2000);
-        });
-    }); 
+                `<i class="far fa-copy"></i> Copy`;
+        }, 2000);
+    });
+
+});
