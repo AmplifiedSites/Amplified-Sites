@@ -583,7 +583,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             
         const response = await fetch(
-          "https://api.amplifiedsites.com/reviews/submit",
+          "https://amp-backend-3uv0.onrender.com/reviews/submit",
           
         {
             method: "POST",
