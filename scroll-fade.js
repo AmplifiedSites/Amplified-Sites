@@ -127,11 +127,20 @@ window.addEventListener("load", () => {
 });
 
 // Detect changes to page height
-const resizeObserver = new ResizeObserver(() => {
-    requestAnimationFrame(() => {
-        ScrollTrigger.refresh();
-    });
-});
+if (typeof ResizeObserver !== "undefined") {
+    let refreshPending = false;
 
-resizeObserver.observe(document.body);
+    const resizeObserver = new ResizeObserver(() => {
+        if (refreshPending) return;
+
+        refreshPending = true;
+
+        requestAnimationFrame(() => {
+            refreshPending = false;
+            ScrollTrigger.refresh();
+        });
+    });
+
+    resizeObserver.observe(document.body);
+}
 });
