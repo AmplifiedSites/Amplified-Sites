@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // BACKEND CONFIGURATION
     // =========================================
 
-    const CHAT_API = "https://api.amplifiedsites.com/chat";
+    const CHAT_API = "https://amp-backend-3uv0.onrender.com/chat";
 
     // =========================================
     // CHAT ELEMENTS
@@ -480,7 +480,7 @@ document.addEventListener("DOMContentLoaded", () => {
             sendingMessage = false;
 
             const chatClosed =
-                chatInput.placeholder === "This conversation has ended.";
+                chatInput.placeholder === "Live chat has been closed.";
 
             chatSend.disabled = chatClosed;
             chatInput.disabled = chatClosed;
