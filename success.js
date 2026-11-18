@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         return;
     }
     const response = await fetch(
-       `https://api.amplifiedsites.com/get-order-by-session?session_id=${encodeURIComponent(sessionId)}`
+       `https://amp-backend-3uv0.onrender.com/get-order-by-session?session_id=${encodeURIComponent(sessionId)}`
     );
     const result = await response.json();
     if (!result.order) {
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     setInterval(async () => {
         try {
             const res = await fetch(
-                `https://api.amplifiedsites.com/get-order-by-session?session_id=${encodeURIComponent(sessionId)}`
+                `https://amp-backend-3uv0.onrender.com/get-order-by-session?session_id=${encodeURIComponent(sessionId)}`
             );
 
             if (!res.ok) return;
