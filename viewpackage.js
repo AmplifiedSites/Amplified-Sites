@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log("Data:", data);
             console.log("Error:", error);
  // ===================== ERROR VALIDATION CHECKS =====================
-            if (!data.length) {
+            if (error || !data || data.length === 0) {
                 document.getElementById("orderFoundCard").style.display = "none";
                 alert("Order not found.");
                 return;
@@ -78,22 +78,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
  // ===================== PAID/NOT PAID STATE CONTROL =====================
             if (order.fully_paid) {
-                document.getElementById("foundBalance").textContent =
-                    "$0.00";
-                payButton.style.display = "none";
-                paymentStatus.textContent =
-                    "✅ Order Paid In Full";
-            } else {
-                payButton.style.display = "inline-flex";
-                paymentStatus.textContent = "";
-            }
+            document.getElementById("foundBalance").textContent = "$0.00";
+
+            if (payButton) payButton.style.display = "none";
+            if (paymentStatus) paymentStatus.textContent = "✅ Order Paid In Full";
+        } else {
+            if (payButton) payButton.style.display = "inline-flex";
+            if (paymentStatus) paymentStatus.textContent = "";
+        }
  // ===================== FINAL PAYMENT CLICK STRIPE FLOW=====================            
             if (payButton) {
                 payButton.onclick = async (e) => {
                     e.preventDefault();
                     try {
                         const response = await fetch(
-                            "https://api.amplifiedsites.com/create-final-payment-session",
+                            "https://amp-backend-3uv0.onrender.com/create-final-payment-session",
                             {
                                 method: "POST",
                                 headers: {
