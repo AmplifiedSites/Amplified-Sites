@@ -31,7 +31,7 @@ if (loginForm) {
 
         try {
             // Replace with your Cloudflare Tunnel URL
-            const API_URL = "https://api.amplifiedsites.com";
+            const API_URL = "https://amp-backend-3uv0.onrender.com";
 
             const response = await fetch(
                 `${API_URL}/admin/login`,
