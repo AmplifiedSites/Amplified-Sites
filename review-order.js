@@ -68,46 +68,35 @@ if (packageFeatures) {
 
 }
 
+
 // ======================
 // POPULATE REVIEW PAGE
 // ======================
 
-document.getElementById(
-    "reviewPackage"
-).textContent = packageName;
+document.getElementById("reviewPackage").textContent = packageName ?? "";
 
-document.getElementById(
-    "summaryName"
-).textContent = packageName;
+document.getElementById("summaryName").textContent = packageName ?? "";
 
-document.getElementById(
-    "reviewPrice"
-).textContent = `$${totalPrice}`;
+document.getElementById("reviewPrice").textContent =
+    `$${totalPrice ?? "0.00"}`;
 
-document.getElementById(
-    "totalAmount"
-).textContent = `$${totalPrice}`;
+document.getElementById("totalAmount").textContent =
+    `$${totalPrice ?? "0.00"}`;
 
-document.getElementById(
-    "depositAmount"
-).textContent =
-    `$${depositAmount}`;
+document.getElementById("depositAmount").textContent =
+    `$${depositAmount ?? "0.00"}`;
 
-document.getElementById(
-    "reviewName"
-).textContent = clientName;
+document.getElementById("reviewName").textContent =
+    clientName ?? "";
 
-document.getElementById(
-    "reviewEmail"
-).textContent = clientEmail;
+document.getElementById("reviewEmail").textContent =
+    clientEmail ?? "";
 
-document.getElementById(
-    "reviewPhone"
-).textContent = clientPhone;
+document.getElementById("reviewPhone").textContent =
+    clientPhone ?? "";
 
-document.getElementById(
-    "reviewBusiness"
-).textContent = businessName;
+document.getElementById("reviewBusiness").textContent =
+    businessName ?? "";
 
 // ======================
 // STRIPE CHECKOUT
@@ -184,7 +173,7 @@ try {
     checkoutButton.textContent = "Creating Order...";
 
         const response = await fetch(
-            "https://api.amplifiedsites.com/create-free-order",
+            "https://amp-backend-3uv0.onrender.com/create-free-order",
             {
                 method: "POST",
                 headers: {
@@ -211,8 +200,7 @@ try {
         localStorage.setItem("order_id", data.order_id);
         localStorage.setItem("orderNumber", data.order_id);
 
-        window.location.href =
-            "success-free.html";
+        window.location.href = "success-free.html";
 
         return;
     }
@@ -225,7 +213,7 @@ try {
 
             const response =
                 await fetch(
-                    "https://api.amplifiedsites.com/create-checkout-session",
+                    "https://amp-backend-3uv0.onrender.com/create-checkout-session",
                     { 
                         method: "POST",
                         headers: {
