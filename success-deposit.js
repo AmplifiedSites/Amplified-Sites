@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 console.log("SESSION ID BEING SENT:", sessionId);
 
 const res = await fetch(
-  `https://api.amplifiedsites.com/get-order-by-session?session_id=${encodeURIComponent(sessionId)}`
+  `https://amp-backend-3uv0.onrender.com/get-order-by-session?session_id=${encodeURIComponent(sessionId)}`
 );
 
 const result = await res.json();
