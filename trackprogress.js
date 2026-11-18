@@ -33,7 +33,7 @@ async function fetchOrder(orderId) {
     try {
 
         const response = await fetch(
-            "https://api.amplifiedsites.com/find-order",
+            "https://amp-backend-3uv0.onrender.com/find-order",
             {
                 method: "POST",
                 headers: {
@@ -257,7 +257,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const input = document.getElementById("orderInput");
 
     if (btn) {
-        btn.addEventListener("click", handleTrack);
+        btn.addEventListener("click", (event) => {
+            event.preventDefault();
+            handleTrack();
+        });
     }
 
     if (input) {
