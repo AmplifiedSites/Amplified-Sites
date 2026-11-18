@@ -359,7 +359,7 @@ if (journeyForm) {
         try {
 
             const response = await fetch(
-             "https://api.amplifiedsites.com/contact-message",
+             "https://amp-backend-3uv0.onrender.com/contact-message",
                 {
                     method: "POST",
                     headers: {
@@ -502,7 +502,6 @@ async function loadPortfolioProjects() {
     initializePortfolioCarousel();
 }
 
-
 // ==========================================
 // 3D PORTFOLIO CAROUSEL
 // AUTOMATIC + MANUAL ROTATION
@@ -606,6 +605,7 @@ cards.forEach((card, index) => {
         updateCarousel();
     });
 
+    
     window.addEventListener("resize", updateCarousel);
 
     updateCarousel();
@@ -890,296 +890,11 @@ function openPortfolioGallery(project) {
     closeButton.focus();
 }
 
-
-// ==========================================
-// LOAD PORTFOLIO ON PAGE LOAD
-// ==========================================
-
-document.addEventListener("DOMContentLoaded", loadPortfolioProjects);
-
-
-// ==========================================
-// PORTFOLIO GALLERY POPUP
-// ==========================================
-
-function openPortfolioGallery(project) {
-
-    // REMOVE ANY PREVIOUS POPUP
-    document.querySelector(".portfolio-gallery-overlay")?.remove();
-
-    // BUILD IMAGE ARRAY
-    let galleryUrls = project.gallery_urls || [];
-
-    if (typeof galleryUrls === "string") {
-        try {
-            galleryUrls = JSON.parse(galleryUrls);
-        } catch {
-            galleryUrls = [];
-        }
-    }
-
-    if (!Array.isArray(galleryUrls)) {
-        galleryUrls = [];
-    }
-
-    const media = [];
-
-    if (project.image_url) {
-        media.push({
-            type: "image",
-            url: project.image_url
-        });
-    }
-
-    galleryUrls.forEach(url => {
-        if (typeof url === "string" && url.trim()) {
-            media.push({
-                type: "image",
-                url: url.trim()
-            });
-        }
-    });
-
-    // ADD VIDEO ONLY WHEN URL EXISTS
-    if (project.demo_video_url?.trim()) {
-        media.push({
-            type: "video",
-            url: project.demo_video_url.trim()
-        });
-    }
-
-    if (!media.length) return;
-
-    let currentIndex = 0;
-
-    // CREATE POPUP
-    const overlay = document.createElement("div");
-    overlay.className = "portfolio-gallery-overlay";
-
-    const dialog = document.createElement("div");
-    dialog.className = "portfolio-gallery-dialog";
-    dialog.setAttribute("role", "dialog");
-    dialog.setAttribute("aria-modal", "true");
-    dialog.setAttribute("aria-label", `${project.project_name} gallery`);
-
-    const closeButton = document.createElement("button");
-    closeButton.className = "portfolio-gallery-close";
-    closeButton.type = "button";
-    closeButton.textContent = "×";
-    closeButton.setAttribute("aria-label", "Close gallery");
-
-    const title = document.createElement("h2");
-    title.className = "portfolio-gallery-title";
-    title.textContent = project.project_name || "Project Gallery";
-
-    const category = document.createElement("p");
-    category.className = "portfolio-gallery-category";
-    category.textContent = project.category || "WEBSITE";
-
-    const stage = document.createElement("div");
-    stage.className = "portfolio-gallery-stage";
-
-    const mainImage = document.createElement("img");
-    mainImage.className = "portfolio-gallery-main-image";
-    mainImage.alt = project.project_name || "Project image";
-
-    const mainVideo = document.createElement("video");
-    mainVideo.className = "portfolio-gallery-main-video";
-    mainVideo.controls = true;
-    mainVideo.playsInline = true;
-    mainVideo.preload = "metadata";
-    mainVideo.hidden = true;
-
-    const previousButton = document.createElement("button");
-    previousButton.className = "portfolio-gallery-prev";
-    previousButton.type = "button";
-    previousButton.textContent = "❮";
-    previousButton.setAttribute("aria-label", "Previous image");
-
-    const nextButton = document.createElement("button");
-    nextButton.className = "portfolio-gallery-next";
-    nextButton.type = "button";
-    nextButton.textContent = "❯";
-    nextButton.setAttribute("aria-label", "Next image");
-
-    const counter = document.createElement("span");
-    counter.className = "portfolio-gallery-count";
-
-    stage.append(
-        mainImage,
-        mainVideo,
-        previousButton,
-        nextButton,
-        counter
-    );
-
-    const thumbnails = document.createElement("div");
-    thumbnails.className = "portfolio-gallery-thumbs";
-
-    const description = document.createElement("p");
-    description.className = "portfolio-gallery-description";
-    description.textContent = project.description || "";
-
-    dialog.append(
-        closeButton,
-        title,
-        category,
-        stage,
-        thumbnails,
-        description
-    );
-
-    // VISIT WEBSITE LINK INSIDE POPUP
-    if (project.website_url) {
-
-        const visitLink = document.createElement("a");
-        visitLink.className = "portfolio-gallery-visit";
-        visitLink.href = project.website_url;
-        visitLink.target = "_blank";
-        visitLink.rel = "noopener noreferrer";
-        visitLink.textContent = "Visit Website →";
-
-        dialog.appendChild(visitLink);
-    }
-
-    overlay.appendChild(dialog);
-    document.body.appendChild(overlay);
-
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    // ==========================================
-    // DISPLAY CURRENT IMAGE OR VIDEO
-    // ==========================================
-
-    function showMedia(index) {
-
-        currentIndex = (index + media.length) % media.length;
-
-        const item = media[currentIndex];
-
-        mainVideo.pause();
-        mainVideo.removeAttribute("src");
-        mainVideo.load();
-
-        if (item.type === "video") {
-
-            mainImage.hidden = true;
-            mainVideo.hidden = false;
-            mainVideo.src = item.url;
-            mainVideo.load();
-
-        } else {
-
-            mainVideo.hidden = true;
-            mainImage.hidden = false;
-            mainImage.src = item.url;
-        }
-
-        counter.textContent = `${currentIndex + 1}/${media.length}`;
-
-        thumbnails.querySelectorAll(".portfolio-gallery-thumb")
-            .forEach((thumb, index) => {
-                thumb.classList.toggle("active", index === currentIndex);
-                thumb.setAttribute(
-                    "aria-pressed",
-                    String(index === currentIndex)
-                );
-            });
-    }
-
-    // ==========================================
-    // CREATE THUMBNAILS
-    // ==========================================
-
-    media.forEach((item, index) => {
-
-        const thumb = document.createElement("button");
-        thumb.type = "button";
-        thumb.className = "portfolio-gallery-thumb";
-        thumb.setAttribute("aria-label", `View item ${index + 1}`);
-
-        if (item.type === "video") {
-
-            thumb.classList.add("portfolio-gallery-video-thumb");
-
-            const playIcon = document.createElement("span");
-            playIcon.textContent = "▶";
-
-            const videoLabel = document.createElement("small");
-            videoLabel.textContent = "Demo Video";
-
-            thumb.append(playIcon, videoLabel);
-
-        } else {
-
-            const thumbImage = document.createElement("img");
-            thumbImage.src = item.url;
-            thumbImage.alt = `Project image ${index + 1}`;
-            thumbImage.loading = "lazy";
-
-            thumb.appendChild(thumbImage);
-        }
-
-        thumb.addEventListener("click", () => showMedia(index));
-
-        thumbnails.appendChild(thumb);
-    });
-
-    // ==========================================
-    // GALLERY CONTROLS
-    // ==========================================
-
-    function closeGallery() {
-
-        mainVideo.pause();
-        mainVideo.removeAttribute("src");
-        mainVideo.load();
-
-        document.removeEventListener("keydown", handleKeydown);
-        document.body.style.overflow = previousOverflow;
-
-        overlay.remove();
-    }
-
-    function handleKeydown(event) {
-
-        if (event.key === "Escape") {
-            closeGallery();
-        }
-
-        if (event.key === "ArrowRight") {
-            showMedia(currentIndex + 1);
-        }
-
-        if (event.key === "ArrowLeft") {
-            showMedia(currentIndex - 1);
-        }
-    }
-
-    closeButton.addEventListener("click", closeGallery);
-
-    overlay.addEventListener("click", event => {
-        if (event.target === overlay) closeGallery();
-    });
-
-    previousButton.addEventListener("click", () => {
-        showMedia(currentIndex - 1);
-    });
-
-    nextButton.addEventListener("click", () => {
-        showMedia(currentIndex + 1);
-    });
-
-    document.addEventListener("keydown", handleKeydown);
-
-    showMedia(0);
-    closeButton.focus();
-}
-
 // ==========================================
 // LOAD PORTFOLIO ON PAGE LOAD
 // ==========================================
 document.addEventListener("DOMContentLoaded", loadPortfolioProjects);
+
+    
 
   
