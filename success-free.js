@@ -112,6 +112,7 @@ if (trackBtn) {
         event.preventDefault();
 
         const orderId =
+            params.get("order_id") ||
             localStorage.getItem("order_id");
 
         const clientEmail =
